@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  height: 100svh;
+}
+
+.slice {
+  transition: transform 0.75s;
+  transform: translateY(15%);
+}
+
+.slice:hover {
+  transform: translateY(0);
+}
+
+.slice.active {
+  transform: translateY(80%);
+}
+
+.slice.active:hover {
+  transform: translateY(65%);
+}
