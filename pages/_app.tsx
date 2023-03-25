@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout"
 import "@/styles/globals.css"
 import type { AppProps } from "next/app"
 import { Eczar } from "next/font/google"
@@ -19,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
           font-family: ${serifFont.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }
