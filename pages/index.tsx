@@ -1,14 +1,22 @@
-import {SliceContainer} from "@/components/Slice";
+import { SliceContainer } from "@/components/Slice"
+import CATEGORY from "@/enums/Category"
+import { useState } from "react"
 
 export default function Home() {
-  return  <main className="bg-primary h-screen relative overflow-hidden px-16 py-16">
-    
-    <h1 className="w-1/2">Abdul Rahman Rehmtulla</h1>
+  const [category, setCategory] = useState<CATEGORY>("ALL")
 
+  return (
+    <main className="bg-primary h-screen relative overflow-hidden px-16  ">
+      <h1
+        className={`name-title name-title-translate w-1/2  absolute  ${
+          category === "ALL" ? null : "active "
+        }`}
+      >
+        Abdul Rahman Rehmtulla
+      </h1>
 
-
-      <SliceContainer />
-  </main>
+      <section></section>
+      <SliceContainer category={category} setCategory={setCategory} />
+    </main>
+  )
 }
-
-

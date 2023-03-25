@@ -47,8 +47,25 @@ h6 {
   @apply text-xl;
 }
 
+.name-title {
+  @apply top-1/3 left-16;
+  transform: scale(1);
+  transition: transform 1s, top 1s, left 1s;
+}
+.name-title.active {
+  @apply -top-8 -left-36;
+  transform: scale(0.3);
+}
+/* .name-title-translate {
+  transform: translate(0);
+  transition: transform 1s;
+}
+.name-title-translate.active {
+  transform: translateY(-50%);
+} */
+
 .slice {
-  transition: transform 1s, background 0.5s;
+  transition: transform 0.75s, background 0.5s;
   transform: translateY(70%);
 }
 
@@ -58,16 +75,16 @@ h6 {
 }
 
 .slice.active {
-  transform: translateY(35%);
+  transform: translateY(50%);
 }
 
 .slice.active:hover {
-  transform: translateY(20%);
+  transform: translateY(40%);
   transition-delay: 0;
 }
 
 /* use post css for loop */
-.slice:nth-child(2) {
+/* .slice:nth-child(2) {
   transition-delay: 0.1s;
 }
 .slice:nth-child(3) {
@@ -78,14 +95,14 @@ h6 {
 }
 .slice:nth-child(5) {
   transition-delay: 0.4s;
-}
+} */
 
 .slice > h6 {
   transform: scale(1);
-  transition: transform 0.6s;
-  transition-delay: 0.2s;
+  transition: transform 0.4s;
+  transition-delay: 0.1s;
 }
 
 .slice.active > h6 {
-  transform: scale(1.5) translateY(30%);
+  transform: scale(1.3) translateY(20%);
 }
