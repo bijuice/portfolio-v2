@@ -6,7 +6,7 @@ const eczar = Eczar({ subsets: ['latin'] })
 export default function App({ Component, pageProps }: AppProps) {
   return <>
       <style jsx global>{`
-        html {
+        h1,h2,h3 {
           font-family: ${eczar.style.fontFamily};
         }
       `}</style>

@@ -28,7 +28,7 @@ h6 {
 }
 
 h1 {
-  @apply text-6xl;
+  @apply text-7xl;
 }
 
 h2 {
@@ -49,17 +49,17 @@ h6 {
 
 .slice {
   transition: transform 0.75s;
-  transform: translateY(15%);
+  transform: translateY(75%);
 }
 
 .slice:hover {
-  transform: translateY(0);
+  transform: translateY(65%);
 }
 
 .slice.active {
-  transform: translateY(80%);
+  transform: translateY(35%);
 }
 
 .slice.active:hover {
-  transform: translateY(65%);
+  transform: translateY(20%);
 }
