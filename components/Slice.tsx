@@ -13,15 +13,12 @@ const categories: SliceData[] = [
   { title: "POETRY" },
 ]
 
-interface ISliceContainerProps {
+type SliceContainerProps = {
   category: CATEGORY
   setCategory: React.Dispatch<React.SetStateAction<CATEGORY>>
 }
 
-export function SliceContainer({
-  category,
-  setCategory,
-}: ISliceContainerProps) {
+export function SliceContainer({ category, setCategory }: SliceContainerProps) {
   return (
     <section className="flex absolute  bottom-0 left-0 right-0 w-4/5 mx-auto">
       {categories.map((slice) => {
@@ -38,13 +35,13 @@ export function SliceContainer({
   )
 }
 
-interface ISliceProps {
+type SliceProps = {
   data: SliceData
   activeSlice: CATEGORY
   setActiveSlice: React.Dispatch<React.SetStateAction<CATEGORY>>
 }
 
-export function Slice({ activeSlice, setActiveSlice, data }: ISliceProps) {
+export function Slice({ activeSlice, setActiveSlice, data }: SliceProps) {
   const { title } = data
 
   const isActive = activeSlice === title || activeSlice === "ALL"

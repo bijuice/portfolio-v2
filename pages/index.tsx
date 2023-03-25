@@ -6,14 +6,18 @@ export default function Home() {
   const [category, setCategory] = useState<CATEGORY>("ALL")
 
   return (
-    <main className="bg-primary h-screen relative overflow-hidden px-16  ">
-      <h1
-        className={`name-title name-title-translate w-1/2  absolute  ${
+    <main className=" h-screen relative overflow-hidden px-16  ">
+      <div
+        onClick={() => {
+          setCategory("ALL")
+        }}
+        className={`name-title  px-2 cursor-pointer  absolute  ${
           category === "ALL" ? null : "active "
         }`}
       >
-        Abdul Rahman Rehmtulla
-      </h1>
+        <h1>Abdul Rahman </h1>
+        <h1>Rehmtulla</h1>
+      </div>
 
       <section></section>
       <SliceContainer category={category} setCategory={setCategory} />
