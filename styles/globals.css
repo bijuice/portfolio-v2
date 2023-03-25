@@ -54,6 +54,7 @@ h6 {
 
 .slice:hover {
   transform: translateY(65%);
+  transition-delay: 0;
 }
 
 .slice.active {
@@ -62,4 +63,15 @@ h6 {
 
 .slice.active:hover {
   transform: translateY(20%);
+  transition-delay: 0;
+}
+
+.slice:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.slice:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.slice:nth-child(4) {
+  transition-delay: 0.3s;
 }

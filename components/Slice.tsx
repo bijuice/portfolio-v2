@@ -1,7 +1,5 @@
 import { useState } from "react"
 
-type SLICE_STATE = "INITIAL" | "INACTIVE"
-
 interface SliceCategory {
   title: string
 }
