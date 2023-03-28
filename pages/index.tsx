@@ -11,7 +11,7 @@ export default function Home() {
         onClick={() => {
           setCategory("ALL")
         }}
-        className={`name-title   px-2 cursor-pointer  absolute  ${
+        className={`name-title   px-2 cursor-pointer  absolute z-20  ${
           category === "ALL" ? null : "active "
         }`}
       >

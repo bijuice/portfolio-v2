@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import Navbar from "./Navbar"
 
 type LayoutProps = {
   children: ReactNode
@@ -6,8 +7,11 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <main className="bg-primary flex flex-col items-center justify-center ">
-      {children}
-    </main>
+    <>
+      <Navbar />
+      <main className="bg-primary flex flex-col items-center justify-center relative">
+        {children}
+      </main>
+    </>
   )
 }
