@@ -5,5 +5,9 @@ type LayoutProps = {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  return <main className="bg-primary">{children}</main>
+  return (
+    <main className="bg-primary flex flex-col items-center justify-center ">
+      {children}
+    </main>
+  )
 }

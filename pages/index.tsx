@@ -6,12 +6,12 @@ export default function Home() {
   const [category, setCategory] = useState<CATEGORY>("ALL")
 
   return (
-    <main className=" h-screen relative overflow-hidden px-16  ">
+    <main className=" h-screen relative overflow-hidden px-16 max-w-[1500px] w-full  ">
       <div
         onClick={() => {
           setCategory("ALL")
         }}
-        className={`name-title  px-2 cursor-pointer  absolute  ${
+        className={`name-title   px-2 cursor-pointer  absolute  ${
           category === "ALL" ? null : "active "
         }`}
       >
