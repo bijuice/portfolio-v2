@@ -32,7 +32,7 @@ export default function Home() {
         <h1>Rehmtulla</h1>
       </div>
 
-      <section className="pt-24 px-10 h-full">{resolveCategory()}</section>
+      <section className="pt-24 px-10 h-full">{}</section>
       <SliceContainer category={category} setCategory={setCategory} />
     </main>
   )
