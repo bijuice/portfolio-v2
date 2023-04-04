@@ -1,4 +1,6 @@
-export default function Experience() {
+import { CategoryProps } from "@/props/CategoryProps"
+
+export default function Experience({}: CategoryProps) {
   return (
     <div className="h-full">
       <h1>Experience</h1>

@@ -1,5 +1,5 @@
-import All from "@/components/Categories/All"
-import Experience from "@/components/Categories/Experience"
+import All from "@/components/categories/All"
+import Experience from "@/components/categories/Experience"
 import { SliceContainer } from "@/components/Slice"
 import CATEGORY from "@/enums/Category"
 import { useState } from "react"
@@ -10,11 +10,11 @@ export default function Home() {
   function resolveCategory() {
     switch (category) {
       case "ALL":
-        return <All />
+        return <All category={category} />
       case "EXPERIENCE":
-        return <Experience />
+        return <Experience category={category} />
       default:
-        return <All />
+        return <All category={category} />
     }
   }
 
@@ -32,7 +32,7 @@ export default function Home() {
         <h1>Rehmtulla</h1>
       </div>
 
-      <section className="pt-24 px-10 h-full">{}</section>
+      <section className="pt-24 px-10 h-full">{resolveCategory()}</section>
       <SliceContainer category={category} setCategory={setCategory} />
     </main>
   )

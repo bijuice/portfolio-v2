@@ -1,23 +1,23 @@
-import Layout from "@/components/Layout/Layout"
+import Layout from "@/components/layout/Layout"
 import "@/styles/globals.css"
 import type { AppProps } from "next/app"
-import { Quicksand } from "next/font/google"
+import { Raleway } from "next/font/google"
 import { Comfortaa } from "next/font/google"
 
-const serifFont = Quicksand({ subsets: ["latin"] })
-const sansSerifFont = Comfortaa({ subsets: ["latin"] })
+const headingFont = Raleway({ subsets: ["latin"] })
+const baseFont = Comfortaa({ subsets: ["latin"] })
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <style jsx global>{`
         html {
-          font-family: ${sansSerifFont.style.fontFamily};
+          font-family: ${baseFont.style.fontFamily};
         }
 
         h1,
         h2,
         h3 {
-          font-family: ${serifFont.style.fontFamily};
+          font-family: ${headingFont.style.fontFamily};
         }
       `}</style>
       <Layout>
