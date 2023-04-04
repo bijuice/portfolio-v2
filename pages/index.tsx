@@ -28,8 +28,8 @@ export default function Home() {
           category === "ALL" ? null : "active "
         }`}
       >
-        <h1>Abdul Rahman </h1>
-        <h1>Rehmtulla</h1>
+        <h1 className="heading-intro">Abdul Rahman </h1>
+        <h1 className="heading-intro">Rehmtulla</h1>
       </div>
 
       <section className="pt-24 px-10 h-full">{resolveCategory()}</section>

@@ -86,7 +86,7 @@ h6 {
   transform: scale(1.3) translateY(20%);
 }
 
-.sub-heading {
+.heading-intro {
   transform-origin: bottom right;
   animation-name: headingAnimation;
   animation-duration: 1s;
@@ -100,5 +100,89 @@ h6 {
 
   to {
     transform: translateY(0);
+  }
+}
+
+.image-container {
+  transform: translateY(0) scale(1);
+  transition: 1s transform;
+}
+
+.image-container:hover {
+  transform: translateY(-10px) scale(1.01);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.timeline {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation-name: timeline-animation;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes timeline-animation {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.dot {
+  @apply bg-primary;
+  transform: translateX(-100vw);
+  transform-origin: left;
+  animation-name: dot-animation;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  transition: background 0.5s;
+}
+
+.dot:hover {
+  @apply bg-secondary;
+}
+
+.dot:nth-child(8) {
+  animation-delay: 0.1s;
+}
+.dot:nth-child(7) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.dot:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.dot:nth-child(4) {
+  animation-delay: 0.5s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.7s;
+}
+.dot:nth-child(1) {
+  animation-delay: 0.8s;
+}
+
+@keyframes dot-animation {
+  from {
+    transform: translateX(-100vw);
+  }
+
+  to {
+    transform: translateX(0);
   }
 }
