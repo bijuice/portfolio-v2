@@ -186,9 +186,9 @@ h6 {
   animation-delay: 0.8s;
 }
 
-.experience-card > .timeline {
+.experience-card > :is(.timeline) {
   @apply hidden;
 }
-.experience-card:hover > .timeline {
+.experience-card:hover > :is(.timeline) {
   @apply block;
 }

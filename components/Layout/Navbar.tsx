@@ -16,7 +16,7 @@ export default function Navbar() {
 
 function NavMenu() {
   return (
-    <div className="absolute -bottom-8 right-0 px-3 rounded-md bg-secondary nav-menu w-32 text-primary font-bold text-right">
+    <div className="absolute -bottom-8 right-0 px-3 rounded-md bg-secondary-500 nav-menu w-32 text-primary font-bold text-right">
       here
     </div>
   )

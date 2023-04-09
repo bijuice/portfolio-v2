@@ -51,6 +51,36 @@ const experiences: Experience[] = [
       "Concentration in Forensics and Cyber Security",
     ],
   },
+  {
+    year: 2021,
+    duration: 8,
+    title: "Hisa",
+    role: "Developer",
+    resps: [
+      "Bachelor of science in Applied Computer Technology",
+      "Concentration in Forensics and Cyber Security",
+    ],
+  },
+  {
+    year: 2022,
+    duration: 14,
+    title: "Pesapal",
+    role: "Developer",
+    resps: [
+      "Bachelor of science in Applied Computer Technology",
+      "Concentration in Forensics and Cyber Security",
+    ],
+  },
+  {
+    year: 2022,
+    duration: 14,
+    title: "Pesapal",
+    role: "Freelance",
+    resps: [
+      "Bachelor of science in Applied Computer Technology",
+      "Concentration in Forensics and Cyber Security",
+    ],
+  },
 ]
 
 function Timeline() {
@@ -94,7 +124,7 @@ function Point({ year }: PointProps) {
         {year}
       </p>
 
-      <div className="absolute bottom-20 flex flex-col gap-5">
+      <div className="absolute bottom-20 flex flex-col gap-10">
         {exps.map((e) => (
           <ExpCard key={e.title} exp={e} />
         ))}
@@ -115,18 +145,19 @@ function ExpCard({ exp }: { exp: Experience }) {
   const durationWidth = (exp.duration / 84) * (timeline?.offsetWidth || 1500)
 
   return (
-    <div className="flex  flex-col  gap-1 py-2 px-2 experience-card w-[300px]">
+    <div className="flex cursor-pointer flex-col  gap-1 py-2 px-2 experience-card  relative">
       <p className="font-extrabold text-lg">{exp.title}</p>
       <p className="text-alternate-400 text-sm">{exp.role}</p>
 
-      <p className="text-xs -bottom-3 absolute font-bold exp-years">
+      <p className="text-xs -bottom-3 absolute font-bold exp-years overflow-hidden year">
         {monthsToYears()} years
       </p>
 
       <div
-        className="bg-secondary-500 h-[2px] -bottom-3 absolute timeline "
+        className="bg-secondary-500 h-[1.5px] -bottom-4 absolute timeline "
         style={{
           width: durationWidth,
+          animationDelay: "0.2s",
         }}
       ></div>
     </div>
