@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  @apply text-secondary;
+  @apply text-secondary-500;
   height: 100vh;
   height: 100svh;
 }
@@ -147,9 +147,18 @@ h6 {
   animation-fill-mode: forwards;
   transition: background 0.5s;
 }
+@keyframes dot-animation {
+  from {
+    transform: translateX(-100vw);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
 
 .dot:hover {
-  @apply bg-secondary;
+  @apply bg-secondary-500;
 }
 
 .dot:nth-child(8) {
@@ -177,12 +186,9 @@ h6 {
   animation-delay: 0.8s;
 }
 
-@keyframes dot-animation {
-  from {
-    transform: translateX(-100vw);
-  }
-
-  to {
-    transform: translateX(0);
-  }
+.experience-card > .timeline {
+  @apply hidden;
+}
+.experience-card:hover > .timeline {
+  @apply block;
 }

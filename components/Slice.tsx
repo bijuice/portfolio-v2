@@ -52,7 +52,7 @@ export function Slice({ activeSlice, setActiveSlice, data }: SliceProps) {
         setActiveSlice(title)
       }}
       className={`cursor-pointer border-2 border-primary rounded-lg text-primary font-bold h-36 w-full flex justify-center slice py-2 px-2 ${
-        isActive ? "active bg-tertiary" : "bg-secondary"
+        isActive ? "active bg-tertiary" : "bg-secondary-500"
       }`}
     >
       <h6 className="font-bold">{title.toLocaleLowerCase()}</h6>

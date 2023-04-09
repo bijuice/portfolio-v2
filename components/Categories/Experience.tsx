@@ -1,4 +1,5 @@
 import { CategoryProps } from "@/props/CategoryProps"
+import { useEffect, useMemo, useState } from "react"
 
 export default function Experience({}: CategoryProps) {
   return (
@@ -17,21 +18,14 @@ type Experience = {
   title: string
   role: string
   resps: string[]
-  type:
-    | "Education"
-    | "Volunteer"
-    | "Full Time Employment"
-    | "Freelance"
-    | "Award"
 }
 
 const experiences: Experience[] = [
   {
     year: 2017,
     duration: 48,
-    title: "United States International University - Africa",
+    title: "USIU",
     role: "Student",
-    type: "Education",
     resps: [
       "Bachelor of science in Applied Computer Technology",
       "Concentration in Forensics and Cyber Security",
@@ -42,7 +36,6 @@ const experiences: Experience[] = [
     duration: 12,
     title: "KamiLimu",
     role: "Student",
-    type: "Education",
     resps: [
       "Bachelor of science in Applied Computer Technology",
       "Concentration in Forensics and Cyber Security",
@@ -53,7 +46,6 @@ const experiences: Experience[] = [
     duration: 12,
     title: "Culture Capture",
     role: "Co-founder",
-    type: "Freelance",
     resps: [
       "Bachelor of science in Applied Computer Technology",
       "Concentration in Forensics and Cyber Security",
@@ -88,15 +80,64 @@ function Timeline() {
   )
 }
 
-function Point({ year }: { year: number }) {
+type PointProps = {
+  year: number
+}
+
+function Point({ year }: PointProps) {
+  const exps = experiences.filter((e) => e.year === year)
+
   return (
-    <div className="w-4 h-4 rounded-full border-2 border-secondary  relative dot">
-      <div className="w-[2px] h-6 bg-secondary rounded-md absolute bottom-5 left-[45%]"></div>
-      <p className="text-secondary absolute -bottom-8 -left-[75%]">{year}</p>
+    <div className="w-4 h-4 rounded-full border-2 border-secondary-500  relative dot">
+      <div className="w-[2px] h-6 bg-secondary-500 rounded-md absolute bottom-5 left-[45%]"></div>
+      <p className="text-secondary-500 absolute -bottom-8 -left-[75%]">
+        {year}
+      </p>
+
+      <div className="absolute bottom-20 flex flex-col gap-5">
+        {exps.map((e) => (
+          <ExpCard key={e.title} exp={e} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function ExpCard({ exp }: { exp: Experience }) {
+  function monthsToYears() {
+    const dur = (exp.duration / 12).toFixed(1)
+
+    return dur
+  }
+
+  let timeline = document.getElementById("timeline")
+
+  const durationWidth = (exp.duration / 84) * (timeline?.offsetWidth || 1500)
+
+  return (
+    <div className="flex  flex-col  gap-1 py-2 px-2 experience-card w-[300px]">
+      <p className="font-extrabold text-lg">{exp.title}</p>
+      <p className="text-alternate-400 text-sm">{exp.role}</p>
+
+      <p className="text-xs -bottom-3 absolute font-bold exp-years">
+        {monthsToYears()} years
+      </p>
+
+      <div
+        className="bg-secondary-500 h-[2px] -bottom-3 absolute timeline "
+        style={{
+          width: durationWidth,
+        }}
+      ></div>
     </div>
   )
 }
 
 function Line() {
-  return <div className="bg-secondary w-full h-[1px]  timeline relative"></div>
+  return (
+    <div
+      className="bg-secondary-500 w-full h-[1px]  timeline relative"
+      id="timeline"
+    ></div>
+  )
 }
