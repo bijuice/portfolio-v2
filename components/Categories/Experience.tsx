@@ -134,7 +134,7 @@ function Point({ year }: PointProps) {
         {year}
       </p>
 
-      <div className="absolute bottom-20 flex flex-col gap-10">
+      <div className="absolute bottom-16 -left-1 flex flex-col gap-10">
         {exps.map((e) => (
           <ExpCard key={e.title} exp={e} />
         ))}
@@ -159,7 +159,7 @@ function ExpCard({ exp }: { exp: Experience }) {
       <p className="font-extrabold text-lg">{exp.title}</p>
       <p className="text-alternate-400 text-sm">{exp.role}</p>
 
-      <p className="text-xs -bottom-3 absolute font-bold exp-years overflow-hidden year">
+      <p className="text-xs font-bold exp-years overflow-hidden year">
         {monthsToYears()} years
       </p>
 
