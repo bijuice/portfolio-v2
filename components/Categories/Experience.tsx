@@ -148,7 +148,7 @@ function Point({ year, cards }: PointProps) {
       </p>
 
       <div className="absolute bottom-16 -left-1 flex flex-col gap-10">
-        {...cards}
+        {cards}
       </div>
     </div>
   )
