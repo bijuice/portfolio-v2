@@ -32,6 +32,16 @@ const experiences: Experience[] = [
     ],
   },
   {
+    year: 2018,
+    duration: 24,
+    title: "iPhones Kenya",
+    role: "Founder",
+    resps: [
+      "Bachelor of science in Applied Computer Technology",
+      "Concentration in Forensics and Cyber Security",
+    ],
+  },
+  {
     year: 2020,
     duration: 12,
     title: "KamiLimu",
@@ -73,8 +83,8 @@ const experiences: Experience[] = [
   },
   {
     year: 2022,
-    duration: 14,
-    title: "Pesapal",
+    duration: 3,
+    title: "Africa Law Partners",
     role: "Freelance",
     resps: [
       "Bachelor of science in Applied Computer Technology",
@@ -145,7 +155,7 @@ function ExpCard({ exp }: { exp: Experience }) {
   const durationWidth = (exp.duration / 84) * (timeline?.offsetWidth || 1500)
 
   return (
-    <div className="flex cursor-pointer flex-col  gap-1 py-2 px-2 experience-card  relative">
+    <div className="flex cursor-pointer flex-col  gap-1 py-2 px-2 experience-card  relative w-[150%]">
       <p className="font-extrabold text-lg">{exp.title}</p>
       <p className="text-alternate-400 text-sm">{exp.role}</p>
 
