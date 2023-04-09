@@ -1,5 +1,5 @@
 import { CategoryProps } from "@/props/CategoryProps"
-import { useEffect, useMemo, useState } from "react"
+import { ReactNode, useEffect, useMemo, useState } from "react"
 
 export default function Experience({}: CategoryProps) {
   return (
@@ -94,6 +94,14 @@ const experiences: Experience[] = [
 ]
 
 function Timeline() {
+  const [timelineWidth, setTimelineWidth] = useState(1500)
+
+  useEffect(() => {
+    let timeline = document.getElementById("timeline")
+
+    setTimelineWidth(timeline!.offsetWidth)
+  }, [])
+
   const date = new Date()
   const year = date.getFullYear()
 
@@ -104,7 +112,13 @@ function Timeline() {
     let dots: React.ReactNode[] = []
 
     for (let i = a; i < b; i++) {
-      dots.push(<Point key={i} year={i} />)
+      const exps = experiences.filter((e) => e.year === i)
+
+      const cards = exps.map((e) => {
+        return <ExpCard key={e.title} exp={e} timelineWidth={timelineWidth} />
+      })
+
+      dots.push(<Point key={i} year={i} cards={cards} />)
     }
 
     return dots
@@ -122,11 +136,10 @@ function Timeline() {
 
 type PointProps = {
   year: number
+  cards: ReactNode[]
 }
 
-function Point({ year }: PointProps) {
-  const exps = experiences.filter((e) => e.year === year)
-
+function Point({ year, cards }: PointProps) {
   return (
     <div className="w-4 h-4 rounded-full border-2 border-secondary-500  relative dot">
       <div className="w-[2px] h-6 bg-secondary-500 rounded-md absolute bottom-5 left-[45%]"></div>
@@ -135,24 +148,25 @@ function Point({ year }: PointProps) {
       </p>
 
       <div className="absolute bottom-16 -left-1 flex flex-col gap-10">
-        {exps.map((e) => (
-          <ExpCard key={e.title} exp={e} />
-        ))}
+        {...cards}
       </div>
     </div>
   )
 }
 
-function ExpCard({ exp }: { exp: Experience }) {
+type ExpCardProps = {
+  exp: Experience
+  timelineWidth: number
+}
+
+function ExpCard({ exp, timelineWidth }: ExpCardProps) {
   function monthsToYears() {
     const dur = (exp.duration / 12).toFixed(1)
 
     return dur
   }
 
-  let timeline = document.getElementById("timeline")
-
-  const durationWidth = (exp.duration / 84) * (timeline?.offsetWidth || 1500)
+  const durationWidth = (exp.duration / 84) * timelineWidth
 
   return (
     <div className="flex cursor-pointer flex-col  gap-1 py-2 px-2 experience-card  relative w-[150%]">
