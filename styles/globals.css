@@ -124,7 +124,7 @@ h6 {
   transform: scaleX(0);
   transform-origin: left;
   animation-name: timeline-animation;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -143,7 +143,7 @@ h6 {
   transform: translateX(-100vw);
   transform-origin: left;
   animation-name: dot-animation;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   transition: background 0.5s;
 }
