@@ -186,9 +186,26 @@ h6 {
   animation-delay: 0.8s;
 }
 
-.experience-card > :is(.timeline) {
+.experience-card > :is(.timeline, .year) {
   @apply hidden;
 }
-.experience-card:hover > :is(.timeline) {
+.experience-card:hover > :is(.timeline, .year) {
   @apply block;
+}
+
+.year {
+  transform: translateX(-150px);
+  animation-name: year-animation;
+  animation-duration: 0.7s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes year-animation {
+  from {
+    transform: translateX(-150px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

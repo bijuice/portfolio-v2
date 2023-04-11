@@ -147,7 +147,7 @@ function Point({ year, cards }: PointProps) {
         {year}
       </p>
 
-      <div className="absolute bottom-16 -left-1 flex flex-col gap-10">
+      <div className="absolute bottom-14 -left-1 flex flex-col gap-8">
         {cards}
       </div>
     </div>
@@ -163,27 +163,31 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
   function monthsToYears() {
     const dur = (exp.duration / 12).toFixed(1)
 
-    return dur
+    const year = parseFloat(dur) === 1.0 ? "year" : "years"
+
+    return dur + year
   }
 
   const durationWidth = (exp.duration / 84) * timelineWidth
 
   return (
-    <div className="flex cursor-pointer flex-col  gap-1 py-2 px-2 experience-card  relative w-[150%]">
+    <div className="flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%]">
       <p className="font-extrabold text-lg">{exp.title}</p>
       <p className="text-alternate-400 text-sm">{exp.role}</p>
 
-      <p className="text-xs font-bold exp-years overflow-hidden year">
-        {monthsToYears()} years
-      </p>
-
       <div
-        className="bg-secondary-500 h-[1.5px] -bottom-4 absolute timeline "
+        className="bg-secondary-500 h-[1.5px] -bottom-2 absolute timeline "
         style={{
           width: durationWidth,
           animationDelay: "0.2s",
         }}
-      ></div>
+      >
+        <div className="overflow-hidden absolute -right-14 -top-[6px]">
+          <p className="text-xs font-bold exp-years  year  ">
+            {monthsToYears()}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
