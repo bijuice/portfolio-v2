@@ -1,7 +1,7 @@
 import All from "@/components/categories/All"
 import Experience from "@/components/categories/Experience"
 import { SliceContainer } from "@/components/Slice"
-import CATEGORY from "@/enums/Category"
+import CATEGORY from "@/types/Category"
 import { useState } from "react"
 
 export default function Home() {

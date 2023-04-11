@@ -1,4 +1,4 @@
-import CATEGORY from "@/enums/Category"
+import CATEGORY from "@/types/Category"
 import { useState } from "react"
 
 interface SliceData {
