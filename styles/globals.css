@@ -186,6 +186,16 @@ h6 {
   animation-delay: 0.8s;
 }
 
+.experience-card {
+  @apply opacity-100;
+  transition: opacity 0.5s;
+}
+
+.experience-card.active,
+.experience-card.initial {
+  @apply opacity-100;
+}
+
 .experience-card > :is(.timeline, .year) {
   @apply hidden;
 }
@@ -208,4 +218,12 @@ h6 {
   to {
     transform: translateX(0);
   }
+}
+
+.experience-card-title {
+  transform: scale(1);
+}
+
+.experience-card-title.active {
+  transform: scale(1);
 }
