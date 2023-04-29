@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 const cats = ["ABOUT", "EXPERIENCE", "SKILLS", "PROJECTS", "BLOG", "POETRY"]
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("ALL")
+  const [activeCategory, setActiveCategory] = useState<string>("ABOUT")
 
   function setCategory(category: string) {
     setActiveCategory(category)
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <main className=" h-screen px-16 max-w-[1500px] w-full flex items-center   select-none">
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-10 w-">
         {cats.map((cat, index) => (
           <CategoryCard
             key={cat}
@@ -55,10 +55,10 @@ function CategoryCard({
 
   const animProperties = () => {
     const properties = {
-      height: 400,
-      width: 300,
-      maxHeight: "100vh",
-      maxWidth: "100vw",
+      height: 10000,
+      width: 10000,
+      maxHeight: "60vh",
+      maxWidth: "20vw",
       x: index * 350,
       y: 0,
       left: 50,
@@ -66,16 +66,16 @@ function CategoryCard({
     } as any
 
     if (resolveCategoryState() === "active") {
-      properties.height = 10000
-      properties.width = 10000
+      properties.maxHeight = "100vh"
+      properties.maxWidth = "100vw"
       properties.x = 0
       properties.left = 0
       properties.zIndex = 1
     }
 
     if (resolveCategoryState() === "inactive") {
-      properties.height = 0
-      properties.width = 0
+      properties.maxHeight = 0
+      properties.maxWidth = 0
     }
 
     return properties
@@ -85,17 +85,13 @@ function CategoryCard({
     <motion.div
       layout
       key={category}
-      className={`p-7 fixed  max-h-screen max-w-screen grow bg-teal-950 text-white text-xl flex flex-col ${
+      className={`p-5 fixed  grow bg-teal-950 text-white text-xl flex flex-col ${
         resolveCategoryState() === "all" && "cursor-pointer"
       } `}
       onClick={() => {
         setCategory(category)
       }}
-      initial={{
-        opacity: 1,
-      }}
       animate={{
-        opacity: 1,
         height: animProperties().height,
         width: animProperties().width,
         maxHeight: animProperties().maxHeight,
@@ -103,6 +99,9 @@ function CategoryCard({
         x: animProperties().x,
         left: animProperties().left,
         zIndex: animProperties().zIndex,
+        transition: {
+          duration: 0.5,
+        },
       }}
     >
       <motion.div className="relative" layout>
