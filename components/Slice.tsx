@@ -44,7 +44,7 @@ type SliceProps = {
 export function Slice({ activeSlice, setActiveSlice, data }: SliceProps) {
   const { title } = data
 
-  const isActive = activeSlice === title || activeSlice === "ALL"
+  const isActive = activeSlice === title || activeSlice === "ABOUT"
 
   return (
     <div

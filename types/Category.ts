@@ -1,5 +1,6 @@
 const Category = {
   ALL: "ALL",
+  ABOUT: "ABOUT",
   EXPERIENCE: "EXPERIENCE",
   SKILLS: "SKILLS",
   BLOG: "BLOG",
