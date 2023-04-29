@@ -12,10 +12,7 @@ export default function Layout({ children }: LayoutProps) {
       <Head>
         <title>Abdul's Portfolio</title>
       </Head>
-      <Navbar />
-      <main className="bg-primary flex flex-col items-center justify-center relative ">
-        {children}
-      </main>
+      <main className="w-full flex justify-center ">{children}</main>
     </>
   )
 }
