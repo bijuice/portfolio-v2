@@ -1,20 +1,29 @@
 import Experience from "@/components/categories/Experience"
 import CATEGORY from "@/types/Category"
-import { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const cats = ["ABOUT", "EXPERIENCE", "SKILLS", "PROJECTS", "BLOG", "POETRY"]
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("ABOUT")
+  const [activeCategory, setActiveCategory] = useState<string>("ALL")
 
   function setCategory(category: string) {
     setActiveCategory(category)
   }
 
+  const ref = useRef<HTMLSpanElement>(null)
+
   return (
-    <main className=" h-screen px-16 max-w-[1500px] w-full flex items-center   select-none">
-      <div className="flex items-center gap-10 w-">
+    <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
+      <motion.div
+        id="card-container"
+        className="flex items-center gap-10 "
+        drag={activeCategory === "ALL" && "x"}
+        onClick={(e) => e.stopPropagation()}
+        dragConstraints={{ left: -1000, right: 0 }}
+      >
+        <span className="hidden" ref={ref}></span>
         {cats.map((cat, index) => (
           <CategoryCard
             key={cat}
@@ -24,7 +33,7 @@ export default function Home() {
             setCategory={setCategory}
           />
         ))}
-      </div>
+      </motion.div>
     </main>
   )
 }
@@ -58,19 +67,19 @@ function CategoryCard({
       height: 10000,
       width: 10000,
       maxHeight: "60vh",
-      maxWidth: "20vw",
-      x: index * 350,
+      maxWidth: "40vh",
+      x: 0,
       y: 0,
-      left: 50,
+      left: 0,
       zIndex: 0,
     } as any
 
     if (resolveCategoryState() === "active") {
       properties.maxHeight = "100vh"
-      properties.maxWidth = "100vw"
+      properties.maxWidth = "160vw"
       properties.x = 0
-      properties.left = 0
       properties.zIndex = 1
+      properties.left = `-${index + 1 * 20}vw`
     }
 
     if (resolveCategoryState() === "inactive") {
@@ -85,12 +94,9 @@ function CategoryCard({
     <motion.div
       layout
       key={category}
-      className={`p-5 fixed  grow bg-teal-950 text-white text-xl flex flex-col ${
+      className={` relative  grow bg-teal-950 text-white text-xl  ${
         resolveCategoryState() === "all" && "cursor-pointer"
       } `}
-      onClick={() => {
-        setCategory(category)
-      }}
       animate={{
         height: animProperties().height,
         width: animProperties().width,
@@ -104,10 +110,13 @@ function CategoryCard({
         },
       }}
     >
-      <motion.div className="relative" layout>
+      <motion.div
+        className={`absolute left-[20vw]  w-[90vw] h-screen  justify-between `}
+        layout
+      >
         {category}
         <motion.button
-          className="text-white absolute right-4 top-4"
+          className="text-white "
           onClick={(e) => {
             e.stopPropagation()
             setCategory("ALL")
