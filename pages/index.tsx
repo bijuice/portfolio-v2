@@ -51,8 +51,6 @@ export default function Home() {
 
   const containerRef = useRef<HTMLDivElement>(null)
 
-  console.log(containerRef.current?.getBoundingClientRect().left)
-
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
       <motion.div
@@ -64,7 +62,6 @@ export default function Home() {
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => setIsDragging(false)}
       >
-        <span className="hidden" ref={ref}></span>
         {categories.map((cat, index) => (
           <CategoryCard
             key={cat.name}
@@ -103,6 +100,28 @@ type CategoryCardProps = {
 
 type CategoryState = "all" | "active" | "inactive"
 
+type Properties = {
+  height: number
+  width: number
+  maxHeight: string | number
+  maxWidth: string | number
+  x: number
+  y: number
+  left: number
+  zIndex: number
+}
+
+const defaultProperties: Properties = {
+  height: 10000,
+  width: 10000,
+  maxHeight: "60vh",
+  maxWidth: "40vh",
+  x: 0,
+  y: 0,
+  left: 0,
+  zIndex: 0,
+}
+
 function CategoryCard({
   isDragging,
   index,
@@ -123,35 +142,32 @@ function CategoryCard({
   }
   const cardRef = useRef<HTMLDivElement>(null)
 
-  const animProperties = () => {
-    const properties = {
-      height: 10000,
-      width: 10000,
-      maxHeight: "60vh",
-      maxWidth: "40vh",
-      x: 0,
-      y: 0,
-      left: 0,
-      zIndex: 0,
-    } as any
+  const [x, setX] = useState(0)
 
-    const isPortrait = height > width
+  //generate use state from properties object
+  const [properties, setProperties] = useState<Properties>(defaultProperties)
+
+  const animProperties = () => {
     if (resolveCategoryState() === "active") {
       properties.maxHeight = "100vh"
       properties.maxWidth = "100vw"
       properties.zIndex = 1
+      properties.x = cardRef.current?.getBoundingClientRect().left || 0
+    } else if (resolveCategoryState() === "inactive") {
+      setProperties({ ...properties, maxHeight: 0, maxWidth: 0 })
+    } else {
+      setProperties(defaultProperties)
     }
 
-    if (resolveCategoryState() === "inactive") {
-      properties.maxHeight = 0
-      properties.maxWidth = 0
-    }
-
-    return properties
+    return setProperties(properties)
   }
 
+  useEffect(() => {
+    animProperties()
+  }, [activeCategory])
+
   return (
-    <div>
+    <div ref={cardRef}>
       <motion.div
         layout
         key={category.name}
@@ -164,11 +180,12 @@ function CategoryCard({
           }
         }}
         animate={{
-          height: animProperties().height,
-          width: animProperties().width,
-          maxHeight: animProperties().maxHeight,
-          maxWidth: animProperties().maxWidth,
-          zIndex: animProperties().zIndex,
+          height: properties.height,
+          width: properties.width,
+          maxHeight: properties.maxHeight,
+          maxWidth: properties.maxWidth,
+          zIndex: properties.zIndex,
+          x: -properties.x,
         }}
         transition={{
           duration: 1,
@@ -176,7 +193,7 @@ function CategoryCard({
         }}
       >
         <div
-          className=" w-[100vw] h-screen absolute left-0"
+          className=" w-[100vw] h-screen absolute "
           style={{
             backgroundImage: `url(${category.src})`,
             backgroundRepeat: "no-repeat",
