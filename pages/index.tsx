@@ -1,12 +1,40 @@
-import Experience from "@/components/categories/Experience"
-import CATEGORY from "@/types/Category"
 import React, { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import useWindowDimensions from "@/hooks/useWindowDimensions"
-import useDeviceSize from "@/hooks/useWindowDimensions"
 import Image from "next/image"
+import useElementPosition from "@/hooks/useElementPostion"
 
-const cats = ["ABOUT", "EXPERIENCE", "SKILLS", "PROJECTS", "BLOG", "POETRY"]
+type Category = {
+  name: string
+  src: string
+}
+
+const categories: Category[] = [
+  {
+    name: "About",
+    src: "/images/about.jpg",
+  },
+  {
+    name: "Experience",
+    src: "https://images.pexels.com/photos/96381/pexels-photo-96381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    name: "Skills",
+    src: "/images/test.jpg",
+  },
+  {
+    name: "Projects",
+    src: "/images/projects.png",
+  },
+  {
+    name: "Blog",
+    src: "/images/blog.png",
+  },
+  {
+    name: "Poetry",
+    src: "/images/about.jpg",
+  },
+]
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL")
@@ -17,14 +45,18 @@ export default function Home() {
 
   const ref = useRef<HTMLSpanElement>(null)
 
-  const [width, height] = useDeviceSize()
+  const [width, height] = useWindowDimensions()
 
   const [isDragging, setIsDragging] = useState(false)
+
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  console.log(containerRef.current?.getBoundingClientRect().left)
 
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
       <motion.div
-        id="card-container"
+        ref={containerRef}
         className="flex items-center gap-10 "
         drag={activeCategory === "ALL" && "x"}
         onClick={(e) => e.stopPropagation()}
@@ -33,9 +65,9 @@ export default function Home() {
         onDragEnd={() => setIsDragging(false)}
       >
         <span className="hidden" ref={ref}></span>
-        {cats.map((cat, index) => (
+        {categories.map((cat, index) => (
           <CategoryCard
-            key={cat}
+            key={cat.name}
             isDragging={isDragging}
             index={index}
             category={cat}
@@ -43,6 +75,7 @@ export default function Home() {
             setCategory={setCategory}
             width={width}
             height={height}
+            pos={containerRef.current?.getBoundingClientRect().left || 0}
           />
         ))}
       </motion.div>
@@ -62,9 +95,10 @@ type CategoryCardProps = {
   width: number
   isDragging: boolean
   index: number
-  category: string
+  category: Category
   activeCategory: string
   setCategory(category: string): void
+  pos: number
 }
 
 type CategoryState = "all" | "active" | "inactive"
@@ -77,15 +111,17 @@ function CategoryCard({
   setCategory,
   width,
   height,
+  pos,
 }: CategoryCardProps) {
   function resolveCategoryState(): CategoryState {
     if (activeCategory === "ALL") {
       return "all"
-    } else if (activeCategory === category) {
+    } else if (activeCategory === category.name) {
       return "active"
     }
     return "inactive"
   }
+  const cardRef = useRef<HTMLDivElement>(null)
 
   const animProperties = () => {
     const properties = {
@@ -102,10 +138,8 @@ function CategoryCard({
     const isPortrait = height > width
     if (resolveCategoryState() === "active") {
       properties.maxHeight = "100vh"
-      properties.maxWidth = isPortrait ? "600vw" : "160vw"
-      properties.x = 0
+      properties.maxWidth = "100vw"
       properties.zIndex = 1
-      properties.left = `-20vw`
     }
 
     if (resolveCategoryState() === "inactive") {
@@ -117,33 +151,44 @@ function CategoryCard({
   }
 
   return (
-    <motion.div
-      layout
-      key={category}
-      className={` relative  grow bg-teal-950 text-white text-xl grid place-content-center  ${
-        resolveCategoryState() === "all" && "cursor-pointer"
-      } `}
-      onClick={() => {
-        if (!isDragging) {
-          setCategory(category)
-        }
-      }}
-      animate={{
-        height: animProperties().height,
-        width: animProperties().width,
-        maxHeight: animProperties().maxHeight,
-        maxWidth: animProperties().maxWidth,
-        x: animProperties().x,
-        left: animProperties().left,
-        zIndex: animProperties().zIndex,
-      }}
-      transition={{
-        duration: 1,
-        type: "spring",
-      }}
-    >
-      {activeCategory === "ALL" && <motion.h1>{category}</motion.h1>}
-    </motion.div>
+    <div>
+      <motion.div
+        layout
+        key={category.name}
+        className={` text-white relative  grow overflow-hidden flex items-center bg-teal-950   ${
+          resolveCategoryState() === "all" && "cursor-pointer"
+        } `}
+        onClick={() => {
+          if (!isDragging) {
+            setCategory(category.name)
+          }
+        }}
+        animate={{
+          height: animProperties().height,
+          width: animProperties().width,
+          maxHeight: animProperties().maxHeight,
+          maxWidth: animProperties().maxWidth,
+          zIndex: animProperties().zIndex,
+        }}
+        transition={{
+          duration: 1,
+          type: "spring",
+        }}
+      >
+        <div
+          className=" w-[100vw] h-screen absolute left-0"
+          style={{
+            backgroundImage: `url(${category.src})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        ></div>
+      </motion.div>
+
+      {activeCategory === "ALL" && (
+        <motion.h1 className="text-[2em] py-3">{category.name}</motion.h1>
+      )}
+    </div>
   )
 }
 
@@ -168,7 +213,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
         }}
       >
         <button
-          className="absolute top-10 right-10"
+          className="absolute top-10 right-10 bg-cyan-950 p-2 rounded-md text-white"
           onClick={(e) => {
             e.stopPropagation()
             setCategory("ALL")
