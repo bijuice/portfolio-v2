@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useDragControls } from "framer-motion"
 import useWindowDimensions from "@/hooks/useWindowDimensions"
 import Image from "next/image"
 import useElementPosition from "@/hooks/useElementPostion"
@@ -19,8 +19,26 @@ export default function Home() {
 
   const containerRef = useRef<HTMLDivElement>(null)
 
+  const [x, setX] = useState(0)
+
+  function scrollContainer(d: number) {
+    let delta: number = 0
+    if (d > 0 && x > -width) {
+      delta = 100
+    }
+
+    if (d < 0 && x < 0) {
+      delta = -100
+    }
+
+    setX((prev) => prev - delta)
+  }
+
   return (
-    <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
+    <main
+      className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none"
+      onWheel={(e) => scrollContainer(e.deltaY)}
+    >
       <motion.div
         id="card-container"
         className="flex items-center gap-10 "
@@ -29,6 +47,7 @@ export default function Home() {
         dragConstraints={{ right: 0, left: width > 400 ? -1000 : -2000 }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => setIsDragging(false)}
+        animate={{ x }}
       >
         {categories.map((cat, index) => (
           <CategoryCard
