@@ -13,8 +13,6 @@ export default function Home() {
     setActiveCategory(category)
   }
 
-  const ref = useRef<HTMLSpanElement>(null)
-
   const [width, height] = useWindowDimensions()
 
   const [isDragging, setIsDragging] = useState(false)
@@ -24,7 +22,7 @@ export default function Home() {
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
       <motion.div
-        ref={containerRef}
+        id="card-container"
         className="flex items-center gap-10 "
         drag={activeCategory === "ALL" && "x"}
         onClick={(e) => e.stopPropagation()}

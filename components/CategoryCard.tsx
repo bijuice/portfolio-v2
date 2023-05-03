@@ -55,21 +55,19 @@ export default function CategoryCard({
     }
     return "inactive"
   }
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  const [x, setX] = useState(0)
 
   //generate use state from properties object
   const [properties, setProperties] = useState<Properties>(defaultProperties)
 
   const animProperties = () => {
+    const container = document.getElementById("card-container")
     if (resolveCategoryState() === "active") {
       setProperties({
         ...properties,
         maxHeight: "100vh",
         maxWidth: "100vw",
         zIndex: 1,
-        x: cardRef.current?.getBoundingClientRect().left || 0,
+        x: container!.getBoundingClientRect().left + index * 40 || 0,
       })
     } else if (resolveCategoryState() === "inactive") {
       setProperties({ ...properties, maxHeight: 0, maxWidth: 0 })
@@ -83,7 +81,7 @@ export default function CategoryCard({
   }, [activeCategory])
 
   return (
-    <div ref={cardRef}>
+    <div>
       <motion.div
         layout
         key={category.name}
@@ -104,7 +102,6 @@ export default function CategoryCard({
           x: -properties.x,
         }}
         transition={{
-          duration: 1,
           type: "spring",
         }}
       >
