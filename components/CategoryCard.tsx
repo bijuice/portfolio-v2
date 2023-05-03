@@ -103,16 +103,18 @@ export default function CategoryCard({
         }}
         transition={{
           type: "spring",
+          damping: 15,
         }}
       >
-        <div
+        <motion.div
           className=" w-[100vw] h-screen absolute "
           style={{
             backgroundImage: `url(${category.src})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-        ></div>
+        ></motion.div>
       </motion.div>
 
       {activeCategory === "ALL" && (
