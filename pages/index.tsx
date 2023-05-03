@@ -22,6 +22,8 @@ export default function Home() {
   const [x, setX] = useState(0)
 
   function scrollContainer(d: number) {
+    if (activeCategory !== "ALL") return
+
     let delta: number = 0
     if (d > 0 && x > -width) {
       delta = 100
