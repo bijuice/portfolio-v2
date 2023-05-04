@@ -103,7 +103,7 @@ export default function CategoryCard({
         }}
         transition={{
           type: "spring",
-          damping: 15,
+          damping: 20,
         }}
       >
         <motion.div
@@ -112,7 +112,7 @@ export default function CategoryCard({
             backgroundImage: `url(${category.src})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "top",
           }}
         ></motion.div>
       </motion.div>
