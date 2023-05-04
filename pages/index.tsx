@@ -7,7 +7,7 @@ import categories from "@/data/categories"
 import CategoryCard from "@/components/CategoryCard"
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("ABOUT")
+  const [activeCategory, setActiveCategory] = useState<string>("About")
 
   function setCategory(category: string) {
     setActiveCategory(category)

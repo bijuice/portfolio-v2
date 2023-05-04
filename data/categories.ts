@@ -7,23 +7,20 @@ const categories: Category[] = [
   },
   {
     name: "Experience",
-    src: "https://images.pexels.com/photos/96381/pexels-photo-96381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    src: "/images/experience.jpg",
   },
   {
     name: "Skills",
-    src: "/images/test.jpg",
+    src: "/images/skills.jpg",
   },
   {
     name: "Projects",
-    src: "/images/projects.png",
+    src: "/images/projects.jpg",
   },
-  {
-    name: "Blog",
-    src: "/images/blog.png",
-  },
+
   {
     name: "Poetry",
-    src: "/images/about.jpg",
+    src: "/images/poetry.jpg",
   },
 ]
 
