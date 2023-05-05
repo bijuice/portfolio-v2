@@ -1,5 +1,5 @@
 import Category from "@/types/Category"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 type CategoryCardProps = {
@@ -80,46 +80,68 @@ export default function CategoryCard({
     animProperties()
   }, [activeCategory])
 
+  const rand = useMemo(() => {
+    return {
+      rand1: Math.floor(Math.random() * 100),
+      rand2: Math.floor(Math.random() * 100),
+      rand3: Math.floor(Math.random() * 100),
+    }
+  }, [])
+
+  const { rand1, rand2, rand3 } = rand
+
+  const { gradients } = category
+
+  const gradient = `radial-gradient(circle, ${gradients[0]} 0%, ${gradients[1]} 50%, ${gradients[2]} 100%)`
+
   return (
-    <div>
+    <motion.div
+      layout
+      key={category.name}
+      className={` text-white relative  grow overflow-hidden flex items-center bg-teal-950   ${
+        resolveCategoryState() === "all" && "cursor-pointer"
+      } `}
+      onClick={() => {
+        if (!isDragging) {
+          setCategory(category.name)
+        }
+      }}
+      animate={{
+        height: properties.height,
+        width: properties.width,
+        maxHeight: properties.maxHeight,
+        maxWidth: properties.maxWidth,
+        zIndex: properties.zIndex,
+        x: -properties.x,
+      }}
+      transition={{
+        type: "spring",
+        damping: 20,
+      }}
+    >
       <motion.div
-        layout
-        key={category.name}
-        className={` text-white relative  grow overflow-hidden flex items-center bg-teal-950   ${
-          resolveCategoryState() === "all" && "cursor-pointer"
-        } `}
-        onClick={() => {
-          if (!isDragging) {
-            setCategory(category.name)
-          }
+        className=" w-[100vw] h-screen absolute "
+        style={{
+          background: gradient,
+          backgroundSize: "200% 200%",
         }}
         animate={{
-          height: properties.height,
-          width: properties.width,
-          maxHeight: properties.maxHeight,
-          maxWidth: properties.maxWidth,
-          zIndex: properties.zIndex,
-          x: -properties.x,
+          backgroundPositionX: [
+            "0%",
+            `${rand1}%`,
+            `${rand2}%`,
+            `${rand3}%`,
+            `${rand2}%`,
+            `${rand1}%`,
+            "0%",
+          ],
         }}
         transition={{
-          type: "spring",
-          damping: 20,
+          duration: resolveCategoryState() === "all" ? 30 : 30,
+          ease: "easeInOut",
+          repeat: Infinity,
         }}
-      >
-        <motion.div
-          className=" w-[100vw] h-screen absolute "
-          style={{
-            backgroundImage: `url(${category.src})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "top",
-          }}
-        ></motion.div>
-      </motion.div>
-
-      {activeCategory === "ALL" && (
-        <motion.h1 className="text-[2em] py-3">{category.name}</motion.h1>
-      )}
-    </div>
+      ></motion.div>
+    </motion.div>
   )
 }

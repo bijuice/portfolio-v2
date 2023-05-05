@@ -97,7 +97,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
         }}
       >
         <button
-          className="absolute top-10 right-10 bg-cyan-950 p-2 rounded-md text-white"
+          className="absolute top-10 right-10 h-10 bg-cyan-950 p-2 rounded-md text-white"
           onClick={(e) => {
             e.stopPropagation()
             setCategory("ALL")
