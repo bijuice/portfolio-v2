@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "VentiCF";
+  src: url("/fonts/VentiCF/VentiCF-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "VentiCF";
+  src: url("/fonts/VentiCF/VentiCF-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "VentiCF";
+  src: url("/fonts/VentiCF/VentiCF-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "VentiCF";
+  src: url("/fonts/VentiCF/VentiCF-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "VentiCF";
+  src: url("/fonts/VentiCF/VentiCF-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
@@ -15,4 +46,10 @@ html {
 body {
   height: 100vh;
   height: 100svh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: VentiCF, serif;
 }
