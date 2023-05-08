@@ -15,8 +15,8 @@ export function CloseButton({ onClick }: ButtonProps) {
         onClick()
       }}
       whileHover={{
-        rotate: 180,
-        scale: 1.3,
+        rotate: -180,
+        scale: 1.2,
       }}
     >
       <Close size={30} />
