@@ -3,8 +3,8 @@ import { motion, AnimatePresence, useDragControls } from "framer-motion"
 import useWindowDimensions from "@/hooks/useWindowDimensions"
 import Image from "next/image"
 import useElementPosition from "@/hooks/useElementPostion"
-import categories from "@/data/categories"
 import CategoryCard from "@/components/CategoryCard"
+import CategoryContainer from "@/components/CategoryContainer"
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>("About")
@@ -13,75 +13,12 @@ export default function Home() {
     setActiveCategory(category)
   }
 
-  const [width, height] = useWindowDimensions()
-
-  const [isDragging, setIsDragging] = useState(false)
-
-  const [x, setX] = useState(0)
-
-  const [percentage, setPercentage] = useState(0)
-
-  function scrollContainer(d: number) {
-    if (activeCategory !== "ALL") return
-
-    let delta: number = 0
-    if (d > 0 && x > -width) {
-      delta = 100
-    }
-
-    if (d < 0 && x < 0) {
-      delta = -100
-    }
-
-    setX((prev) => prev - delta)
-
-    const n = percentage - delta * 0.15
-
-    const newPercentage = n > 100 ? 100 : n < -100 ? -100 : n
-
-    setPercentage(newPercentage)
-  }
-
   return (
-    <main
-      className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none"
-      onWheel={(e) => scrollContainer(e.deltaY)}
-    >
-      <motion.div
-        id="card-container"
-        className="flex items-center gap-10 "
-        drag={activeCategory === "ALL" && "x"}
-        onClick={(e) => e.stopPropagation()}
-        dragConstraints={{
-          right: 0,
-          left: (-height / 4) * 7,
-        }}
-        onDragStart={() => setIsDragging(true)}
-        onDragEnd={() => setIsDragging(false)}
-        onDrag={(e, info) => {
-          const percentage = (info.offset.x / width) * 100
-
-          setPercentage(percentage)
-        }}
-        animate={{
-          x,
-        }}
-      >
-        {categories.map((cat, index) => (
-          <CategoryCard
-            key={cat.name}
-            isDragging={isDragging}
-            index={index}
-            category={cat}
-            activeCategory={activeCategory}
-            setCategory={setCategory}
-            width={width}
-            height={height}
-            pos={percentage}
-          />
-        ))}
-      </motion.div>
-
+    <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
+      <CategoryContainer
+        activeCategory={activeCategory}
+        setCategory={setCategory}
+      />
       {activeCategory !== "ALL" && (
         <CategoryView
           activeCategory={activeCategory}
