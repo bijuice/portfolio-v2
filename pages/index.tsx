@@ -46,7 +46,10 @@ export default function Home() {
         className="flex items-center gap-10 "
         drag={activeCategory === "ALL" && "x"}
         onClick={(e) => e.stopPropagation()}
-        dragConstraints={{ right: 0, left: width > 400 ? -1000 : -2000 }}
+        dragConstraints={{
+          right: 0,
+          left: (-height / 4) * 7,
+        }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => setIsDragging(false)}
         animate={{ x }}
