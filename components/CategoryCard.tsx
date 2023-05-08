@@ -112,7 +112,13 @@ export default function CategoryCard({
             backgroundImage: `url(${category.src})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            backgroundPosition: "top",
+          }}
+          animate={{
+            x: resolveCategoryState() === "all" ? `-${50 - pos * 0.1}%` : 0,
+          }}
+          transition={{
+            type: "tween",
+            duration: 0.5,
           }}
         ></motion.div>
       </motion.div>

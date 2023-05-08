@@ -36,6 +36,8 @@ export default function Home() {
     setX((prev) => prev - delta)
   }
 
+  const [pos, setPos] = useState(0)
+
   return (
     <main
       className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none"
@@ -52,7 +54,11 @@ export default function Home() {
         }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => setIsDragging(false)}
-        animate={{ x }}
+        onDrag={(e, info) => {
+          const percentage = (info.offset.x / width) * 100
+
+          setPos(percentage)
+        }}
       >
         {categories.map((cat, index) => (
           <CategoryCard
@@ -64,7 +70,7 @@ export default function Home() {
             setCategory={setCategory}
             width={width}
             height={height}
-            pos={containerRef.current?.getBoundingClientRect().left || 0}
+            pos={pos}
           />
         ))}
       </motion.div>
