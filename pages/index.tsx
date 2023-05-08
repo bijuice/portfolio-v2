@@ -5,6 +5,8 @@ import Image from "next/image"
 import useElementPosition from "@/hooks/useElementPostion"
 import CategoryCard from "@/components/CategoryCard"
 import CategoryContainer from "@/components/CategoryContainer"
+import Close from "@/components/Icons/Close"
+import { CloseButton } from "@/components/Buttons"
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>("About")
@@ -49,15 +51,11 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           delay: 0.3,
         }}
       >
-        <button
-          className="absolute top-10 right-10 bg-cyan-950 p-2 rounded-md text-white"
-          onClick={(e) => {
-            e.stopPropagation()
+        <CloseButton
+          onClick={() => {
             setCategory("ALL")
           }}
-        >
-          close
-        </button>
+        />
       </motion.div>
     </AnimatePresence>
   )
