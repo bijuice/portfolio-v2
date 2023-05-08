@@ -62,6 +62,10 @@ export default function CategoryContainer({
       animate={{
         x,
       }}
+      transition={{
+        type: "spring",
+        damping: 100,
+      }}
       onWheel={(e) => scrollContainer(e.deltaY)}
     >
       {categories.map((cat, index) => (
