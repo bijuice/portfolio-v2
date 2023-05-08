@@ -17,9 +17,9 @@ export default function Home() {
 
   const [isDragging, setIsDragging] = useState(false)
 
-  const containerRef = useRef<HTMLDivElement>(null)
-
   const [x, setX] = useState(0)
+
+  const [percentage, setPercentage] = useState(0)
 
   function scrollContainer(d: number) {
     if (activeCategory !== "ALL") return
@@ -34,9 +34,13 @@ export default function Home() {
     }
 
     setX((prev) => prev - delta)
-  }
 
-  const [pos, setPos] = useState(0)
+    const n = percentage - delta * 0.3
+
+    const newPercentage = n > 100 ? 100 : n < -100 ? -100 : n
+
+    setPercentage(newPercentage)
+  }
 
   return (
     <main
@@ -57,7 +61,10 @@ export default function Home() {
         onDrag={(e, info) => {
           const percentage = (info.offset.x / width) * 100
 
-          setPos(percentage)
+          setPercentage(percentage)
+        }}
+        animate={{
+          x,
         }}
       >
         {categories.map((cat, index) => (
@@ -70,7 +77,7 @@ export default function Home() {
             setCategory={setCategory}
             width={width}
             height={height}
-            pos={pos}
+            pos={percentage}
           />
         ))}
       </motion.div>

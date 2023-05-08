@@ -114,11 +114,11 @@ export default function CategoryCard({
             backgroundSize: "cover",
           }}
           animate={{
-            x: resolveCategoryState() === "all" ? `-${50 - pos * 0.1}%` : 0,
+            x: resolveCategoryState() === "all" ? `-${50 - pos * 0.15}%` : 0,
           }}
           transition={{
             type: "tween",
-            duration: 0.5,
+            duration: 1,
           }}
         ></motion.div>
       </motion.div>
