@@ -85,7 +85,7 @@ export default function CategoryCard({
       <motion.div
         layout
         key={category.name}
-        className={` text-white relative  grow overflow-hidden flex items-center bg-teal-950   ${
+        className={` text-white relative  grow overflow-hidden flex items-center    ${
           resolveCategoryState() === "all" && "cursor-pointer"
         } `}
         onClick={() => {
@@ -102,8 +102,8 @@ export default function CategoryCard({
           x: -properties.x,
         }}
         transition={{
-          type: "spring",
-          damping: 20,
+          type: "tween",
+          dureation: 1,
         }}
       >
         <motion.div
@@ -114,11 +114,11 @@ export default function CategoryCard({
             backgroundSize: "cover",
           }}
           animate={{
-            x: resolveCategoryState() === "all" ? `-${50 - pos * 0.15}%` : 0,
+            x: resolveCategoryState() === "all" ? `${pos * 0.15 - 20}%` : 0,
           }}
           transition={{
             type: "tween",
-            duration: 1,
+            duration: resolveCategoryState() !== "all" ? 0.3 : 0.6,
           }}
         ></motion.div>
       </motion.div>

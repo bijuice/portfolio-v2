@@ -35,7 +35,7 @@ export default function Home() {
 
     setX((prev) => prev - delta)
 
-    const n = percentage - delta * 0.3
+    const n = percentage - delta * 0.15
 
     const newPercentage = n > 100 ? 100 : n < -100 ? -100 : n
 
