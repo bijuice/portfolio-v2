@@ -10,7 +10,7 @@ type ButtonProps = {
 export function CloseButton({ onClick }: ButtonProps) {
   return (
     <motion.button
-      className="absolute top-7 right-7 p-5 rounded-md "
+      className="absolute top-4 right-2 p-5 rounded-md "
       onClick={(e) => {
         e.stopPropagation()
         onClick()
