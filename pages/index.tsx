@@ -6,10 +6,11 @@ import useElementPosition from "@/hooks/useElementPostion"
 import CategoryCard from "@/components/CategoryCard"
 import CategoryContainer from "@/components/CategoryContainer"
 import Close from "@/components/Icons/Close"
-import { CloseButton } from "@/components/Buttons"
+import { CloseButton, NavigationButton } from "@/components/Buttons"
+import categories from "@/data/categories"
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("About")
+  const [activeCategory, setActiveCategory] = useState<string>("ALL")
 
   function setCategory(category: string) {
     setActiveCategory(category)
@@ -37,6 +38,26 @@ type CategoryViewProps = {
 }
 
 function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
+  function nextCategory() {
+    let currentIndex = categories.findIndex((c) => c.name === activeCategory)
+
+    currentIndex = currentIndex === categories.length - 1 ? -1 : currentIndex
+
+    const nextCategory = categories[currentIndex + 1]
+
+    setCategory(nextCategory.name)
+  }
+
+  function prevCategory() {
+    let currentIndex = categories.findIndex((c) => c.name === activeCategory)
+
+    currentIndex = currentIndex === 0 ? categories.length - 1 : currentIndex
+
+    const nextCategory = categories[currentIndex - 1]
+
+    setCategory(nextCategory.name)
+  }
+
   return (
     <AnimatePresence>
       <motion.div
@@ -56,6 +77,14 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
             setCategory("ALL")
           }}
         />
+
+        <NavigationButton onClick={nextCategory} position="right">
+          Next
+        </NavigationButton>
+
+        <NavigationButton onClick={prevCategory} position="left">
+          Previous
+        </NavigationButton>
       </motion.div>
     </AnimatePresence>
   )

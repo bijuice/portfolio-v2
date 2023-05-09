@@ -63,8 +63,8 @@ export default function CategoryContainer({
         x,
       }}
       transition={{
-        type: "spring",
-        damping: 100,
+        type: "tween",
+        damping: 50,
       }}
       onWheel={(e) => scrollContainer(e.deltaY)}
     >
