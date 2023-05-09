@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Head>
-        <title>Abdul's Portfolio</title>
+        <title>Abdul{"'"}s Portfolio</title>
       </Head>
       <main className="w-full flex justify-center ">{children}</main>
     </>
