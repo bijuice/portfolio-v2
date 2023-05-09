@@ -70,7 +70,7 @@ export default function CategoryCard({
         x: container!.getBoundingClientRect().left + index * 40 || 0,
       })
     } else if (resolveCategoryState() === "inactive") {
-      setProperties({ ...properties, maxHeight: 0, maxWidth: 0 })
+      setProperties({ ...properties, maxHeight: "100vh", maxWidth: 0 })
     } else {
       setProperties(defaultProperties)
     }

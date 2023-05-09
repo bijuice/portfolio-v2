@@ -62,15 +62,12 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className={`fixed left-0 bg-black bg-opacity-30 h-screen w-screen flex justify-between text-white p-7 z-10 `}
+        className={`fixed left-0 bg-black/40 h-screen w-screen flex justify-center items-center text-white p-7 z-10 `}
         initial={{
           opacity: 0,
         }}
         animate={{
           opacity: 1,
-        }}
-        transition={{
-          delay: 0.3,
         }}
       >
         <CloseButton
@@ -84,6 +81,8 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
         <NavigationButton onClick={prevCategory} position="left">
           Previous
         </NavigationButton>
+
+        <div className="w-[90vw] h-[90vh]"></div>
       </motion.div>
     </AnimatePresence>
   )
