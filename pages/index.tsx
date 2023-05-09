@@ -8,6 +8,7 @@ import CategoryContainer from "@/components/CategoryContainer"
 import Close from "@/components/Icons/Close"
 import { CloseButton, NavigationButton } from "@/components/Buttons"
 import categories from "@/data/categories"
+import { ChevronRight } from "@/components/Icons/Chevrons"
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL")
@@ -61,7 +62,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className={`fixed left-0  h-screen w-screen flex justify-between text-white p-7 z-10 `}
+        className={`fixed left-0 bg-black bg-opacity-30 h-screen w-screen flex justify-between text-white p-7 z-10 `}
         initial={{
           opacity: 0,
         }}
@@ -78,9 +79,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           }}
         />
 
-        <NavigationButton onClick={nextCategory} position="right">
-          Next
-        </NavigationButton>
+        <NavigationButton onClick={nextCategory} position="right" />
 
         <NavigationButton onClick={prevCategory} position="left">
           Previous

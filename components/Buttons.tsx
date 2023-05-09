@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "./Icons/Chevrons"
 import Close from "./Icons/Close"
 import { motion } from "framer-motion"
 
@@ -31,6 +32,24 @@ type NavButtonProps = {
   position: "left" | "right"
 } & ButtonProps
 
+const chevronVariants = (position: "left" | "right") => {
+  return {
+    initial: {
+      x: 0,
+      scale: 1,
+    },
+    hover: {
+      x: position === "left" ? -10 : 10,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    click: {
+      scale: 1.5,
+    },
+  }
+}
+
 export function NavigationButton({
   onClick,
   children,
@@ -38,10 +57,19 @@ export function NavigationButton({
 }: NavButtonProps) {
   return (
     <motion.button
-      className={`${position}-0 bottom-0 h-full w-[100px] text-red-500   absolute z-0`}
+      className={`${position}-0 bottom-0 h-full w-[80px] text-red-500 flex items-center justify-center  absolute z-0`}
       onClick={onClick}
+      initial="initial"
+      whileHover="hover"
+      whileTap="click"
     >
-      {children}
+      <motion.div variants={chevronVariants(position) as any}>
+        {position === "left" ? (
+          <ChevronLeft size={60} />
+        ) : (
+          <ChevronRight size={60} />
+        )}
+      </motion.div>
     </motion.button>
   )
 }
