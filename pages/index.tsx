@@ -11,6 +11,8 @@ import categories from "@/data/categories"
 import { ChevronRight } from "@/components/Icons/Chevrons"
 import Link from "next/link"
 
+const isProduction = process.env.NODE_ENV === "production"
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL")
 
@@ -18,7 +20,7 @@ export default function Home() {
     setActiveCategory(category)
   }
 
-  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(true)
+  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(isProduction)
 
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
