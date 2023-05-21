@@ -16,9 +16,9 @@ export function ChevronRight({ width, height, size, color }: IconProps) {
       <path
         d="M9 20L17 12L9 4"
         stroke={c}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -41,9 +41,9 @@ export function ChevronLeft({ width, height, size, color }: IconProps) {
       <path
         d="M9 20L17 12L9 4"
         stroke={c}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
