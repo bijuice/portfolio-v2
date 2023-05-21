@@ -16,3 +16,17 @@ body {
   height: 100vh;
   height: 100svh;
 }
+
+.category-view::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.category-view::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+}
+
+.category-view::-webkit-scrollbar-thumb {
+  background-color: white;
+}
