@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "framer-motion"
 
 type TypographyProps = {
   text: string
-  styling?: string
 }
 
 const container = {
@@ -22,7 +21,7 @@ const item = {
   },
 }
 
-export function Header({ text, styling }: TypographyProps) {
+export function Heading({ text }: TypographyProps) {
   const children = text.split(" ").map((word) => {
     return (
       <motion.span key={word} variants={item}>
@@ -33,7 +32,7 @@ export function Header({ text, styling }: TypographyProps) {
   })
 
   return (
-    <div className={`overflow-hidden ${styling}`}>
+    <div className={`overflow-hidden text-7xl max-w-[16ch] font-bold`}>
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
       </motion.h1>
@@ -41,9 +40,9 @@ export function Header({ text, styling }: TypographyProps) {
   )
 }
 
-export function SubHeader({ text, styling }: TypographyProps) {
+export function SubHeading({ text }: TypographyProps) {
   return (
-    <div className={`overflow-hidden ${styling}`}>
+    <div className={`overflow-hidden text-4xl `}>
       <motion.h2
         initial={{
           y: 100,
