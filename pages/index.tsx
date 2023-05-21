@@ -1,15 +1,11 @@
-import React, { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence, useDragControls } from "framer-motion"
-import useWindowDimensions from "@/hooks/useWindowDimensions"
-import Image from "next/image"
-import useElementPosition from "@/hooks/useElementPostion"
-import CategoryCard from "@/components/CategoryCard"
+import React, { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import CategoryContainer from "@/components/CategoryContainer"
-import Close from "@/components/Icons/Close"
 import { CloseButton, NavigationButton } from "@/components/Buttons"
 import categories from "@/data/categories"
-import { ChevronRight } from "@/components/Icons/Chevrons"
 import Link from "next/link"
+import About from "@/components/categories/About"
+import Experience from "@/components/categories/Experience"
 
 const isProduction = process.env.NODE_ENV === "production"
 
@@ -95,6 +91,17 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
     setCategory(nextCategory.name)
   }
 
+  function resolveView() {
+    switch (activeCategory) {
+      case "About":
+        return <About />
+      case "Experience":
+        return <Experience />
+      default:
+        return <About />
+    }
+  }
+
   return (
     <AnimatePresence>
       <motion.div
@@ -118,7 +125,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           Previous
         </NavigationButton>
 
-        <div className="w-[90vw] h-[90vh]"></div>
+        <div className="w-[90vw] h-[90vh] ">{resolveView()}</div>
       </motion.div>
     </AnimatePresence>
   )
