@@ -125,7 +125,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           Previous
         </NavigationButton>
 
-        <div className="w-[90vw] h-[90vh] ">{resolveView()}</div>
+        <div className="w-[90vw]  ">{resolveView()}</div>
       </motion.div>
     </AnimatePresence>
   )
