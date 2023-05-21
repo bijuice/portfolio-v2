@@ -9,7 +9,7 @@ const container = {
   show: {
     transition: {
       delayChildren: 0.3,
-      staggerChildren: 0.5,
+      staggerChildren: 0.7,
     },
   },
 }
@@ -18,6 +18,9 @@ const item = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
+    transition: {
+      duration: 0.7,
+    },
   },
 }
 
@@ -33,7 +36,7 @@ export function PageHeading({ text }: TypographyProps) {
 
   return (
     <div
-      className={`overflow-hidden text-7xl 2xl:text-8xl max-w-[16ch] font-bold`}
+      className={`overflow-hidden text-7xl 2xl:text-8xl text-center font-bold`}
     >
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
@@ -44,7 +47,7 @@ export function PageHeading({ text }: TypographyProps) {
 
 export function PageSubHeading({ text }: TypographyProps) {
   return (
-    <div className={`overflow-hidden text-4xl `}>
+    <div className={`overflow-hidden text-4xl 2xl:text-5xl text-center  `}>
       <motion.h2
         initial={{
           y: 100,
@@ -53,7 +56,8 @@ export function PageSubHeading({ text }: TypographyProps) {
           y: 0,
         }}
         transition={{
-          delay: 1.9,
+          delay: 2.2,
+          duration: 0.6,
         }}
       >
         {text}
