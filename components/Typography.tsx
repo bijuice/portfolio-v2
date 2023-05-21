@@ -21,7 +21,7 @@ const item = {
   },
 }
 
-export function Heading({ text }: TypographyProps) {
+export function PageHeading({ text }: TypographyProps) {
   const children = text.split(" ").map((word) => {
     return (
       <motion.span key={word} variants={item}>
@@ -32,7 +32,9 @@ export function Heading({ text }: TypographyProps) {
   })
 
   return (
-    <div className={`overflow-hidden text-7xl max-w-[16ch] font-bold`}>
+    <div
+      className={`overflow-hidden text-7xl 2xl:text-8xl max-w-[16ch] font-bold`}
+    >
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
       </motion.h1>
@@ -40,7 +42,7 @@ export function Heading({ text }: TypographyProps) {
   )
 }
 
-export function SubHeading({ text }: TypographyProps) {
+export function PageSubHeading({ text }: TypographyProps) {
   return (
     <div className={`overflow-hidden text-4xl `}>
       <motion.h2
