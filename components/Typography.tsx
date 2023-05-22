@@ -35,11 +35,24 @@ export function PageHeading({ text }: TypographyProps) {
   })
 
   return (
-    <div className={`overflow-hidden text-7xl 2xl:text-8xl text-center `}>
+    <motion.div
+      className={`overflow-hidden text-7xl 2xl:text-8xl text-center bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-red-600 font-bold`}
+      style={{
+        backgroundSize: "300% 100%",
+      }}
+      animate={{
+        backgroundPositionX: ["-100%", "100%"],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        repeatType: "reverse",
+      }}
+    >
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
       </motion.h1>
-    </div>
+    </motion.div>
   )
 }
 
