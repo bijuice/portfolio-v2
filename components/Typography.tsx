@@ -35,9 +35,7 @@ export function PageHeading({ text }: TypographyProps) {
   })
 
   return (
-    <div
-      className={`overflow-hidden text-7xl 2xl:text-8xl text-center font-bold`}
-    >
+    <div className={`overflow-hidden text-7xl 2xl:text-8xl text-center `}>
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
       </motion.h1>
@@ -47,7 +45,9 @@ export function PageHeading({ text }: TypographyProps) {
 
 export function PageSubHeading({ text }: TypographyProps) {
   return (
-    <div className={`overflow-hidden text-4xl 2xl:text-5xl text-center  `}>
+    <div
+      className={`overflow-hidden text-3xl 2xl:text-4xl text-center font-['Circular'] italic`}
+    >
       <motion.h2
         initial={{
           y: 100,
@@ -64,4 +64,14 @@ export function PageSubHeading({ text }: TypographyProps) {
       </motion.h2>
     </div>
   )
+}
+
+export function SectionHeading({
+  children,
+  styles,
+}: {
+  children: React.ReactNode
+  styles?: string
+}) {
+  return <h2 className={`${styles}`}>{children}</h2>
 }

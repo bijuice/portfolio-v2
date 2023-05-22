@@ -3,7 +3,7 @@ import IconProps from "@/props/IconProps"
 export default function Close({ height, width, size, color }: IconProps) {
   const h = height || size || 50
   const w = width || size || 50
-  const c = color || "#FFF"
+  const c = color || "#000"
 
   return (
     <svg

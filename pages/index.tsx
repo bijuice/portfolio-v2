@@ -105,7 +105,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className={`fixed left-0 bg-black/40 h-screen w-screen flex justify-center items-center text-white p-7 z-10 `}
+        className={`fixed left-0 bg-black/40 h-screen w-screen flex justify-center items-center text-white  z-10 `}
         initial={{
           opacity: 0,
         }}
@@ -119,13 +119,15 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           }}
         />
 
-        <NavigationButton onClick={nextCategory} position="right" />
+        <div className="z-20">
+          <NavigationButton onClick={nextCategory} position="right" />
 
-        <NavigationButton onClick={prevCategory} position="left">
-          Previous
-        </NavigationButton>
+          <NavigationButton onClick={prevCategory} position="left">
+            Previous
+          </NavigationButton>
+        </div>
 
-        <div className="w-[90vw]  ">{resolveView()}</div>
+        <div className="w-full  ">{resolveView()}</div>
       </motion.div>
     </AnimatePresence>
   )
