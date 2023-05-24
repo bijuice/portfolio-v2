@@ -36,18 +36,7 @@ export function PageHeading({ text }: TypographyProps) {
 
   return (
     <motion.div
-      className={`overflow-hidden text-7xl 2xl:text-8xl text-center bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-red-600 font-bold`}
-      style={{
-        backgroundSize: "300% 100%",
-      }}
-      animate={{
-        backgroundPositionX: ["-100%", "100%"],
-      }}
-      transition={{
-        duration: 5,
-        repeat: Infinity,
-        repeatType: "reverse",
-      }}
+      className={`mt-[25vh] md:mt-[40vh] overflow-hidden text-5xl  md:text-7xl 2xl:text-8xl text-center  `}
     >
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
@@ -59,7 +48,7 @@ export function PageHeading({ text }: TypographyProps) {
 export function PageSubHeading({ text }: TypographyProps) {
   return (
     <div
-      className={`overflow-hidden text-3xl 2xl:text-4xl text-center font-['Circular'] italic`}
+      className={`overflow-hidden text-xl 2xl:text-4xl text-center font-['Circular'] italic`}
     >
       <motion.h2
         initial={{
@@ -86,5 +75,27 @@ export function SectionHeading({
   children: React.ReactNode
   styles?: string
 }) {
-  return <h2 className={`${styles}`}>{children}</h2>
+  return (
+    <motion.h2
+      className={` leading-loose bg-clip-text text-transparent bg-gradient-to-r text-7xl 2xl:text-7xl ${styles}`}
+      viewport={{ once: true }}
+      style={{
+        backgroundSize: "300% 100%",
+      }}
+      animate={{
+        backgroundPositionX: ["0%", "100%"],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        repeatType: "reverse",
+      }}
+    >
+      {children}
+    </motion.h2>
+  )
+}
+
+export function TextEmphasis({ children }: { children: React.ReactNode }) {
+  return <span className="font-bold text-[1.5em] uppercase">{children}</span>
 }
