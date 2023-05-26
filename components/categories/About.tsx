@@ -58,12 +58,28 @@ function ReviewSection() {
   }
 
   return (
-    <div className=" absolute bottom-24 overflow-hidden max-w-[600px] px-3 flex flex-col gap-1 text-center text-lg">
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      transition={{
+        delay: 3.2,
+        duration: 0.6,
+      }}
+      className=" absolute bottom-24 overflow-hidden max-w-[600px] px-3 flex flex-col gap-1 text-center text-lg"
+    >
       <div className="flex gap- justify-center">{renderStars()}</div>
-      <p>"{reviews[currentReview].text}"</p>
+      <p>
+        {'"'}
+        {reviews[currentReview].text}
+        {'"'}
+      </p>
       <p className="text-gray-500 text-sm">{reviews[currentReview].name}</p>
       <p className="text-gray-400 text-sm">{reviews[currentReview].position}</p>
-    </div>
+    </motion.div>
   )
 }
 
@@ -92,23 +108,52 @@ export default function About() {
             </SectionHeading>
           </BlackSection>
           <WhiteSection>
-            <ImageContainer
-              src="url('/images/cc.png')"
-              link="https://super-biscuit-1456ce.netlify.app/"
-            />
-            <ImageContainer
-              src="url('/images/alp.png')"
-              link="https://africalawpartners.com/"
-            />
-            <ImageContainer
-              src="url('/images/code.png')"
-              link="https://github.com/bijuice/portfolio-v2"
-            />
+            <div className="flex flex-col h-full">
+              <ImageContainer
+                src="url('/images/cc.png')"
+                link="https://super-biscuit-1456ce.netlify.app/"
+                title="Bijuiceflix"
+                description="React + Typescript + TailwindCSS + Firebase"
+              />
+              <ImageContainer
+                src="url('/images/alp.png')"
+                link="https://africalawpartners.com/"
+                title="ALP Website"
+                description="NextJS + TailwindCSS + Contentful"
+              />
+              <ImageContainer
+                src="url('/images/code.png')"
+                link="https://github.com/bijuice/pull-request-documenter"
+                title="Pull Request Documenter"
+                description="OpenAI API + JavaScript + Octokit"
+              />
+            </div>
           </WhiteSection>
         </SectionContainer>
 
         <SectionContainer>
-          <WhiteSection>here</WhiteSection>
+          <WhiteSection>
+            <div className="flex h-full">
+              {" "}
+              <div className="flex flex-col">
+                <ImageContainer
+                  src="url('/images/committee-meetup.jpg')"
+                  link="https://www.kamilimu.org/team"
+                  title="KamiLimu Committee Hangout"
+                />
+                <ImageContainer
+                  src="url('/images/cohort7-innovation.jpg')"
+                  link="https://www.kamilimu.org/cohort-7"
+                  title="KamiLimu Cohort 7 Innovation Semifinals"
+                />
+              </div>
+              <ImageContainer
+                src="url('/images/cohort6-graduation.jpg')"
+                link="https://www.kamilimu.org/cohort-6"
+                title="KamiLimu Cohort 6 Graduation"
+              />
+            </div>
+          </WhiteSection>
           <BlackSection direction="right">
             <SectionHeading styles=" from-green-300 via-blue-500 to-purple-600">
               <TextEmphasis>2</TextEmphasis> years of changing
@@ -124,37 +169,64 @@ export default function About() {
             </SectionHeading>
           </BlackSection>
           <WhiteSection>
-            <div className="w-full h-full grid grid-cols-2"></div>
+            <div className="flex h-full">
+              <ImageContainer
+                src="url('/images/boy-tie.jpg')"
+                title="Boy"
+                description="Coworker/Friend"
+              />
+              <div className="flex flex-col w-1/2">
+                <ImageContainer
+                  src="url('/images/me-cats.jpg')"
+                  link="https://www.kamilimu.org/team"
+                  title="Lucy & Boy"
+                />
+                <ImageContainer
+                  src="url('/images/bebbins.jpg')"
+                  link="https://www.kamilimu.org/cohort-7"
+                  title="Bebbins & Chims"
+                />
+              </div>
+            </div>
           </WhiteSection>
         </SectionContainer>
         <SectionContainer>
           <WhiteSection>
             <div className="flex flex-col gap-7 w-full h-full p-24 justify-center text-right text-lg 2xl:text-3xl">
+              <h4 className="text-4xl">Legacy</h4>
               <div>
-                <p>" Is it possible to miss someone you've never met?</p>
-                <p>I certainly don't.</p>
+                <p>
+                  {'"'} Is it possible to miss someone you{"'"}ve never met?
+                </p>
+                <p>I certainly don{"'"}t.</p>
                 <p>But his shadow looms over me.</p>
               </div>
               <div>
-                <p>'You have his cheeks.'</p>
-                <p>'You're just as funny as he was.'</p>
-                <p>'You smile like he did'</p>
+                <p>
+                  {"'"}You have his cheeks.{"'"}
+                </p>
+                <p>
+                  {"'"}You{"'"}re just as funny as he was.{"'"}
+                </p>
+                <p>
+                  {"'"}You smile like he did{"'"}
+                </p>
                 <p>Empty words with no memories for context.</p>
                 <p>Is that the legacy he has left me?</p>
                 <p>A mirror for others to remember him by?</p>
               </div>
               <div>
-                <p>I don't miss him,</p>
+                <p>I don{"'"}t miss him,</p>
                 <p>Though I long for him.</p>
                 <p>A tangible emptiness.</p>
                 <p>Amplified by her absence.</p>
               </div>
               <div>
                 <p>I am who I am,</p>
-                <p>Because I was raised by a shadow 22 years gone.</p>
+                <p>Because I was raised by a shadow 22 years gone. {'"'}</p>
               </div>
 
-              <p>- The Bluest Soul</p>
+              <p className="italic">- The Bluest Soul</p>
             </div>
           </WhiteSection>
           <BlackSection direction="right">
@@ -201,28 +273,42 @@ function BlackSection({
 }
 
 function WhiteSection({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="bg-white w-1/2  text-black flex flex-col">{children}</div>
-  )
+  return <div className="bg-white w-1/2  text-black ">{children}</div>
 }
 
-function ImageContainer({ src, link }: { src: string; link: string }) {
+function ImageContainer({
+  src,
+  link,
+  title,
+  description,
+}: {
+  src: string
+  link?: string
+  title: string
+  description?: string
+}) {
   return (
-    <motion.div
-      className="basis-1/3 relative"
+    <div
+      className="grow relative"
       style={{
         background: src,
         backgroundSize: "cover",
       }}
-      initial={{
-        backgroundPositionX: "-100%",
-      }}
-      whileInView={{ backgroundPositionX: "0" }}
-      transition={{ duration: 1 }}
     >
-      <Link href={link} target="_blank">
-        <div className="h-full w-full"></div>
+      <Link href={link || ""} target="_blank">
+        <motion.div
+          className="h-full w-full grid place-content-center bg-black/50 text-white text-center"
+          initial={{
+            opacity: 0,
+          }}
+          whileHover={{
+            opacity: 1,
+          }}
+        >
+          <p className=" text-2xl font-bold ">{title}</p>
+          <p className="  mt-3">{description}</p>
+        </motion.div>
       </Link>
-    </motion.div>
+    </div>
   )
 }
