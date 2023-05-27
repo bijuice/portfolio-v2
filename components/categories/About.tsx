@@ -234,8 +234,63 @@ export default function About() {
             </SectionHeading>
           </BlackSection>
         </SectionContainer>
+
+        <SectionContainer>
+          <div className="grid grid-cols-2 w-full h-screen justify-center items-stretch border-t ">
+            <h3 className="text-3xl col-span-2 w-full grid place-content-center  bg-white text-black circular circular uppercase text-center ">
+              Discover More
+            </h3>
+
+            <CategoryButton
+              styles="from-pink-500 via-red-500 to-yellow-500"
+              onClick={() => {}}
+            >
+              experience
+            </CategoryButton>
+            <CategoryButton
+              styles="from-green-300 via-blue-500 to-purple-600"
+              onClick={() => {}}
+            >
+              skills
+            </CategoryButton>
+            <CategoryButton
+              styles="from-red-200 via-red-300 to-yellow-200"
+              onClick={() => {}}
+            >
+              projects
+            </CategoryButton>
+            <CategoryButton
+              styles="from-green-300 via-yellow-300 to-pink-300"
+              onClick={() => {}}
+            >
+              poetry
+            </CategoryButton>
+          </div>
+        </SectionContainer>
       </motion.div>
     </div>
+  )
+}
+
+function CategoryButton({
+  children,
+  onClick,
+  styles,
+}: {
+  children: React.ReactNode
+  onClick: () => void
+  styles: string
+}) {
+  return (
+    <motion.button
+      className={`category-button grow text-white  text-3xl font-bold  grid place-content-center  bg-gradient-to-r   text-bold px-4 py-2 transition uppercase ${styles}`}
+      onClick={onClick}
+      style={{
+        backgroundSize: "300% auto",
+      }}
+    >
+      {children}
+    </motion.button>
   )
 }
 
@@ -295,7 +350,7 @@ function ImageContainer({
     >
       <Link href={link || ""} target="_blank">
         <motion.div
-          className="h-full w-full grid place-content-center bg-black/50 text-white text-center"
+          className="w-full h-full grid place-content-center bg-black/50 text-white text-center "
           initial={{
             opacity: 0,
           }}

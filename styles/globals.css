@@ -55,6 +55,14 @@ h3 {
   font-family: "Arena-Round", sans-serif;
 }
 
+.circular {
+  font-family: "Circular", sans-serif;
+}
+
+.arena {
+  font-family: "Arena-Round", sans-serif;
+}
+
 .category-view {
   scroll-behavior: smooth;
 }
@@ -69,4 +77,18 @@ h3 {
 
 .category-view::-webkit-scrollbar-thumb {
   background-color: white;
+}
+
+.category-button {
+  background-size: 150% auto;
+  background-position: left center;
+  transition: background-position 2s ease;
+}
+
+.category-button:hover {
+  background-position: right center;
+}
+
+.category-button:hover .category-button > * {
+  scale: 1.2;
 }
