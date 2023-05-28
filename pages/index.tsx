@@ -27,7 +27,7 @@ export default function Home() {
             looks unfinished.
           </h1>
           <h2 className="text-2xl">
-            You can still see my progress if you{"'"}d like or visit my old
+            You can still see my progress if you{"'"}d like, or visit my old
             portfolio if you wanna know Silicon Sorcery skills.{" "}
           </h2>
 
