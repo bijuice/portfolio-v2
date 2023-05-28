@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
       {showDisclaimer ? (
-        <div className="w-full h-full flex flex-col items-center justify-center text-center gap-7">
+        <div className="w-full h-full flex flex-col items-center justify-center text-center gap-7 circular">
           <h1 className="text-3xl">
             Hello there! This site is still under construction and currently
             looks unfinished.
