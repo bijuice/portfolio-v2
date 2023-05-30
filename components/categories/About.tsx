@@ -16,12 +16,7 @@ const reviews = [
     text: "A talented developer and a great friend.",
     stars: 5,
   },
-  {
-    name: "James Njenga",
-    position: "Coworker/Friend - Pesapal",
-    text: "Complains about people's code.",
-    stars: 2,
-  },
+
   {
     name: "Marvin Mboya",
     position: "Coworker/Friend - Pesapal",
