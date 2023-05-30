@@ -85,7 +85,7 @@ export default function CategoryCard({
       <motion.div
         layout
         key={category.name}
-        className={` text-white relative  grow overflow-hidden flex items-center    ${
+        className={` text-white relative  grow overflow-hidden flex items-center  circular  ${
           resolveCategoryState() === "all" && "cursor-pointer"
         } `}
         onClick={() => {
@@ -101,10 +101,7 @@ export default function CategoryCard({
           zIndex: properties.zIndex,
           x: -properties.x,
         }}
-        transition={{
-          type: "tween",
-          dureation: 1,
-        }}
+      
       >
         <motion.div
           className=" w-[100vw] h-screen absolute "
