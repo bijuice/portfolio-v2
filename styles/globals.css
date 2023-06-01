@@ -48,6 +48,18 @@ body {
   font-family: "Circular", sans-serif;
 }
 
+*::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
 /* h1,
 h2,
 h3 {
@@ -66,17 +78,7 @@ h3 {
   scroll-behavior: smooth;
 }
 
-.category-view::-webkit-scrollbar {
-  width: 0.2em;
-}
 
-.category-view::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.category-view::-webkit-scrollbar-thumb {
-  background-color: white;
-}
 
 .category-button {
   background-size: 150% auto;
@@ -170,6 +172,7 @@ h3 {
   transform-origin: left;
   animation-name: timeline-animation;
   animation-duration: 1s;
+  animation-delay: 0.3s;
   animation-fill-mode: forwards;
 }
 
@@ -184,7 +187,7 @@ h3 {
 }
 
 .dot {
-  @apply bg-primary;
+  @apply bg-black;
   transform: translateX(-100vw);
   transform-origin: left;
   animation-name: dot-animation;
@@ -203,32 +206,32 @@ h3 {
 }
 
 .dot:hover {
-  @apply bg-secondary-500;
+  @apply bg-white;
 }
 
 .dot:nth-child(8) {
-  animation-delay: 0.1s;
+  animation-delay: 2.1s;
 }
 .dot:nth-child(7) {
-  animation-delay: 0.2s;
+  animation-delay: 2.2s;
 }
 .dot:nth-child(6) {
-  animation-delay: 0.3s;
+  animation-delay: 2.3s;
 }
 .dot:nth-child(5) {
-  animation-delay: 0.4s;
+  animation-delay: 2.4s;
 }
 .dot:nth-child(4) {
-  animation-delay: 0.5s;
+  animation-delay: 2.5s;
 }
 .dot:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 2.6s;
 }
 .dot:nth-child(2) {
-  animation-delay: 0.7s;
+  animation-delay: 2.7s;
 }
 .dot:nth-child(1) {
-  animation-delay: 0.8s;
+  animation-delay: 2.8s;
 }
 
 .experience-card {

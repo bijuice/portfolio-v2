@@ -1,22 +1,33 @@
-import { CategoryProps } from "@/props/CategoryProps"
-import { ReactNode, useEffect, useMemo, useState } from "react"
+import { CategoryProps } from "@/props/CategoryProps";
+import { ReactNode, useEffect, useMemo, useState } from "react";
+import { delay, motion } from "framer-motion";
 
 export default function Experience() {
   return (
-    <div className="min-h-screen select-none relative bg-black  ">
+    <div className="max-h-screen h-screen select-none relative grid  place-content-center bg-neutral-950 overflow-y-auto">
+      <div className="h-screen relative flex items-center w-[85vw] font-bold pt-32">
+        <motion.h1
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1, delay: 2 }}
+          className="text-white text-8xl arena absolute mb-20"
+        >
+          Experience
+        </motion.h1>
         <Timeline />
+      </div>
     </div>
-  )
+  );
 }
 
 type Experience = {
-  year: number
+  year: number;
   //in months
-  duration: number
-  title: string
-  role: string
-  resps: string[]
-}
+  duration: number;
+  title: string;
+  role: string;
+  resps: string[];
+};
 
 const experiences: Experience[] = [
   {
@@ -89,29 +100,29 @@ const experiences: Experience[] = [
       "Concentration in Forensics and Cyber Security",
     ],
   },
-]
+];
 
 function Timeline() {
-  const [timelineWidth, setTimelineWidth] = useState(1500)
+  const [timelineWidth, setTimelineWidth] = useState(1500);
 
   useEffect(() => {
-    let timeline = document.getElementById("timeline")
+    let timeline = document.getElementById("timeline");
 
-    setTimelineWidth(timeline!.offsetWidth)
-  }, [])
+    setTimelineWidth(timeline!.offsetWidth);
+  }, []);
 
-  const date = new Date()
-  const year = date.getFullYear()
+  const date = new Date();
+  const year = date.getFullYear();
 
-  const a = year - 6
-  const b = year + 2
-  const [activeExp, setActiveExp] = useState<Experience | null>(null)
+  const a = year - 6;
+  const b = year + 2;
+  const [activeExp, setActiveExp] = useState<Experience | null>(null);
 
   function renderDots() {
-    let dots: React.ReactNode[] = []
+    let dots: React.ReactNode[] = [];
 
     for (let i = a; i < b; i++) {
-      const exps = experiences.filter((e) => e.year === i)
+      const exps = experiences.filter((e) => e.year === i);
 
       const cards = exps.map((e) => {
         return (
@@ -122,13 +133,13 @@ function Timeline() {
             activeExp={activeExp}
             setActiveExp={setActiveExp}
           />
-        )
-      })
+        );
+      });
 
-      dots.push(<Point key={i} year={i} cards={cards} />)
+      dots.push(<Point key={i} year={i} cards={cards} />);
     }
 
-    return dots
+    return dots;
   }
 
   return (
@@ -138,35 +149,33 @@ function Timeline() {
         {renderDots()}
       </div>
     </>
-  )
+  );
 }
 
 type PointProps = {
-  year: number
-  cards: ReactNode[]
-}
+  year: number;
+  cards: ReactNode[];
+};
 
 function Point({ year, cards }: PointProps) {
   return (
-    <div className="w-4 h-4 rounded-full border-2 border-secondary-500  relative dot">
-      <div className="w-[2px] h-6 bg-secondary-500 rounded-md absolute bottom-5 left-[45%]"></div>
-      <p className="text-secondary-500 absolute -bottom-8 -left-[75%]">
-        {year}
-      </p>
+    <div className="w-4 h-4 rounded-full border-2 border-white  relative dot">
+      <div className="w-[2px] h-6 bg-white rounded-md absolute bottom-5 left-[45%]"></div>
+      <p className="text-white absolute -bottom-8 -left-[75%]">{year}</p>
 
       <div className="absolute bottom-14 -left-1 flex flex-col gap-8">
         {cards}
       </div>
     </div>
-  )
+  );
 }
 
 type ExpCardProps = {
-  exp: Experience
-  timelineWidth: number
-  activeExp: Experience | null
-  setActiveExp: React.Dispatch<React.SetStateAction<Experience | null>>
-}
+  exp: Experience;
+  timelineWidth: number;
+  activeExp: Experience | null;
+  setActiveExp: React.Dispatch<React.SetStateAction<Experience | null>>;
+};
 
 function ExpCard({
   activeExp,
@@ -175,40 +184,40 @@ function ExpCard({
   timelineWidth,
 }: ExpCardProps) {
   function monthsToYears() {
-    const dur = (exp.duration / 12).toFixed(1)
+    const dur = (exp.duration / 12).toFixed(1);
 
-    const year = parseFloat(dur) === 1.0 ? "year" : "years"
+    const year = parseFloat(dur) === 1.0 ? "year" : "years";
 
-    return dur + year
+    return dur + year;
   }
 
-  const durationWidth = (exp.duration / 84) * timelineWidth
+  const durationWidth = (exp.duration / 84) * timelineWidth;
 
   const cardState = () => {
     if (activeExp === null) {
-      return "initial"
+      return "initial";
     }
     if (exp.title === activeExp?.title) {
-      return "active"
+      return "active";
     }
 
-    return "incative"
-  }
+    return "incative";
+  };
 
   return (
     <div
       className={`flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] ${cardState()}`}
       onClick={() => {
-        setActiveExp(exp)
+        setActiveExp(exp);
       }}
     >
       <div className={`experience-card-title ${cardState()}`}>
         <p className="font-extrabold text-lg">{exp.title}</p>
-        <p className="text-alternate-400 text-sm">{exp.role}</p>
+        <p className="text-gray-400 text-sm">{exp.role}</p>
       </div>
 
       <div
-        className="bg-secondary-500 h-[1.5px] -bottom-2 absolute timeline "
+        className="bg-white h-[1.5px] -bottom-2 absolute timeline "
         style={{
           width: durationWidth,
           animationDelay: "0.2s",
@@ -221,14 +230,14 @@ function ExpCard({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function Line() {
   return (
     <div
-      className="bg-secondary-500 w-full h-[1px]  timeline relative"
+      className="bg-white w-full h-[2.5px]  timeline relative"
       id="timeline"
     ></div>
-  )
+  );
 }

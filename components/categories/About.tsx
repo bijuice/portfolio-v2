@@ -23,6 +23,12 @@ const reviews = [
     text: "How did you build that experience timeline?",
     stars: 4,
   },
+  {
+    name: "Marvin Mboya",
+    position: "Team Lead - Pesapal",
+    text: "A 7X developer.",
+    stars: 4,
+  },
 ]
 
 function ReviewSection() {

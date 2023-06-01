@@ -102,6 +102,8 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
     }
   }
 
+  const currentColor = activeCategory === "Experience" ? "white" : "black"
+
   return (
     <AnimatePresence>
       <motion.div
@@ -117,14 +119,18 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           onClick={() => {
             setCategory("ALL")
           }}
+          color={currentColor}
         />
 
         <div className="z-20">
-          <NavigationButton onClick={nextCategory} position="right" />
+          <NavigationButton onClick={nextCategory} position="right"
+          color={currentColor}
+          />
 
-          <NavigationButton onClick={prevCategory} position="left">
-            Previous
-          </NavigationButton>
+          <NavigationButton onClick={prevCategory} position="left"
+          color={currentColor}
+          />
+         
         </div>
 
         <div className="w-full  ">{resolveView()}</div>

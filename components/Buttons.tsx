@@ -2,12 +2,16 @@ import { ChevronLeft, ChevronRight } from "./Icons/Chevrons"
 import Close from "./Icons/Close"
 import { motion } from "framer-motion"
 
+
+
+
 type ButtonProps = {
+  color?: string
   onClick(): void
   children?: React.ReactNode
 }
 
-export function CloseButton({ onClick }: ButtonProps) {
+export function CloseButton({ onClick, color }: ButtonProps) {
   return (
     <motion.button
       className="absolute top-4 right-2 p-5 rounded-md "
@@ -23,7 +27,7 @@ export function CloseButton({ onClick }: ButtonProps) {
         zIndex: 100,
       }}
     >
-      <Close size={30} />
+      <Close size={30} color={color} />
     </motion.button>
   )
 }
@@ -54,6 +58,7 @@ export function NavigationButton({
   onClick,
   children,
   position,
+  color
 }: NavButtonProps) {
   return (
     <motion.button
@@ -65,9 +70,9 @@ export function NavigationButton({
     >
       <motion.div variants={chevronVariants(position) as any}>
         {position === "left" ? (
-          <ChevronLeft size={60} />
+          <ChevronLeft size={60} color={color}/>
         ) : (
-          <ChevronRight size={60} />
+          <ChevronRight size={60} color={color} />
         )}
       </motion.div>
     </motion.button>
