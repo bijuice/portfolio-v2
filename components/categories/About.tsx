@@ -8,6 +8,7 @@ import {
 } from "../Typography";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import SectionContainer from "../containers/SectionContainer";
 
 const reviews = [
   {
@@ -30,59 +31,6 @@ const reviews = [
     stars: 4,
   },
 ];
-
-function ReviewSection() {
-  const [currentReview, setCurrentReview] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentReview((prev) => {
-        if (prev === reviews.length - 1) {
-          return 0;
-        } else {
-          return prev + 1;
-        }
-      });
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  function renderStars() {
-    let stars = [];
-
-    for (let i = 0; i < reviews[currentReview].stars; i++) {
-      stars.push(<span className="text-2xl">★</span>);
-    }
-
-    return stars;
-  }
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      transition={{
-        delay: 3.2,
-        duration: 0.6,
-      }}
-      className=" absolute bottom-24 overflow-hidden max-w-[600px] px-3 flex flex-col gap-1 text-center text-lg"
-    >
-      <div className="flex gap- justify-center">{renderStars()}</div>
-      <p>
-        {'"'}
-        {reviews[currentReview].text}
-        {'"'}
-      </p>
-      <p className="text-gray-500 text-sm">{reviews[currentReview].name}</p>
-      <p className="text-gray-400 text-sm">{reviews[currentReview].position}</p>
-    </motion.div>
-  );
-}
 
 export default function About() {
   return (
@@ -273,6 +221,59 @@ export default function About() {
   );
 }
 
+function ReviewSection() {
+  const [currentReview, setCurrentReview] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReview((prev) => {
+        if (prev === reviews.length - 1) {
+          return 0;
+        } else {
+          return prev + 1;
+        }
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  function renderStars() {
+    let stars = [];
+
+    for (let i = 0; i < reviews[currentReview].stars; i++) {
+      stars.push(<span className="text-2xl">★</span>);
+    }
+
+    return stars;
+  }
+
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      transition={{
+        delay: 3.2,
+        duration: 0.6,
+      }}
+      className=" absolute bottom-24 overflow-hidden max-w-[600px] px-3 flex flex-col gap-1 text-center text-lg"
+    >
+      <div className="flex gap- justify-center">{renderStars()}</div>
+      <p>
+        {'"'}
+        {reviews[currentReview].text}
+        {'"'}
+      </p>
+      <p className="text-gray-500 text-sm">{reviews[currentReview].name}</p>
+      <p className="text-gray-400 text-sm">{reviews[currentReview].position}</p>
+    </motion.div>
+  );
+}
+
 function CategoryButton({
   children,
   onClick,
@@ -292,20 +293,6 @@ function CategoryButton({
     >
       {children}
     </motion.button>
-  );
-}
-
-function SectionContainer({
-  children,
-  id,
-}: {
-  children: React.ReactNode;
-  id?: string;
-}) {
-  return (
-    <div className="flex w-full min-h-screen" id={id}>
-      {children}
-    </div>
   );
 }
 

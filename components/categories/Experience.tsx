@@ -2,11 +2,12 @@ import { CategoryProps } from "@/props/CategoryProps";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { delay, motion } from "framer-motion";
 import Link from "next/link";
+import SectionContainer from "../containers/SectionContainer";
 
 export default function Experience() {
   return (
-    <div className="category-view max-h-screen h-screen select-none relative grid  place-content-center bg-neutral-950 overflow-y-auto">
-      <div className="h-screen relative flex items-center w-[85vw] font-bold pt-32">
+    <div className="category-view max-h-screen h-screen select-none relative  bg-neutral-950 overflow-y-auto overflow-x-hidden">
+      <section className="h-screen relative flex items-center mx-auto w-[85vw] font-bold pt-32">
         <motion.h1
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 1, delay: 2 }}
@@ -15,7 +16,9 @@ export default function Experience() {
           Experience
         </motion.h1>
         <Timeline />
-      </div>
+      </section>
+
+      <SectionContainer styles="bg-white">here</SectionContainer>
     </div>
   );
 }
@@ -192,10 +195,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
 
   const durationWidth = (duration / 84) * timelineWidth;
 
-  const link = `#${exp.title.replace(/[^\w\s ]/gi, "")}-${exp.role.replace(
-    /[^\w\s]/gi,
-    ""
-  )}`;
+  const link = `#${exp.title}-${exp.role}`.replace(" ", "").toLowerCase();
 
   return (
     <Link href={link}>
