@@ -78,8 +78,6 @@ h3 {
   scroll-behavior: smooth;
 }
 
-
-
 .category-button {
   background-size: 150% auto;
   background-position: left center;
@@ -237,11 +235,6 @@ h3 {
 .experience-card {
   @apply opacity-100;
   transition: opacity 0.5s;
-}
-
-.experience-card.active,
-.experience-card.initial {
-  @apply opacity-100;
 }
 
 .experience-card > :is(.timeline, .year) {
