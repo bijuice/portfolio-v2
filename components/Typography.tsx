@@ -1,8 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion";
 
 type TypographyProps = {
-  text: string
-}
+  text: string;
+};
 
 const container = {
   hidden: {},
@@ -12,7 +12,7 @@ const container = {
       staggerChildren: 0.7,
     },
   },
-}
+};
 
 const item = {
   hidden: { opacity: 0 },
@@ -22,7 +22,7 @@ const item = {
       duration: 0.7,
     },
   },
-}
+};
 
 export function PageHeading({ text }: TypographyProps) {
   const children = text.split(" ").map((word) => {
@@ -31,8 +31,8 @@ export function PageHeading({ text }: TypographyProps) {
         {" "}
         {word + " "}
       </motion.span>
-    )
-  })
+    );
+  });
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ export function PageHeading({ text }: TypographyProps) {
         {children}
       </motion.h1>
     </motion.div>
-  )
+  );
 }
 
 export function PageSubHeading({ text }: TypographyProps) {
@@ -65,19 +65,19 @@ export function PageSubHeading({ text }: TypographyProps) {
         {text}
       </motion.h2>
     </div>
-  )
+  );
 }
 
 export function SectionHeading({
   children,
   styles,
 }: {
-  children: React.ReactNode
-  styles?: string
+  children: React.ReactNode;
+  styles?: string;
 }) {
   return (
     <motion.h2
-      className={`arena leading-loose bg-clip-text text-transparent bg-gradient-to-r text-7xl 2xl:text-7xl ${styles}`}
+      className={`arena leading-loose bg-clip-text text-transparent bg-gradient-to-r text-7xl 2xl:text-8xl ${styles}`}
       viewport={{ once: true }}
       style={{
         backgroundSize: "300% 100%",
@@ -93,9 +93,9 @@ export function SectionHeading({
     >
       {children}
     </motion.h2>
-  )
+  );
 }
 
 export function TextEmphasis({ children }: { children: React.ReactNode }) {
-  return <span className="font-bold text-[1.5em] uppercase">{children}</span>
+  return <span className="font-bold text-[1.5em] uppercase">{children}</span>;
 }

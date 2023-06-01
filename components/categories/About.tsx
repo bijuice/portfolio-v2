@@ -9,6 +9,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SectionContainer from "../containers/SectionContainer";
+import DiscoverMore from "../navigation/DiscoverMore";
 
 const reviews = [
   {
@@ -25,7 +26,7 @@ const reviews = [
     stars: 4,
   },
   {
-    name: "Marvin Mboya",
+    name: "Amisi Kiare",
     position: "Team Lead - Pesapal",
     text: "A 7X developer.",
     stars: 4,
@@ -41,11 +42,7 @@ export default function About() {
 
         <ReviewSection />
 
-        <span className="w-full flex flex-col justify-center items-center absolute left-0 bottom-2 ">
-          <a href="#web-artisan">
-            <ChevronBottom size={35} color="black" />
-          </a>
-        </span>
+        <DiscoverMore id="web-artisan" color="black" />
       </section>
 
       <motion.div className="bg-white min-h-screen">
@@ -185,13 +182,13 @@ export default function About() {
         </SectionContainer>
 
         <SectionContainer>
-          <div className="grid grid-cols-2 w-full h-screen justify-center items-stretch border-t ">
+          <div className="grid grid-cols-2 w-full h-screen justify-center items-stretch border-t px-24 pb-24">
             <h3 className="text-3xl col-span-2 w-full grid place-content-center  bg-white text-black circular circular uppercase text-center ">
               Discover More
             </h3>
 
             <CategoryButton
-              styles="from-pink-500 via-red-500 to-yellow-500"
+              styles="from-pink-500 via-red-500 to-yellow-500 "
               onClick={() => {}}
             >
               experience
@@ -285,7 +282,7 @@ function CategoryButton({
 }) {
   return (
     <motion.button
-      className={`category-button grow text-white  text-3xl font-bold  grid place-content-center  bg-gradient-to-r   text-bold px-4 py-2 transition uppercase ${styles}`}
+      className={`category-button grow text-white  text-3xl font-bold  grid place-content-center  bg-gradient-to-r   text-bold px-4 py-2 transition uppercase  ${styles}`}
       onClick={onClick}
       style={{
         backgroundSize: "300% auto",

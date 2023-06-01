@@ -3,6 +3,8 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import { delay, motion } from "framer-motion";
 import Link from "next/link";
 import SectionContainer from "../containers/SectionContainer";
+import { ChevronBottom } from "../Icons/Chevrons";
+import DiscoverMore from "../navigation/DiscoverMore";
 
 export default function Experience() {
   return (
@@ -16,9 +18,23 @@ export default function Experience() {
           Experience
         </motion.h1>
         <Timeline />
+
+        <DiscoverMore id="pesapal-developer" />
       </section>
 
-      <SectionContainer styles="bg-white">here</SectionContainer>
+      <SectionContainer
+        styles="bg-white p-16 text-black flex-col gap-5"
+        id="pesapal-developer"
+      >
+        <h1 className="text-8xl arena">Pesapal</h1>
+        <h2 className="text-4xl  text-neutral-600">
+          Fullstack Developer {"(2022 - Present)"}
+        </h2>
+      </SectionContainer>
+
+      <SectionContainer styles="bg-white" id="kamilimu-committeemember">
+        here
+      </SectionContainer>
     </div>
   );
 }

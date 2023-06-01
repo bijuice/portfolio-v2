@@ -8,8 +8,8 @@ export default function SectionContainer({
   styles?: string;
 }) {
   return (
-    <div className={`flex w-screen min-h-screen ${styles}`} id={id}>
+    <section className={`flex w-screen min-h-screen ${styles}`} id={id}>
       {children}
-    </div>
+    </section>
   );
 }
