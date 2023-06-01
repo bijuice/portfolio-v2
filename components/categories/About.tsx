@@ -1,13 +1,13 @@
-import Link from "next/link"
-import { ChevronBottom } from "../Icons/Chevrons"
+import Link from "next/link";
+import { ChevronBottom } from "../Icons/Chevrons";
 import {
   PageHeading,
   PageSubHeading,
   SectionHeading,
   TextEmphasis,
-} from "../Typography"
-import { AnimatePresence, motion } from "framer-motion"
-import { useEffect, useState } from "react"
+} from "../Typography";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const reviews = [
   {
@@ -29,33 +29,33 @@ const reviews = [
     text: "A 7X developer.",
     stars: 4,
   },
-]
+];
 
 function ReviewSection() {
-  const [currentReview, setCurrentReview] = useState(0)
+  const [currentReview, setCurrentReview] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentReview((prev) => {
         if (prev === reviews.length - 1) {
-          return 0
+          return 0;
         } else {
-          return prev + 1
+          return prev + 1;
         }
-      })
-    }, 5000)
+      });
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   function renderStars() {
-    let stars = []
+    let stars = [];
 
     for (let i = 0; i < reviews[currentReview].stars; i++) {
-      stars.push(<span className="text-2xl">★</span>)
+      stars.push(<span className="text-2xl">★</span>);
     }
 
-    return stars
+    return stars;
   }
 
   return (
@@ -81,7 +81,7 @@ function ReviewSection() {
       <p className="text-gray-500 text-sm">{reviews[currentReview].name}</p>
       <p className="text-gray-400 text-sm">{reviews[currentReview].position}</p>
     </motion.div>
-  )
+  );
 }
 
 export default function About() {
@@ -270,7 +270,7 @@ export default function About() {
         </SectionContainer>
       </motion.div>
     </div>
-  )
+  );
 }
 
 function CategoryButton({
@@ -278,9 +278,9 @@ function CategoryButton({
   onClick,
   styles,
 }: {
-  children: React.ReactNode
-  onClick: () => void
-  styles: string
+  children: React.ReactNode;
+  onClick: () => void;
+  styles: string;
 }) {
   return (
     <motion.button
@@ -292,42 +292,42 @@ function CategoryButton({
     >
       {children}
     </motion.button>
-  )
+  );
 }
 
 function SectionContainer({
   children,
   id,
 }: {
-  children: React.ReactNode
-  id?: string
+  children: React.ReactNode;
+  id?: string;
 }) {
   return (
     <div className="flex w-full min-h-screen" id={id}>
       {children}
     </div>
-  )
+  );
 }
 
 function BlackSection({
   children,
   direction,
 }: {
-  children: React.ReactNode
-  direction: "left" | "right"
+  children: React.ReactNode;
+  direction: "left" | "right";
 }) {
   const styles =
-    direction === "left" ? "justify-end text-right" : "justify-start text-left"
+    direction === "left" ? "justify-end text-right" : "justify-start text-left";
 
   return (
     <div className={`grow w-1/2 bg-black  px-24 flex items-center ${styles}`}>
       {children}
     </div>
-  )
+  );
 }
 
 function WhiteSection({ children }: { children: React.ReactNode }) {
-  return <div className="bg-white w-1/2  text-black ">{children}</div>
+  return <div className="bg-white w-1/2  text-black ">{children}</div>;
 }
 
 function ImageContainer({
@@ -336,10 +336,10 @@ function ImageContainer({
   title,
   description,
 }: {
-  src: string
-  link?: string
-  title: string
-  description?: string
+  src: string;
+  link?: string;
+  title: string;
+  description?: string;
 }) {
   return (
     <div
@@ -364,5 +364,5 @@ function ImageContainer({
         </motion.div>
       </Link>
     </div>
-  )
+  );
 }
