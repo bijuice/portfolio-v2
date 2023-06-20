@@ -26,7 +26,7 @@ const experiences: Experience[] = [
       "TypeScript",
     ],
     description:
-      "<ul>\n  <li>Worked on several frontend and fullstack projects using C#, .NET, React.js and Next.js</li>\n  <li>Performed training on Human Centered Desgin in software development.</li>\n  <li>Developed script that used AI to generate change request forms from GitHub Pull Requests.</li>\n  <li>Mentored intern for three months, delivering comprehensive guidance and professional training on React development.</li>\n  <li>Worked on 3 major projects:</li>\n  <ul>\n    <li>\n      Sabi Enterprise: This project acts as a proxy between Pesapal POS terminals and merchant systems; forwarding incoming transactions to different integrations such as Oracle, KopoKopo, or REST applications. Used by over 70 merchants including KFC and Art Caffe. Built using C# and ASP.NET.\n      <ul>\n        <li>Tasked with improving legacy code and adding new features.</li>\n        <li>Redesigned database structure to be easier to use and more maintainable.</li>\n        <li>Optimized backend APIs to eliminate inefficiencies (such as n+1 problems). In some cases improving response times by over 90%</li>\n        <li>Rebuilt frontend dashboard using ASP.NET.</li>\n        <li>Integrated Pesapal's single sign on authentication.</li>\n      </ul>\n    </li>\n    <li>\n      Payment Pages: A fullstack project that allows merchants to generate their own payment links to accept online payments using Pesapal's API. Built using Next.js and .NET Core.\n      <ul>\n        <li>Built frontend web application from scratch using Next.js.</li>\n        <li>Integrated Pesapal's single sign on authentication using Next Auth.</li>\n        <li>Implemented the ability to create payment links with custom form fields, logos, and colors. This creation process featured a real time preview of the page.</li>\n        <li>Created customer facing payment links that adhered to the specifications defined in the payment link process.</li>\n        <li>Inherited backend codebase and extended functionalities of API.</li>\n      </ul>\n    </li>\n    <li>\n      Subscitpions Dashboard: A frontend Next.JS project that allows customers to manage their recurring payments and subscriptions (such as monthly internet bills and cellphone airtime purchases).\n      <ul>\n        <li>Created frontend dashboard.</li>\n        <li>Integrated Pesapal's single sign on authentication using Next Auth.</li>\n      </ul>\n    </li>\n  </ul>\n</ul>",
+      "<ul>\n  <li>Worked on several frontend and fullstack projects using C#, .NET, React.js and Next.js</li>\n  <li>Performed training on Human Centered Desgin in software development.</li>\n  <li>Developed script that used AI to generate change request forms from GitHub Pull Requests.</li>\n  <li>Mentored intern for three months, delivering comprehensive guidance and professional training on React development.</li>\n ",
   },
   {
     startYear: 2022,
@@ -40,7 +40,7 @@ const experiences: Experience[] = [
     ],
     skills: ["Tailwind", "Git", "CSS", "JAMstack", "Next.js", "React.js"],
     description: `<ul>
-  <li>Redesigned Africa Law Partner's website: <a href="https://africalawpartners.com/">https://africalawpartners.com/</a></li>
+  <li>Redesigned Africa Law Partner's website: <a target="_blank" href="https://africalawpartners.com/">https://africalawpartners.com/</a></li>
   <li>Rebuilt website from server rendered wordpress website to custom built static site using Next.js and React.js.</li>
   <li>Migrated data from relational database on a single server to a distributed system on Contentful.</li>
   <li>Optimized performance of site; from a lighthouse score of 35 to 97.</li>
@@ -60,7 +60,7 @@ const experiences: Experience[] = [
   <li>Participated in top level decision making for the program.</li>
   <li>Guided creation of 5 year strategic plan.</li>
   <li>Participated in fundraising for the program.</li>
-  <li>Taught a zero-to-hero course on web development to four mentees: <a href="https://github.com/bijuice/intro-to-react">https://github.com/bijuice/intro-to-react</a></li>
+  <li>Taught a zero-to-hero course on web development to four mentees: <a target="_blank" href="https://github.com/bijuice/intro-to-react">https://github.com/bijuice/intro-to-react</a></li>
   <li>Provided one-on-one consultation/mentorship sessions with over ten mentees on topics such as mental health, web development, career planning, and confidence building.</li>
   <li>Guided a group of four mentees on an intensive eight month long mentorship program.</li>
   <li>Had over ten sessions with the mentee group on various topics such as CV writing, scholarship applications, confidence building, public speaking, mental health, and more.</li>
@@ -77,7 +77,12 @@ const experiences: Experience[] = [
       "Concentration in Forensics and Cyber Security",
     ],
     skills: ["Mentorship", "Leadership"],
-    description: ``,
+    description: `
+    <ul>
+  <li>Underwent an intense 8 month mentorship program that focussed on holistic learning.</li>
+  <li>Obtained skills on public speaking, scholarship writing, confidence building, and innovation.</li>
+  <li>Completed Cybersecurity ICT track.</li>
+</ul>`,
   },
 
   {
@@ -137,7 +142,11 @@ const experiences: Experience[] = [
       "Concentration in Forensics and Cyber Security",
     ],
     skills: ["Cybersecurity", "Leadership", "Public Speaking"],
-    description: ``,
+    description: `<ul>
+  <li>Obtained a bachelor of science in Applied Computer Technology.</li>
+  <li>Underwent a concentration in Forensic Information Technology and Cybercrime.</li>
+  <li>Planned events and conducted workshops for the Google Student Developer Club.</li>
+</ul>`,
   },
   {
     startYear: 2016,

@@ -122,7 +122,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           color={currentColor}
         />
 
-        <div className="z-20">
+        <div className="z-20 hidden md:block">
           <NavigationButton
             onClick={nextCategory}
             position="right"

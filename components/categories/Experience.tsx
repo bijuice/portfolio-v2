@@ -28,7 +28,7 @@ export default function ExperiencePage() {
         <DiscoverMore id="pesapal-developer" />
       </section>
 
-      <SectionContainer styles="bg-white p-16 md:px-20 text-black !grid lg:grid-cols-2 gap-16  ">
+      <SectionContainer styles="bg-white  pt-10 pb-16 px-10 md:px-20 text-black !grid lg:grid-cols-2 gap-x-16   ">
         {experiences.map((exp) => {
           return <ExperienceSection key={formatLink(exp)} exp={exp} />;
         })}
@@ -43,9 +43,9 @@ export default function ExperiencePage() {
 
 function ExperienceSection({ exp }: { exp: Experience }) {
   return (
-    <div id={formatLink(exp)} className="flex flex-col gap-7 ">
-      <h1 className="text-4xl md:text-6xl avant-garde">{exp.title}</h1>
-      <h2 className="text-xl md:text-3xl  text-gray-500">
+    <div id={formatLink(exp)} className="flex flex-col gap-7 py-14">
+      <h1 className="text-4xl md:text-5xl avant-garde">{exp.title}</h1>
+      <h2 className="text-xl md:text-2xl  ">
         {exp.role} {"("}
         {exp.startYear}
         {exp.startYear !== exp.endYear && (
@@ -64,7 +64,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       </div>
 
       <div
-        className=" description"
+        className=" max-w-[70ch]"
         dangerouslySetInnerHTML={{
           __html: exp.description,
         }}
@@ -156,10 +156,10 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
   return (
     <Link href={"#" + formatLink(exp)}>
       <div
-        className={` flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] `}
+        className={` flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] text-white `}
       >
         <div className={`experience-card-title `}>
-          <p className="font-extrabold text-lg">{exp.title}</p>
+          <p className="avant-garde text-lg tracking-wider ">{exp.title}</p>
           <p className="text-gray-400 text-sm">{exp.role}</p>
         </div>
 
@@ -184,7 +184,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
 function Line() {
   return (
     <div
-      className="bg-white w-full h-[2.5px]  timeline relative"
+      className="bg-white w-full h-[2px]  timeline relative"
       id="timeline"
     ></div>
   );

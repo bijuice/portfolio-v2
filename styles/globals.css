@@ -72,6 +72,14 @@ h3 {
   font-family: "Arena-Round", sans-serif;
 } */
 
+ul {
+  @apply list-disc;
+}
+
+a {
+  @apply text-gray-500 leading-loose;
+}
+
 .circular {
   font-family: "Circular", sans-serif;
 }
