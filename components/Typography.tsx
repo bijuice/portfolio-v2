@@ -48,7 +48,7 @@ export function PageHeading({ text }: TypographyProps) {
 export function PageSubHeading({ text }: TypographyProps) {
   return (
     <div
-      className={`overflow-hidden text-xl 2xl:text-4xl text-center font-['Circular'] italic`}
+      className={`overflow-hidden text-xl 2xl:text-4xl text-center font-['Circular'] italic text-gray-500`}
     >
       <motion.h2
         initial={{
