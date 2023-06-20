@@ -1,22 +1,22 @@
-import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import CategoryContainer from "@/components/CategoryContainer"
-import { CloseButton, NavigationButton } from "@/components/Buttons"
-import categories from "@/data/categories"
-import Link from "next/link"
-import About from "@/components/categories/About"
-import Experience from "@/components/categories/Experience"
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import CategoryContainer from "@/components/CategoryContainer";
+import { CloseButton, NavigationButton } from "@/components/Buttons";
+import categories from "@/data/categories";
+import Link from "next/link";
+import About from "@/components/categories/About";
+import Experience from "@/components/categories/Experience";
 
-const isProduction = process.env.NODE_ENV === "production"
+const isProduction = process.env.NODE_ENV === "production";
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("ALL")
+  const [activeCategory, setActiveCategory] = useState<string>("About");
 
   function setCategory(category: string) {
-    setActiveCategory(category)
+    setActiveCategory(category);
   }
 
-  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(isProduction)
+  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(isProduction);
 
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
@@ -34,7 +34,7 @@ export default function Home() {
           <button
             className="mt-7 bg-teal-800 text-white p-3 w-full max-w-[600px]"
             onClick={() => {
-              setShowDisclaimer(false)
+              setShowDisclaimer(false);
             }}
           >
             I don{"'"}t mind. Show it to me anyways {":)"}
@@ -62,47 +62,47 @@ export default function Home() {
         </>
       )}
     </main>
-  )
+  );
 }
 
 type CategoryViewProps = {
-  activeCategory: string
-  setCategory(category: string): void
-}
+  activeCategory: string;
+  setCategory(category: string): void;
+};
 
 function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   function nextCategory() {
-    let currentIndex = categories.findIndex((c) => c.name === activeCategory)
+    let currentIndex = categories.findIndex((c) => c.name === activeCategory);
 
-    currentIndex = currentIndex === categories.length - 1 ? -1 : currentIndex
+    currentIndex = currentIndex === categories.length - 1 ? -1 : currentIndex;
 
-    const nextCategory = categories[currentIndex + 1]
+    const nextCategory = categories[currentIndex + 1];
 
-    setCategory(nextCategory.name)
+    setCategory(nextCategory.name);
   }
 
   function prevCategory() {
-    let currentIndex = categories.findIndex((c) => c.name === activeCategory)
+    let currentIndex = categories.findIndex((c) => c.name === activeCategory);
 
-    currentIndex = currentIndex === 0 ? categories.length - 1 : currentIndex
+    currentIndex = currentIndex === 0 ? categories.length - 1 : currentIndex;
 
-    const nextCategory = categories[currentIndex - 1]
+    const nextCategory = categories[currentIndex - 1];
 
-    setCategory(nextCategory.name)
+    setCategory(nextCategory.name);
   }
 
   function resolveView() {
     switch (activeCategory) {
       case "About":
-        return <About />
+        return <About />;
       case "Experience":
-        return <Experience />
+        return <Experience />;
       default:
-        return <About />
+        return <About />;
     }
   }
 
-  const currentColor = activeCategory === "Experience" ? "white" : "black"
+  const currentColor = activeCategory === "Experience" ? "white" : "black";
 
   return (
     <AnimatePresence>
@@ -117,24 +117,27 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
       >
         <CloseButton
           onClick={() => {
-            setCategory("ALL")
+            setCategory("ALL");
           }}
           color={currentColor}
         />
 
         <div className="z-20">
-          <NavigationButton onClick={nextCategory} position="right"
-          color={currentColor}
+          <NavigationButton
+            onClick={nextCategory}
+            position="right"
+            color={currentColor}
           />
 
-          <NavigationButton onClick={prevCategory} position="left"
-          color={currentColor}
+          <NavigationButton
+            onClick={prevCategory}
+            position="left"
+            color={currentColor}
           />
-         
         </div>
 
         <div className="w-full  ">{resolveView()}</div>
       </motion.div>
     </AnimatePresence>
-  )
+  );
 }
