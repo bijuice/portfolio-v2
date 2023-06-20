@@ -56,7 +56,9 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       <div className="flex flex-wrap gap-4 uppercase border-b pb-2  border-black px-1">
         {exp.skills.map((skill) => {
           return (
-            <span className="text-xs font-bold avant-garde ">{skill}</span>
+            <span key={skill} className="text-xs font-bold avant-garde ">
+              {skill}
+            </span>
           );
         })}
       </div>
