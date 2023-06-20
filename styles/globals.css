@@ -32,6 +32,12 @@
   font-weight: 900;
 }
 
+@font-face {
+  font-family: "AvantGarde";
+  src: url("../public/fonts/AvantGarde/ITCAvantGardeStd-Bk.ttf");
+  font-weight: 400;
+}
+
 *,
 *::before,
 *::after {
@@ -70,8 +76,8 @@ h3 {
   font-family: "Circular", sans-serif;
 }
 
-.arena {
-  font-family: "Arena-Round", sans-serif;
+.avant-garde {
+  font-family: "AvantGarde", sans-serif;
 }
 
 .category-view {

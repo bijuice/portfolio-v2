@@ -13,7 +13,7 @@ export default function Experience() {
         <motion.h1
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 1, delay: 2 }}
-          className="text-white text-8xl arena absolute mb-20 overflow-hidden "
+          className="text-white text-8xl avant-garde absolute mb-20 overflow-hidden "
         >
           Experience
         </motion.h1>
@@ -26,7 +26,7 @@ export default function Experience() {
         styles="bg-white p-16 text-black flex-col gap-5"
         id="pesapal-developer"
       >
-        <h1 className="text-8xl arena">Pesapal</h1>
+        <h1 className="text-8xl avant-garde">Pesapal</h1>
         <h2 className="text-4xl  text-neutral-600">
           Fullstack Developer {"(2022 - Present)"}
         </h2>

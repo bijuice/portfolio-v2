@@ -36,7 +36,7 @@ export function PageHeading({ text }: TypographyProps) {
 
   return (
     <motion.div
-      className={`mt-[25vh] md:mt-[40vh] overflow-hidden text-5xl  md:text-7xl 2xl:text-8xl text-center arena `}
+      className={`mt-[25vh] md:mt-[40vh] overflow-hidden text-5xl  md:text-7xl 2xl:text-8xl text-center avant-garde `}
     >
       <motion.h1 variants={container} initial="hidden" animate="show">
         {children}
@@ -77,7 +77,7 @@ export function SectionHeading({
 }) {
   return (
     <motion.h2
-      className={`arena leading-loose bg-clip-text text-transparent bg-gradient-to-r text-7xl 2xl:text-8xl ${styles}`}
+      className={`avant-garde leading-loose bg-clip-text text-transparent bg-gradient-to-r text-7xl 2xl:text-8xl ${styles}`}
       viewport={{ once: true }}
       style={{
         backgroundSize: "300% 100%",
