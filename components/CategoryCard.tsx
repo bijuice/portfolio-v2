@@ -1,30 +1,30 @@
-import Category from "@/types/Category"
-import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import Category from "@/types/Category";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type CategoryCardProps = {
-  height: number
-  width: number
-  isDragging: boolean
-  index: number
-  category: Category
-  activeCategory: string
-  setCategory(category: string): void
-  pos: number
-}
+  height: number;
+  width: number;
+  isDragging: boolean;
+  index: number;
+  category: Category;
+  activeCategory: string;
+  setCategory(category: string): void;
+  pos: number;
+};
 
-type CategoryState = "all" | "active" | "inactive"
+type CategoryState = "all" | "active" | "inactive";
 
 type Properties = {
-  height: number
-  width: number
-  maxHeight: string | number
-  maxWidth: string | number
-  x: number
-  y: number
-  left: number
-  zIndex: number
-}
+  height: number;
+  width: number;
+  maxHeight: string | number;
+  maxWidth: string | number;
+  x: number;
+  y: number;
+  left: number;
+  zIndex: number;
+};
 
 const defaultProperties: Properties = {
   height: 10000,
@@ -35,7 +35,7 @@ const defaultProperties: Properties = {
   y: 0,
   left: 0,
   zIndex: 0,
-}
+};
 
 export default function CategoryCard({
   isDragging,
@@ -49,18 +49,18 @@ export default function CategoryCard({
 }: CategoryCardProps) {
   function resolveCategoryState(): CategoryState {
     if (activeCategory === "ALL") {
-      return "all"
+      return "all";
     } else if (activeCategory === category.name) {
-      return "active"
+      return "active";
     }
-    return "inactive"
+    return "inactive";
   }
 
   //generate use state from properties object
-  const [properties, setProperties] = useState<Properties>(defaultProperties)
+  const [properties, setProperties] = useState<Properties>(defaultProperties);
 
   const animProperties = () => {
-    const container = document.getElementById("card-container")
+    const container = document.getElementById("card-container");
     if (resolveCategoryState() === "active") {
       setProperties({
         ...properties,
@@ -68,17 +68,17 @@ export default function CategoryCard({
         maxWidth: "100vw",
         zIndex: 1,
         x: container!.getBoundingClientRect().left + index * 40 || 0,
-      })
+      });
     } else if (resolveCategoryState() === "inactive") {
-      setProperties({ ...properties, maxHeight: "100vh", maxWidth: 0 })
+      setProperties({ ...properties, maxHeight: "100vh", maxWidth: 0 });
     } else {
-      setProperties(defaultProperties)
+      setProperties(defaultProperties);
     }
-  }
+  };
 
   useEffect(() => {
-    animProperties()
-  }, [activeCategory])
+    animProperties();
+  }, [activeCategory]);
 
   return (
     <div>
@@ -90,7 +90,7 @@ export default function CategoryCard({
         } `}
         onClick={() => {
           if (!isDragging) {
-            setCategory(category.name)
+            setCategory(category.name);
           }
         }}
         animate={{
@@ -101,11 +101,11 @@ export default function CategoryCard({
           zIndex: properties.zIndex,
           x: -properties.x,
         }}
-      
       >
         <motion.div
           className=" w-[100vw] h-screen absolute "
           style={{
+            backgroundColor: category.color,
             backgroundImage: `url(${category.src})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -124,5 +124,5 @@ export default function CategoryCard({
         <motion.h1 className="text-[2em] py-3">{category.name}</motion.h1>
       )}
     </div>
-  )
+  );
 }

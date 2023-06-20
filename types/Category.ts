@@ -1,6 +1,7 @@
 type Category = {
-  name: string
-  src: string
-}
+  name: string;
+  src: string;
+  color: string;
+};
 
-export default Category
+export default Category;

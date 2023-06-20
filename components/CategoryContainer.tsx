@@ -1,45 +1,45 @@
-import useWindowDimensions from "@/hooks/useWindowDimensions"
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import CategoryCard from "./CategoryCard"
-import categories from "@/data/categories"
+import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import CategoryCard from "./CategoryCard";
+import categories from "@/data/categories";
 
 type CategoryContainerProps = {
-  activeCategory: string
-  setCategory(category: string): void
-}
+  activeCategory: string;
+  setCategory(category: string): void;
+};
 
 export default function CategoryContainer({
   activeCategory,
   setCategory,
 }: CategoryContainerProps) {
-  const [width, height] = useWindowDimensions()
+  const [width, height] = useWindowDimensions();
 
-  const [isDragging, setIsDragging] = useState(false)
+  const [isDragging, setIsDragging] = useState(false);
 
-  const [x, setX] = useState(0)
+  const [x, setX] = useState(0);
 
-  const [percentage, setPercentage] = useState(0)
+  const [percentage, setPercentage] = useState(0);
 
   function scrollContainer(d: number) {
-    if (activeCategory !== "ALL") return
+    if (activeCategory !== "ALL") return;
 
-    let delta: number = 0
+    let delta: number = 0;
     if (d > 0 && x > -width) {
-      delta = 100
+      delta = 100;
     }
 
     if (d < 0 && x < 0) {
-      delta = -100
+      delta = -100;
     }
 
-    setX((prev) => prev - delta)
+    setX((prev) => prev - delta);
 
-    const n = percentage - delta * 0.15
+    const n = percentage - delta * 0.15;
 
-    const newPercentage = n > 100 ? 100 : n < -100 ? -100 : n
+    const newPercentage = n > 100 ? 100 : n < -100 ? -100 : n;
 
-    setPercentage(newPercentage)
+    setPercentage(newPercentage);
   }
 
   return (
@@ -55,16 +55,15 @@ export default function CategoryContainer({
       onDragStart={() => setIsDragging(true)}
       onDragEnd={() => setIsDragging(false)}
       onDrag={(e, info) => {
-        const percentage = (info.offset.x / width) * 100
+        const percentage = (info.offset.x / width) * 100;
 
-        setPercentage(percentage)
+        setPercentage(percentage);
       }}
       animate={{
         x,
       }}
       transition={{
         type: "tween",
-        damping: 50,
       }}
       onWheel={(e) => scrollContainer(e.deltaY)}
     >
@@ -82,5 +81,5 @@ export default function CategoryContainer({
         />
       ))}
     </motion.div>
-  )
+  );
 }

@@ -6,6 +6,9 @@ import categories from "@/data/categories";
 import Link from "next/link";
 import AboutPage from "@/components/categories/About";
 import ExperiencePage from "@/components/categories/Experience";
+import SkillsPage from "@/components/categories/SkillsPage";
+import ProjectsPage from "@/components/categories/ProjectsPage";
+import PoetryPage from "@/components/categories/PoetryPage";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -97,12 +100,20 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
         return <AboutPage />;
       case "Experience":
         return <ExperiencePage />;
+      case "Skills":
+        return <SkillsPage />;
+      case "Projects":
+        return <ProjectsPage />;
+      case "Poetry":
+        return <PoetryPage />;
       default:
         return <AboutPage />;
     }
   }
 
-  const currentColor = activeCategory === "Experience" ? "white" : "black";
+  const whities = ["Experience", "Skills", "Projects"];
+
+  const currentColor = whities.includes(activeCategory) ? "white" : "black";
 
   return (
     <AnimatePresence>
