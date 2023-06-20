@@ -4,7 +4,7 @@ import CategoryContainer from "@/components/CategoryContainer";
 import { CloseButton, NavigationButton } from "@/components/Buttons";
 import categories from "@/data/categories";
 import Link from "next/link";
-import About from "@/components/categories/About";
+import AboutPage from "@/components/categories/About";
 import ExperiencePage from "@/components/categories/Experience";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -94,11 +94,11 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   function resolveView() {
     switch (activeCategory) {
       case "About":
-        return <About />;
+        return <AboutPage />;
       case "Experience":
         return <ExperiencePage />;
       default:
-        return <About />;
+        return <AboutPage />;
     }
   }
 
