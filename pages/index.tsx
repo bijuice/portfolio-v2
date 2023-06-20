@@ -5,7 +5,7 @@ import { CloseButton, NavigationButton } from "@/components/Buttons";
 import categories from "@/data/categories";
 import Link from "next/link";
 import About from "@/components/categories/About";
-import Experience from "@/components/categories/Experience";
+import ExperiencePage from "@/components/categories/Experience";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -96,7 +96,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
       case "About":
         return <About />;
       case "Experience":
-        return <Experience />;
+        return <ExperiencePage />;
       default:
         return <About />;
     }

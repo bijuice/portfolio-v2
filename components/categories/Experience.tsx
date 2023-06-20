@@ -3,13 +3,19 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import { delay, motion } from "framer-motion";
 import Link from "next/link";
 import SectionContainer from "../containers/SectionContainer";
-import { ChevronBottom } from "../Icons/Chevrons";
+import { ChevronTop } from "../Icons/Chevrons";
 import DiscoverMore from "../navigation/DiscoverMore";
+import experiences from "@/data/experiences";
+import { Experience } from "@/types/Experience";
+import formatLink from "@/utilities/formatters";
 
-export default function Experience() {
+export default function ExperiencePage() {
   return (
     <div className="category-view max-h-screen h-screen select-none relative  bg-neutral-950 overflow-y-auto overflow-x-hidden">
-      <section className="h-screen relative flex items-center mx-auto w-[85vw] font-bold pt-32">
+      <section
+        id="top"
+        className="h-screen relative flex items-center mx-auto w-[85vw] font-bold pt-32"
+      >
         <motion.h1
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 1, delay: 2 }}
@@ -22,115 +28,48 @@ export default function Experience() {
         <DiscoverMore id="pesapal-developer" />
       </section>
 
-      <SectionContainer
-        styles="bg-white p-16 text-black flex-col gap-5"
-        id="pesapal-developer"
-      >
-        <h1 className="text-8xl avant-garde">Pesapal</h1>
-        <h2 className="text-4xl  text-neutral-600">
-          Fullstack Developer {"(2022 - Present)"}
-        </h2>
+      <SectionContainer styles="bg-white p-16 md:px-20 text-black !grid lg:grid-cols-2 gap-16  ">
+        {experiences.map((exp) => {
+          return <ExperienceSection key={formatLink(exp)} exp={exp} />;
+        })}
       </SectionContainer>
 
-      <SectionContainer styles="bg-white" id="kamilimu-committeemember">
-        here
-      </SectionContainer>
+      <Link href="#top" className="fixed bottom-5 right-20 cursor-pointer ">
+        <ChevronTop size={35} color="black" />
+      </Link>
     </div>
   );
 }
 
-type Experience = {
-  year: number;
-  //in months
-  duration: number;
-  title: string;
-  role: string;
-  resps: string[];
-};
+function ExperienceSection({ exp }: { exp: Experience }) {
+  return (
+    <div id={formatLink(exp)} className="flex flex-col gap-7 ">
+      <h1 className="text-4xl md:text-6xl avant-garde">{exp.title}</h1>
+      <h2 className="text-xl md:text-3xl  text-gray-500">
+        {exp.role} {"("}
+        {exp.startYear}
+        {exp.startYear !== exp.endYear && (
+          <span> - {exp.endYear || "Present"}</span>
+        )}
+        {")"}
+      </h2>
+      <div className="flex flex-wrap gap-4 uppercase border-b pb-2  border-black px-1">
+        {exp.skills.map((skill) => {
+          return (
+            <span className="text-xs font-bold avant-garde ">{skill}</span>
+          );
+        })}
+      </div>
 
-const experiences: Experience[] = [
-  {
-    year: 2017,
-    duration: 48,
-    title: "USIU",
-    role: "Student",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-  {
-    year: 2018,
-    duration: 24,
-    title: "iPhones Kenya",
-    role: "Founder",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-
-  {
-    year: 2020,
-    duration: 40,
-    title: "Culture Capture",
-    role: "Co-founder",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-  {
-    year: 2020,
-    duration: 12,
-    title: "KamiLimu",
-    role: "Student",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-  {
-    year: 2021,
-    duration: 8,
-    title: "Hisa",
-    role: "Developer",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-  {
-    year: 2021,
-    duration: 26,
-    title: "KamiLimu",
-    role: "Committee Member",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-  {
-    year: 2022,
-    duration: 3,
-    title: "Africa Law Partners",
-    role: "Freelance",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-  {
-    year: 2022,
-    duration: 16,
-    title: "Pesapal",
-    role: "Developer",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-  },
-];
+      <div
+        className=" description"
+        dangerouslySetInnerHTML={{
+          __html: exp.description,
+        }}
+      ></div>
+    </div>
+  );
+}
 
 function Timeline() {
   const [timelineWidth, setTimelineWidth] = useState(1500);
@@ -151,7 +90,7 @@ function Timeline() {
     let dots: React.ReactNode[] = [];
 
     for (let i = a; i < b; i++) {
-      const exps = experiences.filter((e) => e.year === i);
+      const exps = experiences.filter((e) => e.startYear === i);
 
       const cards = exps.map((e) => {
         return <ExpCard key={e.title} exp={e} timelineWidth={timelineWidth} />;
@@ -199,7 +138,8 @@ type ExpCardProps = {
 function ExpCard({ exp, timelineWidth }: ExpCardProps) {
   const year = new Date().getFullYear();
 
-  const duration = exp.duration === 0 ? (year - exp.year) * 12 : exp.duration;
+  const duration =
+    exp.duration === 0 ? (year - exp.startYear) * 12 : exp.duration;
 
   function monthsToYears() {
     const dur = (duration / 12).toFixed(1);
@@ -211,10 +151,8 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
 
   const durationWidth = (duration / 84) * timelineWidth;
 
-  const link = `#${exp.title}-${exp.role}`.replace(" ", "").toLowerCase();
-
   return (
-    <Link href={link}>
+    <Link href={"#" + formatLink(exp)}>
       <div
         className={` flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] `}
       >

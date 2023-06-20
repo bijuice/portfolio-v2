@@ -8,7 +8,7 @@ export default function SectionContainer({
   styles?: string;
 }) {
   return (
-    <section className={`flex w-screen min-h-screen ${styles}`} id={id}>
+    <section className={`flex  min-h-screen ${styles}`} id={id}>
       {children}
     </section>
   );
