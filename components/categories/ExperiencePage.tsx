@@ -11,7 +11,7 @@ import formatLink from "@/utilities/formatters";
 
 export default function ExperiencePage() {
   return (
-    <div className="category-view max-h-screen h-screen select-none relative  bg-neutral-950 overflow-y-auto overflow-x-hidden">
+    <div className="category-view max-h-screen h-screen select-none relative  bg-neutral-900 overflow-y-auto overflow-x-hidden">
       <section
         id="top"
         className="h-screen relative flex items-center mx-auto w-[85vw] font-bold pt-32"
@@ -28,14 +28,14 @@ export default function ExperiencePage() {
         <DiscoverMore id="pesapal-developer" />
       </section>
 
-      <SectionContainer styles="bg-white  pt-10 pb-16 px-10 md:px-20 text-black !grid lg:grid-cols-2 gap-x-16   ">
+      <SectionContainer styles="bg-neutral-900  pt-10 pb-16 px-10 md:px-20 text-black  flex-col gap-x-16 items-center  ">
         {experiences.map((exp) => {
           return <ExperienceSection key={formatLink(exp)} exp={exp} />;
         })}
       </SectionContainer>
 
       <Link href="#top" className="fixed bottom-5 right-20 cursor-pointer ">
-        <ChevronTop size={35} color="black" />
+        <ChevronTop size={35} color="white" />
       </Link>
     </div>
   );
@@ -43,9 +43,12 @@ export default function ExperiencePage() {
 
 function ExperienceSection({ exp }: { exp: Experience }) {
   return (
-    <div id={formatLink(exp)} className="flex flex-col gap-7 py-14">
-      <h1 className="text-4xl md:text-5xl avant-garde">{exp.title}</h1>
-      <h2 className="text-xl md:text-2xl  ">
+    <div
+      id={formatLink(exp)}
+      className="flex flex-col gap-7 py-14 w-[60ch] basis-1 text-neutral-100 "
+    >
+      <h1 className="text-4xl md:text-5xl avant-garde ">{exp.title}</h1>
+      <h2 className="text-xl md:text-2xl text-neutral-300  ">
         {exp.role} {"("}
         {exp.startYear}
         {exp.startYear !== exp.endYear && (
@@ -53,7 +56,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
         )}
         {")"}
       </h2>
-      <div className="flex flex-wrap gap-4 uppercase border-b pb-2  border-black px-1">
+      <div className="flex flex-wrap gap-4 uppercase border-b pb-6  border-neutral-50 px-1">
         {exp.skills.map((skill) => {
           return (
             <span key={skill} className="text-xs font-bold avant-garde ">
@@ -64,7 +67,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       </div>
 
       <div
-        className=" max-w-[70ch]"
+        className=" max-w-[60ch] text-white"
         dangerouslySetInnerHTML={{
           __html: exp.description,
         }}

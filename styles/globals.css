@@ -73,11 +73,11 @@ h3 {
 } */
 
 ul {
-  @apply list-disc;
+  @apply list-disc ml-4;
 }
 
 a {
-  @apply text-gray-500 leading-loose;
+  @apply text-neutral-300 leading-loose;
 }
 
 .circular {
@@ -199,7 +199,7 @@ a {
 }
 
 .dot {
-  @apply bg-black;
+  @apply bg-neutral-900;
   transform: translateX(-100vw);
   transform-origin: left;
   animation-name: dot-animation;

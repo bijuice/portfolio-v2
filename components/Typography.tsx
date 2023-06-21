@@ -77,7 +77,7 @@ export function SectionHeading({
 }) {
   return (
     <motion.h2
-      className={`avant-garde  bg-clip-text text-transparent bg-gradient-to-r text-6xl 2xl:text-8xl leading-relaxed ${styles}`}
+      className={`avant-garde  bg-clip-text text-transparent bg-gradient-to-r text-6xl 2xl:text-8xl leading-relaxed  text-white`}
       viewport={{ once: true }}
       style={{
         backgroundSize: "300% 100%",

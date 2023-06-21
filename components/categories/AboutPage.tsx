@@ -187,30 +187,20 @@ export default function AboutPage() {
               Discover More
             </h3>
 
-            <CategoryButton
-              styles="from-pink-500 via-red-500 to-yellow-500 "
-              onClick={() => {}}
-            >
-              experience
-            </CategoryButton>
-            <CategoryButton
-              styles="from-green-300 via-blue-500 to-purple-600"
-              onClick={() => {}}
-            >
-              skills
-            </CategoryButton>
-            <CategoryButton
-              styles="from-red-200 via-red-300 to-yellow-200"
-              onClick={() => {}}
-            >
-              projects
-            </CategoryButton>
-            <CategoryButton
-              styles="from-green-300 via-yellow-300 to-pink-300"
-              onClick={() => {}}
-            >
-              poetry
-            </CategoryButton>
+            <div className="w-full ">
+              <CategoryButton styles=" " onClick={() => {}}>
+                experience
+              </CategoryButton>
+              <CategoryButton styles="" onClick={() => {}}>
+                skills
+              </CategoryButton>
+              <CategoryButton styles="" onClick={() => {}}>
+                projects
+              </CategoryButton>
+              <CategoryButton styles="" onClick={() => {}}>
+                poetry
+              </CategoryButton>
+            </div>
           </div>
         </SectionContainer>
       </motion.div>
@@ -282,7 +272,7 @@ function CategoryButton({
 }) {
   return (
     <motion.button
-      className={`category-button grow text-white  text-3xl font-bold  grid place-content-center  bg-gradient-to-r   text-bold px-4 py-2 transition uppercase  ${styles}`}
+      className={`category-button grow text-black  text-3xl font-bold  grid place-content-center  text-bold px-4 py-2 transition uppercase  ${styles}`}
       onClick={onClick}
       style={{
         backgroundSize: "300% auto",
