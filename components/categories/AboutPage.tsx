@@ -33,12 +33,14 @@ const reviews = [
   },
 ];
 
-export default function AboutPage() {
+type AboutPageProps = { setCategory: (category: string) => void };
+
+export default function AboutPage({ setCategory }: AboutPageProps) {
   return (
     <div className="category-view   max-h-screen w-screen overflow-x-hidden overflow-y-auto">
       <section className="flex flex-col items-center  gap-5  h-screen relative bg-white text-black">
         <PageHeading text="ABDUL RAHMAN REHMTULLA" />
-        <PageSubHeading text="relentless improvement" />
+        <PageSubHeading text="fullstack, cat dad, mentor, poet" />
 
         <ReviewSection />
 
@@ -136,7 +138,7 @@ export default function AboutPage() {
         </SectionContainer>
         <SectionContainer>
           <WhiteSection>
-            <div className="flex flex-col gap-7 w-full h-full p-24 justify-center text-right text-lg 2xl:text-3xl border-r">
+            <div className="flex flex-col gap-7 w-full h-full p-24 justify-center text-right text-lg 2xl:text-3xl ">
               <h4 className="text-4xl">Legacy</h4>
               <div>
                 <p>
@@ -182,22 +184,42 @@ export default function AboutPage() {
         </SectionContainer>
 
         <SectionContainer>
-          <div className="flex flex-col w-full h-screen justify-center items-center border-t px-24 pb-24">
+          <div className="flex flex-col w-full h-screen justify-center items-center  px-24 pb-24">
             <h3 className="text-3xl  w-fit bg-white text-black circular circular uppercase text-center  mb-10 pb-4 border-b-2 border-black px-16">
               Discover More
             </h3>
 
             <div className="w-full flex flex-col items-center  ">
-              <CategoryButton styles=" " onClick={() => {}}>
+              <CategoryButton
+                styles=" "
+                onClick={() => {
+                  setCategory("Experience");
+                }}
+              >
                 experience
               </CategoryButton>
-              <CategoryButton styles="" onClick={() => {}}>
+              <CategoryButton
+                styles=""
+                onClick={() => {
+                  setCategory("Skills");
+                }}
+              >
                 skills
               </CategoryButton>
-              <CategoryButton styles="" onClick={() => {}}>
+              <CategoryButton
+                styles=""
+                onClick={() => {
+                  setCategory("Projects");
+                }}
+              >
                 projects
               </CategoryButton>
-              <CategoryButton styles="" onClick={() => {}}>
+              <CategoryButton
+                styles=""
+                onClick={() => {
+                  setCategory("Poetry");
+                }}
+              >
                 poetry
               </CategoryButton>
             </div>
@@ -314,7 +336,7 @@ function ImageContainer({
 }) {
   return (
     <div
-      className="grow relative"
+      className="grow relative m-2 border-black"
       style={{
         background: src,
         backgroundSize: "cover",

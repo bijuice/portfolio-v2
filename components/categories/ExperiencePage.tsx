@@ -18,8 +18,8 @@ export default function ExperiencePage() {
       >
         <motion.h1
           animate={{ opacity: [1, 0] }}
-          transition={{ duration: 1, delay: 2 }}
-          className="text-white text-8xl avant-garde absolute mb-20 overflow-hidden "
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="text-white italic pr-4 text-8xl avant-garde absolute mb-20 overflow-hidden uppercase "
         >
           Experience
         </motion.h1>
@@ -59,7 +59,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       <div className="flex flex-wrap gap-4 uppercase border-b pb-6  border-neutral-50 px-1">
         {exp.skills.map((skill) => {
           return (
-            <span key={skill} className="text-xs font-bold avant-garde ">
+            <span key={skill} className="text-sm  avant-garde ">
               {skill}
             </span>
           );

@@ -97,7 +97,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   function resolveView() {
     switch (activeCategory) {
       case "About":
-        return <AboutPage />;
+        return <AboutPage setCategory={setCategory} />;
       case "Experience":
         return <ExperiencePage />;
       case "Skills":
@@ -107,7 +107,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
       case "Poetry":
         return <PoetryPage />;
       default:
-        return <AboutPage />;
+        return <AboutPage setCategory={setCategory} />;
     }
   }
 
