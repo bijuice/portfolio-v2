@@ -49,7 +49,7 @@ export default function AboutPage() {
         <SectionContainer id="web-artisan">
           <BlackSection direction="left">
             <SectionHeading styles=" from-pink-500 via-red-500 to-yellow-500">
-              <TextEmphasis>2</TextEmphasis> years of web{" "}
+              <TextEmphasis>TWO</TextEmphasis> years of web{" "}
               <TextEmphasis>ARTISTRY</TextEmphasis>
             </SectionHeading>
           </BlackSection>
@@ -102,7 +102,7 @@ export default function AboutPage() {
           </WhiteSection>
           <BlackSection direction="right">
             <SectionHeading styles=" from-green-300 via-blue-500 to-purple-600">
-              <TextEmphasis>2</TextEmphasis> years of changing
+              <TextEmphasis>TWO</TextEmphasis> years of changing
               <TextEmphasis> LIVES</TextEmphasis>
             </SectionHeading>
           </BlackSection>
@@ -136,7 +136,7 @@ export default function AboutPage() {
         </SectionContainer>
         <SectionContainer>
           <WhiteSection>
-            <div className="flex flex-col gap-7 w-full h-full p-24 justify-center text-right text-lg 2xl:text-3xl">
+            <div className="flex flex-col gap-7 w-full h-full p-24 justify-center text-right text-lg 2xl:text-3xl border-r">
               <h4 className="text-4xl">Legacy</h4>
               <div>
                 <p>
@@ -182,12 +182,12 @@ export default function AboutPage() {
         </SectionContainer>
 
         <SectionContainer>
-          <div className="grid grid-cols-2 w-full h-screen justify-center items-stretch border-t px-24 pb-24">
-            <h3 className="text-3xl col-span-2 w-full grid place-content-center  bg-white text-black circular circular uppercase text-center ">
+          <div className="flex flex-col w-full h-screen justify-center items-center border-t px-24 pb-24">
+            <h3 className="text-3xl  w-fit bg-white text-black circular circular uppercase text-center  mb-10 pb-4 border-b-2 border-black px-16">
               Discover More
             </h3>
 
-            <div className="w-full ">
+            <div className="w-full flex flex-col items-center  ">
               <CategoryButton styles=" " onClick={() => {}}>
                 experience
               </CategoryButton>
@@ -271,15 +271,12 @@ function CategoryButton({
   styles: string;
 }) {
   return (
-    <motion.button
-      className={`category-button grow text-black  text-3xl font-bold  grid place-content-center  text-bold px-4 py-2 transition uppercase  ${styles}`}
+    <button
+      className={`category-button  uppercase text-5xl font-bold  py-7  ${styles}`}
       onClick={onClick}
-      style={{
-        backgroundSize: "300% auto",
-      }}
     >
-      {children}
-    </motion.button>
+      <span className=" px-32">{children}</span>
+    </button>
   );
 }
 
@@ -294,7 +291,7 @@ function BlackSection({
     direction === "left" ? "justify-end text-right" : "justify-start text-left";
 
   return (
-    <div className={`grow w-1/2 bg-black  px-24 flex items-center ${styles}`}>
+    <div className={`grow w-1/2 bg-white  px-24 flex items-center ${styles}`}>
       {children}
     </div>
   );

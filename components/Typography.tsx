@@ -48,7 +48,7 @@ export function PageHeading({ text }: TypographyProps) {
 export function PageSubHeading({ text }: TypographyProps) {
   return (
     <div
-      className={`overflow-hidden text-xl 2xl:text-4xl text-center font-['Circular'] italic text-gray-500`}
+      className={`px-4 overflow-hidden text-xl 2xl:text-4xl text-center font-['Circular'] italic text-gray-500`}
     >
       <motion.h2
         initial={{
@@ -76,26 +76,14 @@ export function SectionHeading({
   styles?: string;
 }) {
   return (
-    <motion.h2
-      className={`avant-garde  bg-clip-text text-transparent bg-gradient-to-r text-6xl 2xl:text-8xl leading-relaxed  text-white`}
-      viewport={{ once: true }}
-      style={{
-        backgroundSize: "300% 100%",
-      }}
-      animate={{
-        backgroundPositionX: ["0%", "100%"],
-      }}
-      transition={{
-        duration: 5,
-        repeat: Infinity,
-        repeatType: "reverse",
-      }}
+    <h2
+      className={`avant-garde  bg-clip-text  text-6xl 2xl:text-8xl leading-relaxed  text-black uppercase`}
     >
       {children}
-    </motion.h2>
+    </h2>
   );
 }
 
 export function TextEmphasis({ children }: { children: React.ReactNode }) {
-  return <span className="font-bold text-[1.5em] uppercase">{children}</span>;
+  return <span className="font-bold text-[1.5em] uppercase ">{children}</span>;
 }

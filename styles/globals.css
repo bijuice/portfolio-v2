@@ -93,17 +93,26 @@ a {
 }
 
 .category-button {
-  background-size: 150% auto;
-  background-position: left center;
-  transition: background-position 2s ease;
+  background: linear-gradient(to right, white, white 50%, black 50%, black);
+  background-size: 200.3% 100%;
+  transform: skew(-15deg);
+  transition: background-position 0.5s;
 }
 
 .category-button:hover {
-  background-position: right center;
+  background-position: -100% 0;
 }
 
-.category-button:hover .category-button > * {
-  scale: 1.2;
+.category-button > span {
+  background: linear-gradient(to right, black, black 50%, white 50%, white);
+  background-size: 200.3% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s;
+}
+
+.category-button:hover > span {
+  background-position: -100% 0;
 }
 
 .name-title {
