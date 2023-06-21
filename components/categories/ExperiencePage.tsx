@@ -19,7 +19,7 @@ export default function ExperiencePage() {
         <motion.h1
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="text-white italic pr-4 text-8xl avant-garde absolute mb-20 overflow-hidden uppercase "
+          className="text-white italic pr-4 text-8xl astro absolute mb-20 overflow-hidden uppercase "
         >
           Experience
         </motion.h1>
@@ -47,7 +47,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       id={formatLink(exp)}
       className="flex flex-col gap-7 py-14 w-[60ch] basis-1 text-neutral-100 "
     >
-      <h1 className="text-4xl md:text-5xl avant-garde ">{exp.title}</h1>
+      <h1 className="text-4xl md:text-5xl astro ">{exp.title}</h1>
       <h2 className="text-xl md:text-2xl text-neutral-300  ">
         {exp.role} {"("}
         {exp.startYear}
@@ -59,7 +59,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       <div className="flex flex-wrap gap-4 uppercase border-b pb-6  border-neutral-50 px-1">
         {exp.skills.map((skill) => {
           return (
-            <span key={skill} className="text-sm  avant-garde ">
+            <span key={skill} className="text-sm  astro ">
               {skill}
             </span>
           );
@@ -162,7 +162,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
         className={` flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] text-white `}
       >
         <div className={`experience-card-title `}>
-          <p className="avant-garde text-lg tracking-wider ">{exp.title}</p>
+          <p className="astro text-lg tracking-wider ">{exp.title}</p>
           <p className="text-gray-400 text-sm">{exp.role}</p>
         </div>
 

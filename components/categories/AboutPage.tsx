@@ -344,7 +344,7 @@ function ImageContainer({
     >
       <Link href={link || ""} target="_blank">
         <motion.div
-          className="w-full h-full grid place-content-center bg-black/50 text-white text-center "
+          className="w-full h-full grid place-content-center bg-white text-black text-center border-4 border-black p-10"
           initial={{
             opacity: 0,
           }}
@@ -352,8 +352,8 @@ function ImageContainer({
             opacity: 1,
           }}
         >
-          <p className=" text-2xl font-bold ">{title}</p>
-          <p className="  mt-3">{description}</p>
+          <p className=" text-2xl ">{title}</p>
+          <p className="italic  mt-3">{description}</p>
         </motion.div>
       </Link>
     </div>
