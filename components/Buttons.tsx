@@ -41,7 +41,7 @@ const chevronVariants = (position: "left" | "right") => {
       scale: 1,
     },
     hover: {
-      x: position === "left" ? -10 : 10,
+      x: position === "left" ? -5 : 5,
       transition: {
         duration: 0.5,
       },
@@ -72,7 +72,7 @@ export function NavigationButton({
       variants={chevronVariants(position) as any}
     >
       <div
-        className={`text-sm font-bold  px-5 pb-5 pt-2  uppercase border-[2.5px]   ${positionStyles}`}
+        className={`text-sm font-bold  px-5 pb-7 pt-2  uppercase border-[2.5px]   ${positionStyles}`}
         style={{
           color,
           borderColor: color,
