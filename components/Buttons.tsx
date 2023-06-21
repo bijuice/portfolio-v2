@@ -1,23 +1,20 @@
-import { ChevronLeft, ChevronRight } from "./Icons/Chevrons"
-import Close from "./Icons/Close"
-import { motion } from "framer-motion"
-
-
-
+import { ChevronLeft, ChevronRight } from "./Icons/Chevrons";
+import Close from "./Icons/Close";
+import { motion } from "framer-motion";
 
 type ButtonProps = {
-  color?: string
-  onClick(): void
-  children?: React.ReactNode
-}
+  color?: string;
+  onClick(): void;
+  children?: React.ReactNode;
+};
 
 export function CloseButton({ onClick, color }: ButtonProps) {
   return (
     <motion.button
       className="absolute top-4 right-2 p-5 rounded-md "
       onClick={(e) => {
-        e.stopPropagation()
-        onClick()
+        e.stopPropagation();
+        onClick();
       }}
       whileHover={{
         rotate: -180,
@@ -29,12 +26,13 @@ export function CloseButton({ onClick, color }: ButtonProps) {
     >
       <Close size={30} color={color} />
     </motion.button>
-  )
+  );
 }
 
 type NavButtonProps = {
-  position: "left" | "right"
-} & ButtonProps
+  position: "left" | "right";
+  text: string;
+} & ButtonProps;
 
 const chevronVariants = (position: "left" | "right") => {
   return {
@@ -51,30 +49,37 @@ const chevronVariants = (position: "left" | "right") => {
     click: {
       scale: 1.5,
     },
-  }
-}
+  };
+};
 
 export function NavigationButton({
   onClick,
   children,
   position,
-  color
+  color,
+  text,
 }: NavButtonProps) {
+  const positionStyles =
+    position === "left" ? "mr-14 rotate-90" : "-rotate-90 ml-14";
+
   return (
     <motion.button
-      className={`${position}-0 bottom-0 h-full w-[80px] text-red-500 flex items-center justify-center  absolute z-0`}
+      className={`${position}-0 bottom-0 h-full w-20  flex items-center  justify-center absolute z-0`}
       onClick={onClick}
       initial="initial"
       whileHover="hover"
       whileTap="click"
+      variants={chevronVariants(position) as any}
     >
-      <motion.div variants={chevronVariants(position) as any}>
-        {position === "left" ? (
-          <ChevronLeft size={60} color={color}/>
-        ) : (
-          <ChevronRight size={60} color={color} />
-        )}
-      </motion.div>
+      <div
+        className={`text-sm font-bold  px-5 pb-5 pt-2  uppercase border-[2.5px]   ${positionStyles}`}
+        style={{
+          color,
+          borderColor: color,
+        }}
+      >
+        {text}
+      </div>
     </motion.button>
-  )
+  );
 }

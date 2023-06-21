@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CategoryContainer from "@/components/CategoryContainer";
 import { CloseButton, NavigationButton } from "@/components/Buttons";
@@ -87,12 +87,32 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   function prevCategory() {
     let currentIndex = categories.findIndex((c) => c.name === activeCategory);
 
-    currentIndex = currentIndex === 0 ? categories.length - 1 : currentIndex;
+    currentIndex = currentIndex === 0 ? categories.length : currentIndex;
 
     const nextCategory = categories[currentIndex - 1];
 
     setCategory(nextCategory.name);
   }
+
+  const [queue, setQueue] = useState({
+    next: "Poetry",
+    prev: "Experience",
+  });
+
+  useEffect(() => {
+    const currentIndex = categories.findIndex((c) => c.name === activeCategory);
+
+    const nextIndex =
+      currentIndex === categories.length - 1 ? 0 : currentIndex + 1;
+
+    const prevIndex =
+      currentIndex === 0 ? categories.length - 1 : currentIndex - 1;
+
+    setQueue({
+      next: categories[nextIndex].name,
+      prev: categories[prevIndex].name,
+    });
+  }, [activeCategory]);
 
   function resolveView() {
     switch (activeCategory) {
@@ -138,12 +158,14 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
             onClick={nextCategory}
             position="right"
             color={currentColor}
+            text={queue.next}
           />
 
           <NavigationButton
             onClick={prevCategory}
             position="left"
             color={currentColor}
+            text={queue.prev}
           />
         </div>
 
