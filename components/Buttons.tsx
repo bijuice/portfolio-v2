@@ -31,7 +31,6 @@ export function CloseButton({ onClick, color }: ButtonProps) {
 
 type NavButtonProps = {
   position: "left" | "right";
-  text: string;
 } & ButtonProps;
 
 const chevronVariants = (position: "left" | "right") => {
@@ -41,7 +40,7 @@ const chevronVariants = (position: "left" | "right") => {
       scale: 1,
     },
     hover: {
-      x: position === "left" ? -5 : 5,
+      x: position === "left" ? -10 : 10,
       transition: {
         duration: 0.5,
       },
@@ -57,29 +56,22 @@ export function NavigationButton({
   children,
   position,
   color,
-  text,
 }: NavButtonProps) {
-  const positionStyles =
-    position === "left" ? "mr-14 rotate-90" : "-rotate-90 ml-14";
-
   return (
     <motion.button
-      className={`${position}-0 bottom-0 h-full w-20  flex items-center  justify-center absolute z-0`}
+      className={`${position}-0 bottom-0 h-full w-[60px]  flex items-center justify-center  absolute z-0`}
       onClick={onClick}
       initial="initial"
       whileHover="hover"
       whileTap="click"
-      variants={chevronVariants(position) as any}
     >
-      <div
-        className={`text-sm font-bold  px-5 pb-7 pt-2  uppercase border-[2.5px]   ${positionStyles}`}
-        style={{
-          color,
-          borderColor: color,
-        }}
-      >
-        {text}
-      </div>
+      <motion.div variants={chevronVariants(position) as any}>
+        {position === "left" ? (
+          <ChevronLeft size={30} color={color} />
+        ) : (
+          <ChevronRight size={30} color={color} />
+        )}
+      </motion.div>
     </motion.button>
   );
 }
