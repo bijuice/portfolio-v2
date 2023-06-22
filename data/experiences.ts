@@ -68,25 +68,6 @@ const experiences: Experience[] = [
   },
   {
     startYear: 2020,
-    endYear: 2021,
-    duration: 12,
-    title: "KamiLimu",
-    role: "Mentee",
-    resps: [
-      "Bachelor of science in Applied Computer Technology",
-      "Concentration in Forensics and Cyber Security",
-    ],
-    skills: ["Mentorship", "Leadership"],
-    description: `
-    <ul>
-  <li>Underwent an intense 8 month mentorship program that focussed on holistic learning.</li>
-  <li>Obtained skills on public speaking, scholarship writing, confidence building, and innovation.</li>
-  <li>Completed Cybersecurity ICT track.</li>
-</ul>`,
-  },
-
-  {
-    startYear: 2020,
     duration: 40,
     title: "Culture Capture",
     role: "Co-founder",
@@ -109,6 +90,24 @@ const experiences: Experience[] = [
   <li>Designed and drafted business proposals.</li>
   <li>Utilized Figma to design prototypes for mobile applications.</li>
   <li>Utilized Flutter and Firebase to create a cultural preservation social media app for iOS and Android.</li>
+</ul>`,
+  },
+  {
+    startYear: 2020,
+    endYear: 2021,
+    duration: 12,
+    title: "KamiLimu",
+    role: "Mentee",
+    resps: [
+      "Bachelor of science in Applied Computer Technology",
+      "Concentration in Forensics and Cyber Security",
+    ],
+    skills: ["Mentorship", "Leadership"],
+    description: `
+    <ul>
+  <li>Underwent an intense 8 month mentorship program that focussed on holistic learning.</li>
+  <li>Obtained skills on public speaking, scholarship writing, confidence building, and innovation.</li>
+  <li>Completed Cybersecurity ICT track.</li>
 </ul>`,
   },
 
