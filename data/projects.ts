@@ -12,14 +12,7 @@ const projects: Project[] = [
     gitHub: "https://github.com/bijuice/portfolio-v2",
     link: "arehmtulla.com",
     description: "The site you are looking at right now.",
-    stack: [
-      "TypeScript",
-      "Next.js",
-      "React.js",
-      "Framer Motion",
-      "Tailwind",
-      "CSS",
-    ],
+    stack: ["TypeScript", "Next.js", "Framer Motion", "Tailwind", "CSS"],
   },
   {
     name: "Bijuiceflix ",
@@ -46,6 +39,19 @@ the data from two websites.`,
     description: `This is a Markdown parser built using React that converts markdown into html and LaTeX.
 It also visualizes the html output.`,
     stack: ["JavaScript", "React.js", "Express"],
+  },
+  {
+    name: "Pull Request Documenter",
+    gitHub: "https://github.com/bijuice/pull-request-documenter",
+    description: `A simple documentation script that fetches the latest pull request from a repo and generates a change request form using the Open AI API.`,
+    stack: ["JavaScript", "OpenAI", "OctoKit"],
+  },
+  {
+    name: "React Video Player",
+    gitHub: "https://github.com/bijuice/nflix-player",
+    link: "https://github.com/bijuice/nflix-player",
+    description: `A simple documentation script that fetches the latest pull request from a repo and generates a change request form using the Open AI API.`,
+    stack: ["JavaScript", "OpenAI", "OctoKit"],
   },
 ];
 
