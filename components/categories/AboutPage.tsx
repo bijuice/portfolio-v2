@@ -198,14 +198,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               >
                 experience
               </CategoryButton>
-              <CategoryButton
-                styles=""
-                onClick={() => {
-                  setCategory("Skills");
-                }}
-              >
-                skills
-              </CategoryButton>
+
               <CategoryButton
                 styles=""
                 onClick={() => {

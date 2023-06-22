@@ -131,9 +131,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
     }
   }
 
-  const whities = ["Experience", "Skills", "Projects"];
-
-  const currentColor = whities.includes(activeCategory) ? "white" : "black";
+  const currentColor = activeCategory === "About" ? "black" : "white";
 
   return (
     <AnimatePresence>
@@ -146,26 +144,17 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
           opacity: 1,
         }}
       >
-        <CloseButton
-          onClick={() => {
-            setCategory("ALL");
-          }}
-          color={currentColor}
-        />
-
         <div className="z-20 hidden md:block">
           <NavigationButton
             onClick={nextCategory}
             position="right"
             color={currentColor}
-            text={queue.next}
           />
 
           <NavigationButton
             onClick={prevCategory}
             position="left"
             color={currentColor}
-            text={queue.prev}
           />
         </div>
 

@@ -85,7 +85,7 @@ export default function CategoryCard({
       <motion.div
         layout
         key={category.name}
-        className={` text-white relative  grow overflow-hidden flex items-center  circular  ${
+        className={`   relative  grow overflow-hidden flex items-center  circular  ${
           resolveCategoryState() === "all" && "cursor-pointer"
         } `}
         onClick={() => {
@@ -101,24 +101,10 @@ export default function CategoryCard({
           zIndex: properties.zIndex,
           x: -properties.x,
         }}
-      >
-        <motion.div
-          className=" w-[100vw] h-screen absolute "
-          style={{
-            backgroundColor: category.color,
-            backgroundImage: `url(${category.src})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-          animate={{
-            x: resolveCategoryState() === "all" ? `${pos * 0.15 - 20}%` : 0,
-          }}
-          transition={{
-            type: "tween",
-            duration: resolveCategoryState() !== "all" ? 0.3 : 0.6,
-          }}
-        ></motion.div>
-      </motion.div>
+        style={{
+          backgroundColor: category.color,
+        }}
+      ></motion.div>
 
       {activeCategory === "ALL" && (
         <motion.h1 className="text-[2em] py-3">{category.name}</motion.h1>

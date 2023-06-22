@@ -11,7 +11,7 @@ import formatLink from "@/utilities/formatters";
 
 export default function ExperiencePage() {
   return (
-    <div className="category-view max-h-screen h-screen select-none relative  bg-neutral-900 overflow-y-auto overflow-x-hidden">
+    <div className="category-view max-h-screen h-screen select-none relative   overflow-y-auto overflow-x-hidden">
       <section
         id="top"
         className="h-screen relative flex items-center mx-auto w-[85vw] font-bold pt-32"
@@ -28,7 +28,7 @@ export default function ExperiencePage() {
         <DiscoverMore id="pesapal-developer" />
       </section>
 
-      <SectionContainer styles="bg-neutral-900  pt-10 pb-16 px-10 md:px-20 text-black  flex-col gap-x-16 items-center  ">
+      <SectionContainer styles="  pt-10 pb-16 px-10 md:px-20 text-black  flex-col gap-x-16 items-center  ">
         {experiences.map((exp) => {
           return <ExperienceSection key={formatLink(exp)} exp={exp} />;
         })}
@@ -163,7 +163,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
       >
         <div className={`experience-card-title `}>
           <p className="avant-garde text-lg tracking-wider ">{exp.title}</p>
-          <p className="text-gray-400 text-sm">{exp.role}</p>
+          <p className="text-neutral-400 text-sm">{exp.role}</p>
         </div>
 
         <div

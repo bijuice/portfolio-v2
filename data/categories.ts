@@ -4,28 +4,24 @@ const categories: Category[] = [
   {
     name: "About",
     src: "/images/about.jpg",
-    color: "bg-white",
+    color: "#000",
   },
   {
     name: "Experience",
     src: "/images/experience.jpg",
-    color: "bg-black",
+    color: "#171717",
   },
-  {
-    name: "Skills",
-    src: "/images/skills.jpg",
-    color: "bg-blue-800",
-  },
+
   {
     name: "Projects",
     src: "/images/projects.jpg",
-    color: "bg-green-400",
+    color: "#065f46",
   },
 
   {
     name: "Poetry",
     src: "/images/poetry.jpg",
-    color: "bg-zinc-200",
+    color: "#889",
   },
 ];
 
