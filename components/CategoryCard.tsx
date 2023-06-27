@@ -1,6 +1,6 @@
 import Category from "@/types/Category";
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 type CategoryCardProps = {
   height: number;

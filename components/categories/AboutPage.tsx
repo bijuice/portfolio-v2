@@ -6,7 +6,7 @@ import {
   SectionHeading,
   TextEmphasis,
 } from "../Typography";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SectionContainer from "../containers/SectionContainer";
 import DiscoverMore from "../navigation/DiscoverMore";
@@ -44,7 +44,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
         <PageHeading text="ABDUL RAHMAN REHMTULLA" />
         <PageSubHeading text="fullstack, cat dad, mentor, poet" />
 
-        <ReviewSection />
+        {/* <ReviewSection /> */}
 
         <DiscoverMore id="web-artisan" color="black" />
       </section>

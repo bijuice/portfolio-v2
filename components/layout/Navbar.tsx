@@ -34,27 +34,32 @@ export default function Navbar({
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const boxRef = useRef<any>();
   const handleMouseMove = (e: any) => {
-    setMousePosition(getRelativeCoordinates(e, boxRef.current));
+    const { x } = getRelativeCoordinates(e, boxRef.current);
+    setX(x - 35);
   };
 
-  const [bgColor, setBgColor] = useState(activeCategory.color);
+  const [x, setX] = useState(0);
+
+  const [width, setWidth] = useState(0);
+
+  const activeCatId = `nav-${activeCategory.name}`;
 
   useEffect(() => {
-    setBgColor("");
+    const activeCatElement = document.getElementById(activeCatId);
 
-    setTimeout(() => {
-      setBgColor(activeCategory.color);
-    }, 400);
-
-    return setBgColor("");
+    setX(activeCatElement?.offsetLeft || 0);
+    setWidth(activeCatElement?.offsetWidth || 0);
   }, [activeCategory]);
 
   return (
     <nav
-      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 h-16 items-center avant-garde"
+      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 py-4 h-16  items-center avant-garde"
       style={{
         color: color,
-        backgroundColor: bgColor,
+      }}
+      onMouseLeave={() => {
+        const activeCatElement = document.getElementById(activeCatId);
+        setX(activeCatElement?.offsetLeft || 0);
       }}
     >
       <motion.div
@@ -65,15 +70,15 @@ export default function Navbar({
         whileHover="hover"
       >
         <motion.span
-          className="  absolute bottom-0  w-20 h-0.5"
+          className="  absolute bottom-0  h-0.5"
           animate={{
-            x: mousePosition.x - 45,
+            x: x - 18,
+            width: width,
           }}
           transition={{
             type: "tween",
             duration: 0.2,
           }}
-          variants={barVariants}
           style={{
             backgroundColor: color,
           }}
@@ -82,10 +87,12 @@ export default function Navbar({
         </motion.span>
         {categories.map((category) => (
           <motion.button
+            key={category.name}
             variants={navigationVariants}
             initial="initial"
             whileHover="hover"
             onClick={() => setCategory(category)}
+            id={`nav-${category.name}`}
           >
             {category.name}
           </motion.button>
