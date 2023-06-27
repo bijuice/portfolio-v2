@@ -28,7 +28,7 @@ export default function ExperiencePage() {
         <DiscoverMore id="pesapal-developer" />
       </section>
 
-      <SectionContainer styles="  pt-10 pb-16 px-10 md:px-20 text-black  flex-col gap-x-16 items-center  ">
+      <SectionContainer styles="  pt-10 pb-16 px-10 md:px-20 text-black grid gap-x-16 justify-items-center  ">
         {experiences.map((exp) => {
           return <ExperienceSection key={formatLink(exp)} exp={exp} />;
         })}
