@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CategoryCard from "./CategoryCard";
 import categories from "@/data/categories";
+import Category from "@/types/Category";
 
 type CategoryContainerProps = {
-  activeCategory: string;
-  setCategory(category: string): void;
+  activeCategory: Category;
+  setCategory(category: Category): void;
 };
 
 export default function CategoryContainer({
@@ -22,7 +23,7 @@ export default function CategoryContainer({
   const [percentage, setPercentage] = useState(0);
 
   function scrollContainer(d: number) {
-    if (activeCategory !== "ALL") return;
+    if (activeCategory.name !== "ALL") return;
 
     let delta: number = 0;
     if (d > 0 && x > -width) {
@@ -46,7 +47,7 @@ export default function CategoryContainer({
     <motion.div
       id="card-container"
       className="flex items-center gap-10 "
-      drag={activeCategory === "ALL" && "x"}
+      drag={activeCategory.name === "ALL" && "x"}
       onClick={(e) => e.stopPropagation()}
       dragConstraints={{
         right: 0,

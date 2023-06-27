@@ -10,6 +10,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SectionContainer from "../containers/SectionContainer";
 import DiscoverMore from "../navigation/DiscoverMore";
+import Category from "@/types/Category";
+import categories from "@/data/categories";
 
 const reviews = [
   {
@@ -33,7 +35,7 @@ const reviews = [
   },
 ];
 
-type AboutPageProps = { setCategory: (category: string) => void };
+type AboutPageProps = { setCategory: (category: Category) => void };
 
 export default function AboutPage({ setCategory }: AboutPageProps) {
   return (
@@ -193,7 +195,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               <CategoryButton
                 styles=" "
                 onClick={() => {
-                  setCategory("Experience");
+                  setCategory(categories[1]);
                 }}
               >
                 experience
@@ -202,7 +204,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               <CategoryButton
                 styles=""
                 onClick={() => {
-                  setCategory("Projects");
+                  setCategory(categories[2]);
                 }}
               >
                 projects
@@ -210,7 +212,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               <CategoryButton
                 styles=""
                 onClick={() => {
-                  setCategory("Poetry");
+                  setCategory(categories[3]);
                 }}
               >
                 poetry

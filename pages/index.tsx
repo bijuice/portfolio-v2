@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CategoryContainer from "@/components/CategoryContainer";
 import { CloseButton, NavigationButton } from "@/components/Buttons";
@@ -9,13 +9,16 @@ import ExperiencePage from "@/components/categories/ExperiencePage";
 import SkillsPage from "@/components/categories/SkillsPage";
 import ProjectsPage from "@/components/categories/ProjectsPage";
 import PoetryPage from "@/components/categories/PoetryPage";
+import getRelativeCoordinates from "@/utilities/getRelativeCoordinates";
+import Category from "@/types/Category";
+import Navbar from "@/components/layout/Navbar";
 
 const isProduction = process.env.NODE_ENV === "production";
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState<string>("About");
+  const [activeCategory, setActiveCategory] = useState<Category>(categories[0]);
 
-  function setCategory(category: string) {
+  function setCategory(category: Category) {
     setActiveCategory(category);
   }
 
@@ -56,7 +59,7 @@ export default function Home() {
             activeCategory={activeCategory}
             setCategory={setCategory}
           />
-          {activeCategory !== "ALL" && (
+          {activeCategory.name !== "ALL" && (
             <CategoryView
               activeCategory={activeCategory}
               setCategory={setCategory}
@@ -69,29 +72,33 @@ export default function Home() {
 }
 
 type CategoryViewProps = {
-  activeCategory: string;
-  setCategory(category: string): void;
+  activeCategory: Category;
+  setCategory(category: Category): void;
 };
 
 function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   function nextCategory() {
-    let currentIndex = categories.findIndex((c) => c.name === activeCategory);
+    let currentIndex = categories.findIndex(
+      (c) => c.name === activeCategory.name
+    );
 
     currentIndex = currentIndex === categories.length - 1 ? -1 : currentIndex;
 
     const nextCategory = categories[currentIndex + 1];
 
-    setCategory(nextCategory.name);
+    setCategory(nextCategory);
   }
 
   function prevCategory() {
-    let currentIndex = categories.findIndex((c) => c.name === activeCategory);
+    let currentIndex = categories.findIndex(
+      (c) => c.name === activeCategory.name
+    );
 
     currentIndex = currentIndex === 0 ? categories.length : currentIndex;
 
     const nextCategory = categories[currentIndex - 1];
 
-    setCategory(nextCategory.name);
+    setCategory(nextCategory);
   }
 
   const [queue, setQueue] = useState({
@@ -100,7 +107,9 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   });
 
   useEffect(() => {
-    const currentIndex = categories.findIndex((c) => c.name === activeCategory);
+    const currentIndex = categories.findIndex(
+      (c) => c.name === activeCategory.name
+    );
 
     const nextIndex =
       currentIndex === categories.length - 1 ? 0 : currentIndex + 1;
@@ -115,7 +124,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   }, [activeCategory]);
 
   function resolveView() {
-    switch (activeCategory) {
+    switch (activeCategory.name) {
       case "About":
         return <AboutPage setCategory={setCategory} />;
       case "Experience":
@@ -131,10 +140,15 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
     }
   }
 
-  const currentColor = activeCategory === "About" ? "black" : "white";
+  const currentColor = activeCategory.name === "About" ? "black" : "white";
 
   return (
     <AnimatePresence>
+      <Navbar
+        color={currentColor}
+        activeCategory={activeCategory}
+        setCategory={setCategory}
+      />
       <motion.div
         className={`fixed left-0  h-screen w-screen flex justify-center items-center text-white  z-10 `}
         initial={{

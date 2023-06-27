@@ -8,8 +8,8 @@ type CategoryCardProps = {
   isDragging: boolean;
   index: number;
   category: Category;
-  activeCategory: string;
-  setCategory(category: string): void;
+  activeCategory: Category;
+  setCategory(category: Category): void;
   pos: number;
 };
 
@@ -48,9 +48,9 @@ export default function CategoryCard({
   pos,
 }: CategoryCardProps) {
   function resolveCategoryState(): CategoryState {
-    if (activeCategory === "ALL") {
+    if (activeCategory.name === "ALL") {
       return "all";
-    } else if (activeCategory === category.name) {
+    } else if (activeCategory.name === category.name) {
       return "active";
     }
     return "inactive";
@@ -90,7 +90,7 @@ export default function CategoryCard({
         } `}
         onClick={() => {
           if (!isDragging) {
-            setCategory(category.name);
+            setCategory(category);
           }
         }}
         animate={{
@@ -106,7 +106,7 @@ export default function CategoryCard({
         }}
       ></motion.div>
 
-      {activeCategory === "ALL" && (
+      {activeCategory.name === "ALL" && (
         <motion.h1 className="text-[2em] py-3">{category.name}</motion.h1>
       )}
     </div>
