@@ -136,7 +136,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className={`fixed left-0 bg-black/40 h-screen w-screen flex justify-center items-center text-white  z-10 `}
+        className={`fixed left-0  h-screen w-screen flex justify-center items-center text-white  z-10 `}
         initial={{
           opacity: 0,
         }}

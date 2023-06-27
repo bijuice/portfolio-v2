@@ -67,7 +67,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       </div>
 
       <div
-        className=" max-w-[60ch] text-white"
+        className=" max-w-[60ch]  "
         dangerouslySetInnerHTML={{
           __html: exp.description,
         }}
@@ -163,7 +163,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
       >
         <div className={`experience-card-title `}>
           <p className="avant-garde text-lg tracking-wider ">{exp.title}</p>
-          <p className="text-neutral-400 text-sm">{exp.role}</p>
+          <p className="text-gray-400 text-sm">{exp.role}</p>
         </div>
 
         <div

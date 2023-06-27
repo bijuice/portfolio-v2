@@ -38,7 +38,7 @@ type AboutPageProps = { setCategory: (category: string) => void };
 export default function AboutPage({ setCategory }: AboutPageProps) {
   return (
     <div className="category-view   max-h-screen w-screen overflow-x-hidden overflow-y-auto">
-      <section className="flex flex-col items-center  gap-5  h-screen relative bg-white text-black">
+      <section className="flex flex-col items-center  gap-5  h-screen relative  text-black">
         <PageHeading text="ABDUL RAHMAN REHMTULLA" />
         <PageSubHeading text="fullstack, cat dad, mentor, poet" />
 
@@ -47,7 +47,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
         <DiscoverMore id="web-artisan" color="black" />
       </section>
 
-      <motion.div className="bg-white min-h-screen">
+      <motion.div className=" min-h-screen">
         <SectionContainer id="web-artisan">
           <BlackSection direction="left">
             <SectionHeading styles=" from-pink-500 via-red-500 to-yellow-500">
@@ -306,14 +306,16 @@ function BlackSection({
     direction === "left" ? "justify-end text-right" : "justify-start text-left";
 
   return (
-    <div className={`grow w-1/2 bg-white  px-24 flex items-center ${styles}`}>
+    <div
+      className={`grow w-full lg:w-1/2 bg-white  px-24 flex items-center ${styles}`}
+    >
       {children}
     </div>
   );
 }
 
 function WhiteSection({ children }: { children: React.ReactNode }) {
-  return <div className="bg-white w-1/2  text-black ">{children}</div>;
+  return <div className=" lg:w-1/2 bg-white text-black ">{children}</div>;
 }
 
 function ImageContainer({

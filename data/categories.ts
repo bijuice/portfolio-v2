@@ -4,7 +4,7 @@ const categories: Category[] = [
   {
     name: "About",
     src: "/images/about.jpg",
-    color: "#000",
+    color: "#FFF",
   },
   {
     name: "Experience",

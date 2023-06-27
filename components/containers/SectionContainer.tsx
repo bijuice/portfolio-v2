@@ -8,7 +8,10 @@ export default function SectionContainer({
   styles?: string;
 }) {
   return (
-    <section className={`flex  min-h-screen ${styles}`} id={id}>
+    <section
+      className={`flex flex-col lg:flex-row min-h-screen ${styles}`}
+      id={id}
+    >
       {children}
     </section>
   );
