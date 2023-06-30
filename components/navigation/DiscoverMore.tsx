@@ -9,7 +9,7 @@ export default function DiscoverMore({
   color?: string;
 }) {
   return (
-    <span className="w-full flex flex-col justify-center items-center absolute left-0 bottom-2 text-black ">
+    <span className="w-full flex flex-col justify-center items-center absolute left-0 bottom-2 text-black avante-garde">
       more
       <motion.a
         href={`#${id}`}
