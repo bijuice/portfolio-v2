@@ -49,7 +49,7 @@ export default function Navbar({
 
     setX(activeCatElement?.offsetLeft || 0);
     setWidth(activeCatElement?.offsetWidth || 0);
-  }, [activeCategory]);
+  }, [activeCategory, activeCatId]);
 
   return (
     <nav

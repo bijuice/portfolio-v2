@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import CategoryContainer from "@/components/CategoryContainer";
 import { CloseButton, NavigationButton } from "@/components/Buttons";
 import categories from "@/data/categories";
 import Link from "next/link";

@@ -33,7 +33,7 @@ function ProjectCard({ proj }: { proj: Project }) {
 
       <div className="flex flex-wrap gap-4 uppercase    px-1 items-center">
         {proj.stack.map((skill) => {
-          return <Skill>{skill}</Skill>;
+          return <Skill key={skill}>{skill}</Skill>;
         })}
       </div>
 

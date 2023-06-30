@@ -59,7 +59,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       </h2>
       <div className="flex flex-wrap gap-4 uppercase   text-black  px-1">
         {exp.skills.map((skill) => {
-          return <Skill>{skill}</Skill>;
+          return <Skill key={skill}>{skill}</Skill>;
         })}
       </div>
 
