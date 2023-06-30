@@ -87,3 +87,7 @@ export function SectionHeading({
 export function TextEmphasis({ children }: { children: React.ReactNode }) {
   return <span className="font-bold text-[1.5em] uppercase ">{children}</span>;
 }
+
+export function Skill({ children }: { children: React.ReactNode }) {
+  return <span className="font-bold text-sm  avant-garde">{children}</span>;
+}

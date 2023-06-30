@@ -3,25 +3,17 @@ import Category from "@/types/Category";
 const categories: Category[] = [
   {
     name: "About",
-    src: "/images/about.jpg",
-    color: "#FFF",
   },
   {
     name: "Experience",
-    src: "/images/experience.jpg",
-    color: "#171717",
   },
 
   {
     name: "Projects",
-    src: "/images/projects.jpg",
-    color: "#065f46",
   },
 
   {
-    name: "Poetry",
-    src: "/images/poetry.jpg",
-    color: "#889",
+    name: "Blog",
   },
 ];
 

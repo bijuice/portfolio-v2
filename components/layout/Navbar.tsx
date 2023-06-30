@@ -53,7 +53,7 @@ export default function Navbar({
 
   return (
     <nav
-      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 py-4   items-center avant-garde"
+      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 py-4  bg-white items-center avant-garde"
       style={{
         color: color,
       }}

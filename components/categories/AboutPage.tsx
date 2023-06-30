@@ -215,7 +215,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
                   setCategory(categories[3]);
                 }}
               >
-                poetry
+                blog
               </CategoryButton>
             </div>
           </div>

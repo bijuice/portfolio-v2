@@ -1,4 +1,4 @@
-import { PageHeading } from "../Typography";
+import { PageHeading, Skill } from "../Typography";
 import { Project } from "@/types/Project";
 import projects from "@/data/projects";
 import Link from "next/link";
@@ -8,7 +8,7 @@ export default function ProjectsPage() {
   return (
     <div className="category-view   max-h-screen w-screen overflow-x-hidden overflow-y-auto ">
       <section className=" flex flex-col items-center  gap-5  h-screen relative p-24  ">
-        <h1 className="text-7xl uppercase astro">Projects</h1>
+        <h1 className="text-7xl uppercase avant-garde">Projects</h1>
 
         <h2 className="mt-7 text-xl">A selection of my finest projects.</h2>
 
@@ -27,21 +27,17 @@ export default function ProjectsPage() {
 function ProjectCard({ proj }: { proj: Project }) {
   return (
     <div className=" flex flex-col gap-5  w-[60ch] basis-1">
-      <h3 className="text-4xl md:text-5xl avant-garde flex justify-between border-b pb-7">
+      <h3 className="text-4xl md:text-5xl avant-garde flex justify-between  pb-2">
         {proj.name}{" "}
       </h3>
 
       <div className="flex flex-wrap gap-4 uppercase    px-1 items-center">
         {proj.stack.map((skill) => {
-          return (
-            <span key={skill} className="text-sm  avant-garde ">
-              {skill}
-            </span>
-          );
+          return <Skill>{skill}</Skill>;
         })}
       </div>
 
-      <div className=" border-b pb-4">
+      <div className=" border-y border-black py-6">
         <p className="text-justify pb-4 ">{proj.description}</p>
         <span className="flex gap-5 items-center text-xs ">
           <Link href={proj.gitHub} target="_blank" className="   ">

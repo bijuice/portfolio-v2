@@ -8,6 +8,7 @@ import DiscoverMore from "../navigation/DiscoverMore";
 import experiences from "@/data/experiences";
 import { Experience } from "@/types/Experience";
 import formatLink from "@/utilities/formatters";
+import { Skill } from "../Typography";
 
 export default function ExperiencePage() {
   return (
@@ -19,7 +20,7 @@ export default function ExperiencePage() {
         <motion.h1
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="text-white  pr-4 text-8xl avant-garde absolute mb-20 overflow-hidden uppercase "
+          className="text-black  pr-4 text-8xl avant-garde absolute mb-20 overflow-hidden uppercase "
         >
           Experience
         </motion.h1>
@@ -45,10 +46,10 @@ function ExperienceSection({ exp }: { exp: Experience }) {
   return (
     <div
       id={formatLink(exp)}
-      className="flex flex-col gap-7 py-14 w-[60ch] basis-1 text-neutral-100 "
+      className="flex flex-col gap-7 py-14 w-[60ch] basis-1 text-black "
     >
       <h1 className="text-4xl md:text-5xl avant-garde ">{exp.title}</h1>
-      <h2 className="text-xl md:text-2xl text-neutral-300  ">
+      <h2 className="text-xl md:text-2xl text-neutral-700  ">
         {exp.role} {"("}
         {exp.startYear}
         {exp.startYear !== exp.endYear && (
@@ -56,18 +57,14 @@ function ExperienceSection({ exp }: { exp: Experience }) {
         )}
         {")"}
       </h2>
-      <div className="flex flex-wrap gap-4 uppercase border-b pb-6  border-neutral-50 px-1">
+      <div className="flex flex-wrap gap-4 uppercase   text-black  px-1">
         {exp.skills.map((skill) => {
-          return (
-            <span key={skill} className="text-sm  avant-garde ">
-              {skill}
-            </span>
-          );
+          return <Skill>{skill}</Skill>;
         })}
       </div>
 
       <div
-        className=" max-w-[60ch]  "
+        className=" max-w-[60ch]  border-y border-black py-6"
         dangerouslySetInnerHTML={{
           __html: exp.description,
         }}
@@ -124,9 +121,9 @@ type PointProps = {
 
 function Point({ year, cards }: PointProps) {
   return (
-    <div className="w-4 h-4 rounded-full border-2 border-white  relative dot">
-      <div className="w-[2px] h-6 bg-white rounded-md absolute bottom-5 left-[45%]"></div>
-      <p className="text-white absolute -bottom-8 -left-[75%]">{year}</p>
+    <div className="w-4 h-4 rounded-full border-2 border-black  relative dot">
+      <div className="w-[2px] h-6 bg-black rounded-md absolute bottom-5 left-[45%]"></div>
+      <p className="text-black absolute -bottom-8 -left-[75%]">{year}</p>
 
       <div className="absolute bottom-14 -left-1 flex flex-col gap-8">
         {cards}
@@ -159,15 +156,15 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
   return (
     <Link href={"#" + formatLink(exp)}>
       <div
-        className={` flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] text-white `}
+        className={` flex cursor-pointer flex-col   gap-1 py-2 px-2 experience-card  relative w-[150%] text-black `}
       >
         <div className={`experience-card-title `}>
           <p className="avant-garde text-lg tracking-wider ">{exp.title}</p>
-          <p className="text-gray-400 text-sm">{exp.role}</p>
+          <p className="text-neutral-500 text-sm">{exp.role}</p>
         </div>
 
         <div
-          className="bg-white h-[1.5px] -bottom-2 absolute timeline "
+          className="bg-black h-[1.5px] -bottom-2 absolute timeline "
           style={{
             width: durationWidth,
             animationDelay: "0.2s",
@@ -187,7 +184,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
 function Line() {
   return (
     <div
-      className="bg-white w-full h-[2px]  timeline relative"
+      className="bg-black w-full h-[2px]  timeline relative"
       id="timeline"
     ></div>
   );

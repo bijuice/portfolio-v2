@@ -20,7 +20,7 @@ export default function DiscoverMore({
           duration: 3,
         }}
       >
-        <ChevronBottom size={35} color={color || "white"} />
+        <ChevronBottom size={35} color={color || "black"} />
       </motion.a>
     </span>
   );
