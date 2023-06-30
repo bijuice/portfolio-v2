@@ -111,7 +111,7 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
   }
 
   return (
-    <AnimatePresence>
+    <>
       <Navbar
         color={"black"}
         activeCategory={activeCategory}
@@ -142,6 +142,6 @@ function CategoryView({ activeCategory, setCategory }: CategoryViewProps) {
 
         <div className="w-full  ">{resolveView()}</div>
       </motion.div>
-    </AnimatePresence>
+    </>
   );
 }
