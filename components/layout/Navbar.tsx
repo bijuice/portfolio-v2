@@ -53,7 +53,7 @@ export default function Navbar({
 
   return (
     <nav
-      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 py-4 h-16  items-center avant-garde"
+      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 py-4   items-center avant-garde"
       style={{
         color: color,
       }}
@@ -70,9 +70,9 @@ export default function Navbar({
         whileHover="hover"
       >
         <motion.span
-          className="  absolute bottom-0  h-0.5"
+          className="  absolute bottom-1 h-0.5"
           animate={{
-            x: x - 18,
+            x: x - 15,
             width: width,
           }}
           transition={{
@@ -93,6 +93,7 @@ export default function Navbar({
             whileHover="hover"
             onClick={() => setCategory(category)}
             id={`nav-${category.name}`}
+            className={`pb-2`}
           >
             {category.name}
           </motion.button>
