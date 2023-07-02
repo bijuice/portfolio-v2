@@ -11,7 +11,7 @@ export default function BlogPage() {
 
         <div className="flex flex-col gap-24 py-20">
           {blogPosts.map((post) => (
-            <Post post={post} />
+            <Post key={post.title} post={post} />
           ))}
         </div>
       </section>{" "}

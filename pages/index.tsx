@@ -21,43 +21,9 @@ export default function Home() {
     setActiveCategory(category);
   }
 
-  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(isProduction);
-
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
-      {showDisclaimer ? (
-        <div className="w-full h-full flex flex-col items-center justify-center text-center gap-7 circular">
-          <h1 className="text-3xl">
-            Hello there! This site is still under construction and currently
-            looks unfinished.
-          </h1>
-          <h2 className="text-2xl">
-            You can still see my progress if you{"'"}d like, or visit my old
-            portfolio if you wanna know Silicon Sorcery skills.{" "}
-          </h2>
-
-          <button
-            className="mt-7 bg-teal-800 text-white p-3 w-full max-w-[600px]"
-            onClick={() => {
-              setShowDisclaimer(false);
-            }}
-          >
-            I don{"'"}t mind. Show it to me anyways {":)"}
-          </button>
-          <Link
-            href="https://super-biscuit-1456ce.netlify.app/"
-            className="p-3 text text-teal-800 font-medium"
-            target="_blank"
-          >
-            Show me the old you
-          </Link>
-        </div>
-      ) : (
-        <CategoryView
-          activeCategory={activeCategory}
-          setCategory={setCategory}
-        />
-      )}
+      <CategoryView activeCategory={activeCategory} setCategory={setCategory} />
     </main>
   );
 }
