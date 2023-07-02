@@ -3,6 +3,8 @@ import getRelativeCoordinates from "@/utilities/getRelativeCoordinates";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import categories from "@/data/categories";
+import Link from "next/link";
+import Image from "next/image";
 
 const navigationVariants = {
   initial: {
@@ -10,15 +12,6 @@ const navigationVariants = {
   },
   hover: {
     y: -3,
-  },
-};
-
-const barVariants = {
-  initial: {
-    opacity: 0,
-  },
-  hover: {
-    opacity: 1,
   },
 };
 
@@ -53,7 +46,7 @@ export default function Navbar({
 
   return (
     <nav
-      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20 py-4  bg-white items-center avant-garde"
+      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20  h-16  bg-white items-center avant-garde"
       style={{
         color: color,
       }}
@@ -99,6 +92,16 @@ export default function Navbar({
           </motion.button>
         ))}
       </motion.div>
+
+      <div className="h-fit flex items-center ml-4 pl-4   border-l-2  border-black">
+        <Link
+          className="  border-black  py-2"
+          href="https://github.com/bijuice"
+          target="_blank"
+        >
+          <Image src="/icons/github.png" width={23} height={23} alt="github" />
+        </Link>
+      </div>
     </nav>
   );
 }
