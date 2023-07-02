@@ -36,7 +36,7 @@ export function ChevronLeft({ width, height, size, color }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      transform="scale(-1 1)"
+      className="transform rotate-180"
     >
       <path
         d="M9 20L17 12L9 4"
@@ -61,7 +61,7 @@ export function ChevronBottom({ width, height, size, color }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      transform="rotate(90)"
+      className="transform rotate-90"
     >
       <path
         d="M9 20L17 12L9 4"
@@ -86,7 +86,7 @@ export function ChevronTop({ width, height, size, color }: IconProps) {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      transform="rotate(-90)"
+      className="transform -rotate-90"
     >
       <path
         d="M9 20L17 12L9 4"
