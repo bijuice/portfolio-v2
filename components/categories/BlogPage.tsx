@@ -9,7 +9,7 @@ export default function BlogPage() {
       <section className=" flex flex-col items-center  gap-5  h-screen relative p-24  ">
         <h1 className="text-7xl uppercase avant-garde">Blog</h1>
 
-        <div className="flex flex-col gap-24 mt-20">
+        <div className="flex flex-col gap-24 py-20">
           {blogPosts.map((post) => (
             <Post post={post} />
           ))}
@@ -30,7 +30,7 @@ function Post({ post }: { post: BlogPost }) {
       <h4 className="uppercase ">{post.type}</h4>
 
       <div
-        className=" border-y border-black py-6  "
+        className="post-container border-y border-black py-6  "
         dangerouslySetInnerHTML={{
           __html: post.content,
         }}

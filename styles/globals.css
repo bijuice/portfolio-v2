@@ -291,3 +291,7 @@ a {
 .experience-card-title.active {
   transform: scale(1);
 }
+
+.post-container > p {
+  @apply mb-4;
+}
