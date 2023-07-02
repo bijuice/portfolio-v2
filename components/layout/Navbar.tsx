@@ -95,7 +95,7 @@ export default function Navbar({
 
       <div className="h-fit flex items-center ml-4 pl-4   border-l-2  border-black">
         <Link
-          className="  border-black  py-2"
+          className="  border-black  py-1 mb-2"
           href="https://github.com/bijuice"
           target="_blank"
         >
