@@ -46,7 +46,7 @@ export default function Navbar({
 
   return (
     <nav
-      className=" fixed top-0  right-0 w-full  z-20 flex justify-end px-20  h-16  bg-white items-center avant-garde"
+      className=" fixed top-0  right-0 w-full  z-20 flex justify-between px-20  h-16  bg-white items-center avant-garde"
       style={{
         color: color,
       }}
@@ -55,52 +55,57 @@ export default function Navbar({
         setX(activeCatElement?.offsetLeft || 0);
       }}
     >
-      <motion.div
-        ref={boxRef}
-        onMouseMove={handleMouseMove}
-        className="py-1 px-4 font-bold flex gap-8 relative "
-        initial="initial"
-        whileHover="hover"
-      >
-        <motion.span
-          className="  absolute bottom-1 h-0.5"
-          animate={{
-            x: x - 15,
-            width: width,
-          }}
-          transition={{
-            type: "tween",
-            duration: 0.2,
-          }}
-          style={{
-            backgroundColor: color,
-          }}
+      <button onClick={() => setCategory(categories[0])}>
+        <Image src="/icons/logo.png" width={60} height={60} alt="logo" />
+      </button>
+      <div className="flex">
+        <motion.div
+          ref={boxRef}
+          onMouseMove={handleMouseMove}
+          className="py-1 px-4 font-bold flex gap-8 relative "
+          initial="initial"
+          whileHover="hover"
         >
-          {" "}
-        </motion.span>
-        {categories.map((category) => (
-          <motion.button
-            key={category.name}
-            variants={navigationVariants}
-            initial="initial"
-            whileHover="hover"
-            onClick={() => setCategory(category)}
-            id={`nav-${category.name}`}
-            className={`pb-2`}
+          <motion.span
+            className="  absolute bottom-1 h-0.5"
+            animate={{
+              x: x - 15,
+              width: width,
+            }}
+            transition={{
+              type: "tween",
+              duration: 0.2,
+            }}
+            style={{
+              backgroundColor: color,
+            }}
           >
-            {category.name}
-          </motion.button>
-        ))}
-      </motion.div>
+            {" "}
+          </motion.span>
+          {categories.map((category) => (
+            <motion.button
+              key={category.name}
+              variants={navigationVariants}
+              initial="initial"
+              whileHover="hover"
+              onClick={() => setCategory(category)}
+              id={`nav-${category.name}`}
+              className={`pb-2`}
+            >
+              {category.name}
+            </motion.button>
+          ))}
+        </motion.div>
 
-      <div className="h-fit flex items-center ml-4 pl-4   border-l-2  border-black">
-        <Link
-          className="  border-black  py-1 mb-2"
-          href="https://github.com/bijuice"
-          target="_blank"
-        >
-          <Image src="/icons/github.png" width={23} height={23} alt="github" />
-        </Link>
+        <div className="h-fit flex items-center ml-4 pl-4   border-l-2  border-black">
+          <Link
+            className="  text-black font-bold"
+            href="https://github.com/bijuice"
+            target="_blank"
+          >
+            GitHub
+          </Link>
+        </div>
       </div>
     </nav>
   );
