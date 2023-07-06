@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CloseButton, NavigationButton } from "@/components/Buttons";
 import categories from "@/data/categories";
@@ -11,6 +11,7 @@ import getRelativeCoordinates from "@/utilities/getRelativeCoordinates";
 import Category from "@/types/Category";
 import Navbar from "@/components/layout/Navbar";
 import BlogPage from "@/components/categories/BlogPage";
+import { useRouter } from "next/router";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -20,6 +21,16 @@ export default function Home() {
   function setCategory(category: Category) {
     setActiveCategory(category);
   }
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(
+      `/?cat=${activeCategory.name.toLocaleLowerCase()}`,
+      `/${activeCategory.name.toLocaleLowerCase()}`,
+      { shallow: true }
+    );
+  }, [activeCategory]);
 
   return (
     <main className=" h-screen px-16 overflow-hidden w-full flex items-center   select-none">
