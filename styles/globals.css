@@ -295,3 +295,12 @@ a {
 .post-container > p {
   @apply mb-4;
 }
+
+.mobile-menu {
+  transform: translateY(-100vh);
+  transition: transform 0.5s;
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+}
