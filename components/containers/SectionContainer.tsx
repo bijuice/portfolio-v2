@@ -9,7 +9,7 @@ export default function SectionContainer({
 }) {
   return (
     <section
-      className={`flex flex-col lg:flex-row min-h-screen ${styles}`}
+      className={`flex flex-col even:flex-col-reverse  py-7 lg:py-0  lg:flex-row lg:even:flex-row  min-h-screen ${styles}`}
       id={id}
     >
       {children}

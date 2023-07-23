@@ -84,24 +84,22 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
 
         <SectionContainer>
           <WhiteSection>
-            <div className="flex h-full">
-              {" "}
-              <div className="flex flex-col">
-                <ImageContainer
-                  src="url('/images/committee-meetup.jpg')"
-                  link="https://www.kamilimu.org/team"
-                  title="KamiLimu Committee Hangout"
-                />
-                <ImageContainer
-                  src="url('/images/cohort7-innovation.jpg')"
-                  link="https://www.kamilimu.org/cohort-7"
-                  title="KamiLimu Cohort 7 Innovation Semifinals"
-                />
-              </div>
+            <div className="grid h-full  lg:grid-cols-2">
+              <ImageContainer
+                src="url('/images/committee-meetup.jpg')"
+                link="https://www.kamilimu.org/team"
+                title="KamiLimu Committee Hangout"
+              />
               <ImageContainer
                 src="url('/images/cohort6-graduation.jpg')"
                 link="https://www.kamilimu.org/cohort-6"
                 title="KamiLimu Cohort 6 Graduation"
+                styles="row-span-2"
+              />
+              <ImageContainer
+                src="url('/images/cohort7-innovation.jpg')"
+                link="https://www.kamilimu.org/cohort-7"
+                title="KamiLimu Cohort 7 Innovation Semifinals"
               />
             </div>
           </WhiteSection>
@@ -120,28 +118,26 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
             </SectionHeading>
           </BlackSection>
           <WhiteSection>
-            <div className="flex h-full">
+            <div className="grid h-full">
               <ImageContainer
                 src="url('/images/boy-tie.jpg')"
                 title="Boy"
                 description="Coworker/Friend"
               />
-              <div className="flex flex-col w-1/2">
-                <ImageContainer
-                  src="url('/images/me-cats.jpg')"
-                  title="Lucy & Boy"
-                />
-                <ImageContainer
-                  src="url('/images/bebbins.jpg')"
-                  title="Bebbins & Chims"
-                />
-              </div>
+              <ImageContainer
+                src="url('/images/me-cats.jpg')"
+                title="Lucy & Boy"
+              />
+              <ImageContainer
+                src="url('/images/bebbins.jpg')"
+                title="Bebbins & Chims"
+              />
             </div>
           </WhiteSection>
         </SectionContainer>
         <SectionContainer>
           <WhiteSection>
-            <div className="flex flex-col gap-7 w-full h-full p-24 justify-center text-right text-lg 2xl:text-3xl ">
+            <div className="flex flex-col gap-7 w-full h-full md:p-24 justify-center text-center lg:text-right text-lg 2xl:text-3xl ">
               <h4 className="text-4xl">Legacy</h4>
               <div>
                 <p>
@@ -187,7 +183,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
         </SectionContainer>
 
         <SectionContainer>
-          <div className="flex flex-col w-full h-screen justify-center items-center  px-24 pb-24">
+          <div className="flex flex-col w-full h-screen justify-center items-center  lg:px-24 pb-24">
             <h3 className="text-3xl  w-fit bg-white text-black circular circular uppercase text-center  mb-10 pb-4 border-b-2 border-black px-16">
               Discover More
             </h3>
@@ -286,12 +282,9 @@ function BlackSection({
   children: React.ReactNode;
   direction: "left" | "right";
 }) {
-  const styles =
-    direction === "left" ? "justify-end text-right" : "justify-start text-left";
-
   return (
     <div
-      className={`grow w-full lg:w-1/2 bg-white  px-24 flex items-center ${styles}`}
+      className={`grow w-full lg:w-1/2 bg-white px-10 py-16 lg:py-0 lg:px-24 flex items-center text-center lg:text-right lg:even:text-left`}
     >
       {children}
     </div>
@@ -307,15 +300,17 @@ function ImageContainer({
   link,
   title,
   description,
+  styles,
 }: {
   src: string;
   link?: string;
   title: string;
   description?: string;
+  styles?: string;
 }) {
   return (
     <div
-      className="grow relative m-2 border-black"
+      className={`grow relative m-2 border-black ${styles} aspect-square lg:aspect-auto`}
       style={{
         background: src,
         backgroundSize: "cover",
