@@ -75,3 +75,22 @@ export function NavigationButton({
     </motion.button>
   );
 }
+
+export function CategoryButton({
+  children,
+  onClick,
+  styles,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  styles: string;
+}) {
+  return (
+    <button
+      className={`category-button  uppercase text-5xl font-bold  py-7  ${styles}`}
+      onClick={onClick}
+    >
+      <span className=" px-32">{children}</span>
+    </button>
+  );
+}

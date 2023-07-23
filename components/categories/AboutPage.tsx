@@ -12,6 +12,7 @@ import SectionContainer from "../containers/SectionContainer";
 import DiscoverMore from "../navigation/DiscoverMore";
 import Category from "@/types/Category";
 import categories from "@/data/categories";
+import { CategoryButton } from "../Buttons";
 
 const reviews = [
   {
@@ -275,25 +276,6 @@ function ReviewSection() {
       <p className="text-gray-500 text-sm">{reviews[currentReview].name}</p>
       <p className="text-gray-400 text-sm">{reviews[currentReview].position}</p>
     </motion.div>
-  );
-}
-
-function CategoryButton({
-  children,
-  onClick,
-  styles,
-}: {
-  children: React.ReactNode;
-  onClick: () => void;
-  styles: string;
-}) {
-  return (
-    <button
-      className={`category-button  uppercase text-5xl font-bold  py-7  ${styles}`}
-      onClick={onClick}
-    >
-      <span className=" px-32">{children}</span>
-    </button>
   );
 }
 
