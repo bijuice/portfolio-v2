@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import categories from "@/data/categories";
 import Link from "next/link";
 import Image from "next/image";
+import { CategoryButton } from "../Buttons";
 
 const navigationVariants = {
   initial: {
@@ -24,7 +25,6 @@ export default function Navbar({
   activeCategory: Category;
   setCategory(category: Category): void;
 }) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const boxRef = useRef<any>();
   const handleMouseMove = (e: any) => {
     const { x } = getRelativeCoordinates(e, boxRef.current);
@@ -44,9 +44,16 @@ export default function Navbar({
     setWidth(activeCatElement?.offsetWidth || 0);
   }, [activeCategory, activeCatId]);
 
+  const [showMenu, setShowMenu] = useState(false);
+
+  function changeCategory(category: Category) {
+    setCategory(category);
+    setShowMenu(false);
+  }
+
   return (
     <nav
-      className=" fixed top-0  right-0 w-full  z-20 flex justify-between px-20  h-16  bg-white items-center avant-garde"
+      className=" fixed top-0  right-0 w-full  z-20 flex justify-between px-7 md:px-20  h-16  bg-white items-center avant-garde"
       style={{
         color: color,
       }}
@@ -58,7 +65,7 @@ export default function Navbar({
       <button onClick={() => setCategory(categories[0])}>
         <Image src="/icons/logo.png" width={60} height={60} alt="logo" />
       </button>
-      <div className="flex">
+      <div className="hidden sm:flex ">
         <motion.div
           ref={boxRef}
           onMouseMove={handleMouseMove}
@@ -105,6 +112,37 @@ export default function Navbar({
           >
             GitHub
           </Link>
+        </div>
+      </div>
+
+      {/* mobile menu */}
+      <button className="sm:hidden" onClick={() => setShowMenu(true)}>
+        <Image src="/icons/menu.png" width={30} height={30} alt="menu" />
+      </button>
+
+      <div
+        className={`mobile-menu ${
+          showMenu && "active"
+        } fixed w-screen h-screen top-0 left-0 bg-white p-7 grid place-content-center shadow-md`}
+      >
+        <button
+          className="absolute top-7 right-7"
+          onClick={() => setShowMenu(false)}
+        >
+          <Image src="/icons/close.png" width={25} height={25} alt="logo" />
+        </button>
+
+        <div className="w-full flex flex-col items-center  ">
+          {categories.map((category) => (
+            <CategoryButton
+              styles=""
+              onClick={() => {
+                changeCategory(category);
+              }}
+            >
+              {category.name}
+            </CategoryButton>
+          ))}
         </div>
       </div>
     </nav>
