@@ -139,6 +139,7 @@ export default function Navbar({
               onClick={() => {
                 changeCategory(category);
               }}
+              key={category.name}
             >
               {category.name}
             </CategoryButton>
