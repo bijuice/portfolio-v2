@@ -19,7 +19,7 @@ function ShadowHeading({
   styles: string;
   index: number;
 }) {
-  const k = 0.003 * index;
+  const k = 0.004 * index;
 
   const x = coords.x > 1000 ? 5 + 1000 * k : 5 + coords.x * k;
   const y = coords.y < 500 ? 5 + coords.y * k : 5 + 500 * k;
