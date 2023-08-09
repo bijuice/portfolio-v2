@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
 type TypographyProps = {
-  text: string;
-};
+  text: string
+}
 
 const container = {
   hidden: {},
@@ -12,7 +12,7 @@ const container = {
       staggerChildren: 0.7,
     },
   },
-};
+}
 
 const item = {
   hidden: { opacity: 0 },
@@ -22,7 +22,7 @@ const item = {
       duration: 0.7,
     },
   },
-};
+}
 
 export function PageHeading({ text }: TypographyProps) {
   const children = text.split(" ").map((word) => {
@@ -31,8 +31,8 @@ export function PageHeading({ text }: TypographyProps) {
         {" "}
         {word + " "}
       </motion.span>
-    );
-  });
+    )
+  })
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ export function PageHeading({ text }: TypographyProps) {
         {children}
       </motion.h1>
     </motion.div>
-  );
+  )
 }
 
 export function PageSubHeading({ text }: TypographyProps) {
@@ -65,27 +65,27 @@ export function PageSubHeading({ text }: TypographyProps) {
         {text}
       </motion.h2>
     </div>
-  );
+  )
 }
 
 export function SectionHeading({
   children,
   styles,
 }: {
-  children: React.ReactNode;
-  styles?: string;
+  children: React.ReactNode
+  styles?: string
 }) {
   return (
     <h2
-      className={`avant-garde  bg-clip-text text-[3em] md:text-[4em] xl:text-[5em] leading-relaxed  text-black uppercase`}
+      className={`avant-garde  bg-clip-text text-4xl md:text-6xl 2xl:text-8xl xl:leading-loose leading-relaxed  text-black uppercase`}
     >
       {children}
     </h2>
-  );
+  )
 }
 
 export function TextEmphasis({ children }: { children: React.ReactNode }) {
-  const animationDuration = 0.6;
+  const animationDuration = 0.6
 
   return (
     <motion.span
@@ -131,9 +131,25 @@ export function TextEmphasis({ children }: { children: React.ReactNode }) {
         {children}
       </motion.span>
     </motion.span>
-  );
+  )
 }
 
 export function Skill({ children }: { children: React.ReactNode }) {
-  return <span className="font-bold text-sm  avant-garde">{children}</span>;
+  return <span className="font-bold text-sm  avant-garde">{children}</span>
+}
+
+export function SimplePageHeading({
+  children,
+  styles,
+}: {
+  children: React.ReactNode
+  styles?: string
+}) {
+  return (
+    <h1
+      className={`${styles} text-5xl sm:text-6xl md:text-8xl uppercase avant-garde `}
+    >
+      {children}
+    </h1>
+  )
 }

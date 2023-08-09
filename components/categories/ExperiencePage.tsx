@@ -1,21 +1,21 @@
-import { CategoryProps } from "@/props/CategoryProps";
-import { ReactNode, useEffect, useMemo, useState } from "react";
-import { delay, motion } from "framer-motion";
-import Link from "next/link";
-import SectionContainer from "../containers/SectionContainer";
-import { ChevronTop } from "../Icons/Chevrons";
-import DiscoverMore from "../navigation/DiscoverMore";
-import experiences from "@/data/experiences";
-import { Experience } from "@/types/Experience";
-import formatLink from "@/utilities/formatters";
-import { Skill } from "../Typography";
+import { CategoryProps } from "@/props/CategoryProps"
+import { ReactNode, useEffect, useMemo, useState } from "react"
+import { delay, motion } from "framer-motion"
+import Link from "next/link"
+import SectionContainer from "../containers/SectionContainer"
+import { ChevronTop } from "../Icons/Chevrons"
+import DiscoverMore from "../navigation/DiscoverMore"
+import experiences from "@/data/experiences"
+import { Experience } from "@/types/Experience"
+import formatLink from "@/utilities/formatters"
+import { SimplePageHeading, Skill } from "../Typography"
 
 export default function ExperiencePage() {
   return (
     <div className="category-view max-h-screen h-screen select-none relative   overflow-y-auto overflow-x-hidden">
       <section
         id="top"
-        className="h-screen relative flex items-center mx-auto w-[85vw] font-bold pt-32"
+        className="h-screen relative hidden lg:flex items-center mx-auto w-[85vw] font-bold pt-32"
       >
         <motion.h1
           animate={{ opacity: [1, 0] }}
@@ -29,9 +29,13 @@ export default function ExperiencePage() {
         <DiscoverMore id="pesapal-developer" />
       </section>
 
+      <section className=" flex justify-center items-center min-h-[30vh] mt-24">
+        <SimplePageHeading>Experience</SimplePageHeading>
+      </section>
+
       <SectionContainer styles="  pt-10 pb-16 px-10 md:px-20 text-black grid gap-x-16 justify-items-center  ">
         {experiences.map((exp) => {
-          return <ExperienceSection key={formatLink(exp)} exp={exp} />;
+          return <ExperienceSection key={formatLink(exp)} exp={exp} />
         })}
       </SectionContainer>
 
@@ -39,14 +43,14 @@ export default function ExperiencePage() {
         <ChevronTop size={35} color="white" />
       </Link>
     </div>
-  );
+  )
 }
 
 function ExperienceSection({ exp }: { exp: Experience }) {
   return (
     <div
       id={formatLink(exp)}
-      className="flex flex-col gap-7 py-14 w-[60ch] basis-1 text-black "
+      className="flex flex-col gap-7 py-14 md:w-[60ch] basis-1 text-black "
     >
       <h1 className="text-4xl md:text-5xl avant-garde ">{exp.title}</h1>
       <h2 className="text-xl md:text-2xl text-neutral-700  ">
@@ -59,7 +63,7 @@ function ExperienceSection({ exp }: { exp: Experience }) {
       </h2>
       <div className="flex flex-wrap gap-4 uppercase   text-black  px-1">
         {exp.skills.map((skill) => {
-          return <Skill key={skill}>{skill}</Skill>;
+          return <Skill key={skill}>{skill}</Skill>
         })}
       </div>
 
@@ -70,38 +74,38 @@ function ExperienceSection({ exp }: { exp: Experience }) {
         }}
       ></div>
     </div>
-  );
+  )
 }
 
 function Timeline() {
-  const [timelineWidth, setTimelineWidth] = useState(1500);
+  const [timelineWidth, setTimelineWidth] = useState(1500)
 
   useEffect(() => {
-    let timeline = document.getElementById("timeline");
+    let timeline = document.getElementById("timeline")
 
-    setTimelineWidth(timeline!.offsetWidth);
-  }, []);
+    setTimelineWidth(timeline!.offsetWidth)
+  }, [])
 
-  const date = new Date();
-  const year = date.getFullYear();
+  const date = new Date()
+  const year = date.getFullYear()
 
-  const a = year - 6;
-  const b = year + 2;
+  const a = year - 6
+  const b = year + 2
 
   function renderDots() {
-    let dots: React.ReactNode[] = [];
+    let dots: React.ReactNode[] = []
 
     for (let i = a; i < b; i++) {
-      const exps = experiences.filter((e) => e.startYear === i);
+      const exps = experiences.filter((e) => e.startYear === i)
 
       const cards = exps.map((e) => {
-        return <ExpCard key={e.title} exp={e} timelineWidth={timelineWidth} />;
-      });
+        return <ExpCard key={e.title} exp={e} timelineWidth={timelineWidth} />
+      })
 
-      dots.push(<Point key={i} year={i} cards={cards} />);
+      dots.push(<Point key={i} year={i} cards={cards} />)
     }
 
-    return dots;
+    return dots
   }
 
   return (
@@ -111,13 +115,13 @@ function Timeline() {
         {renderDots()}
       </div>
     </>
-  );
+  )
 }
 
 type PointProps = {
-  year: number;
-  cards: ReactNode[];
-};
+  year: number
+  cards: ReactNode[]
+}
 
 function Point({ year, cards }: PointProps) {
   return (
@@ -129,29 +133,29 @@ function Point({ year, cards }: PointProps) {
         {cards}
       </div>
     </div>
-  );
+  )
 }
 
 type ExpCardProps = {
-  exp: Experience;
-  timelineWidth: number;
-};
+  exp: Experience
+  timelineWidth: number
+}
 
 function ExpCard({ exp, timelineWidth }: ExpCardProps) {
-  const year = new Date().getFullYear();
+  const year = new Date().getFullYear()
 
   const duration =
-    exp.duration === 0 ? (year - exp.startYear) * 12 : exp.duration;
+    exp.duration === 0 ? (year - exp.startYear) * 12 : exp.duration
 
   function monthsToYears() {
-    const dur = (duration / 12).toFixed(1);
+    const dur = (duration / 12).toFixed(1)
 
-    const year = parseFloat(dur) === 1.0 ? "year" : "years";
+    const year = parseFloat(dur) === 1.0 ? "year" : "years"
 
-    return dur + year;
+    return dur + year
   }
 
-  const durationWidth = (duration / 84) * timelineWidth;
+  const durationWidth = (duration / 84) * timelineWidth
 
   return (
     <Link href={"#" + formatLink(exp)}>
@@ -178,7 +182,7 @@ function ExpCard({ exp, timelineWidth }: ExpCardProps) {
         </div>
       </div>
     </Link>
-  );
+  )
 }
 
 function Line() {
@@ -187,5 +191,5 @@ function Line() {
       className="bg-black w-full h-[2px]  timeline relative"
       id="timeline"
     ></div>
-  );
+  )
 }
