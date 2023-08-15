@@ -77,7 +77,7 @@ export function SectionHeading({
 }) {
   return (
     <h2
-      className={`avant-garde  bg-clip-text text-4xl md:text-6xl 2xl:text-8xl xl:leading-loose leading-relaxed  text-black uppercase`}
+      className={`avant-garde  bg-clip-text text-4xl md:text-6xl 2xl:text-8xl xl:leading-loose 2xl:leading-[1.5] leading-relaxed  text-black uppercase`}
     >
       {children}
     </h2>
@@ -89,7 +89,7 @@ export function TextEmphasis({ children }: { children: React.ReactNode }) {
 
   return (
     <motion.span
-      className="font-bold text-[1.2em] uppercase px-4 mx-1"
+      className="font-bold  uppercase px-4 mx-1 py-2"
       style={{
         background: `linear-gradient(to left, white, white 50%, black 50%, black)`,
         backgroundSize: "200.3% 100%",
