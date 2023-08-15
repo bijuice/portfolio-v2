@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { useRef, useState } from "react"
 import getRelativeCoordinates from "@/utilities/getRelativeCoordinates"
 import { ChevronLeft, ChevronRight } from "../Icons/Chevrons"
+import ImagePlaceHolder from "../ImagePlaceholder"
 
 function ShadowHeading({
   coords,
@@ -101,35 +102,23 @@ function ProjectCard({ proj }: { proj: Project }) {
       </h3>
       {photos.length > 0 && (
         <div className="py-4 flex relative gap-2 overflow-hidden">
-          <motion.div
+          <div
             className="relative  w-5/6 aspect-video cursor-pointer border-2 border-black"
             key={activePhoto.src}
-            initial={{
-              x: "-50%",
-            }}
-            animate={{
-              x: 0,
-            }}
-            exit={{
-              opacity: 0,
-            }}
-            transition={{
-              stiffness: 100,
-            }}
           >
             <Image
               src={activePhoto.src}
               fill={true}
               alt={activePhoto.alt}
               className="object-cover"
-              placeholder="blur"
             />
             <h3>{activePhoto.title}</h3>
-          </motion.div>
+            <ImagePlaceHolder />
+          </div>
           <div className="w-1/6 flex flex-col gap-3">
             {photos.map((photo, index) => (
               <motion.div
-                className={`  cursor-pointer border-black`}
+                className={`  cursor-pointer border-black border-2`}
                 layout
                 key={photo.src}
                 layoutId={photo.src}
@@ -157,8 +146,8 @@ function ProjectCard({ proj }: { proj: Project }) {
                     fill={true}
                     alt={photo.alt}
                     className="object-cover"
-                    placeholder="blur"
                   />
+                  <ImagePlaceHolder />
                 </div>
               </motion.div>
             ))}
