@@ -1,11 +1,12 @@
 import { PageHeading, SimplePageHeading, Skill } from "../Typography"
-import { Project } from "@/types/Project"
+import { Photo, Project } from "@/types/Project"
 import projects from "@/data/projects"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useRef, useState } from "react"
 import getRelativeCoordinates from "@/utilities/getRelativeCoordinates"
+import { ChevronLeft, ChevronRight } from "../Icons/Chevrons"
 
 function ShadowHeading({
   coords,
@@ -61,7 +62,7 @@ export default function ProjectsPage() {
       ref={pageRef}
       onMouseMove={handleMouseMove}
     >
-      <section className=" flex flex-col items-center  gap-5  h-screen relative py-20 px-10 md:p-24  mt-16">
+      <section className=" flex flex-col items-center  gap-5  h-screen relative py-20 px-5 md:p-24  mt-16">
         <div className="flex flex-col text-center ">
           <div className="text-7xl uppercase avant-garde min-h-16">
             <SimplePageHeading>Projects</SimplePageHeading>
@@ -83,11 +84,85 @@ export default function ProjectsPage() {
 }
 
 function ProjectCard({ proj }: { proj: Project }) {
+  const [photos, setPhotos] = useState(proj.photos)
+
+  function setPhoto(photo: Photo) {
+    const newPhotos = photos.filter((p) => p.src !== photo.src)
+
+    setPhotos([photo, ...newPhotos])
+  }
+
+  const [activePhoto, setActivePhoto] = useState<Photo>(photos[0])
+
   return (
-    <div className=" flex flex-col gap-5 w-full md:w-[60ch] basis-1">
-      <h3 className="text-4xl md:text-5xl avant-garde flex justify-between  pb-2">
+    <div className=" flex flex-col gap-5 w-full max-w-[80ch] basis-1">
+      <h3 className="text-3xl md:text-4xl avant-garde flex justify-between  ">
         {proj.name}{" "}
       </h3>
+      {photos.length > 0 && (
+        <div className="py-4 flex relative gap-2 overflow-hidden">
+          <motion.div
+            className="relative  w-5/6 aspect-video cursor-pointer border-2 border-black"
+            key={activePhoto.src}
+            initial={{
+              x: "-50%",
+            }}
+            animate={{
+              x: 0,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              stiffness: 100,
+            }}
+          >
+            <Image
+              src={activePhoto.src}
+              fill={true}
+              alt={activePhoto.alt}
+              className="object-cover"
+            />
+            <h3>{activePhoto.title}</h3>
+          </motion.div>
+          <div className="w-1/6 flex flex-col gap-3">
+            {photos.map((photo, index) => (
+              <motion.div
+                className={`  cursor-pointer border-black`}
+                layout
+                key={photo.src}
+                layoutId={photo.src}
+                initial={{
+                  y: 150,
+                  x: 0,
+                  opacity: 0,
+                }}
+                animate={{
+                  y: 0,
+                  x: 0,
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                onClick={() => {
+                  setPhoto(photo)
+                  setActivePhoto(photo)
+                }}
+              >
+                <div className="relative  w-full aspect-video border-black">
+                  <Image
+                    src={photo.src}
+                    fill={true}
+                    alt={photo.alt}
+                    className="object-cover"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="flex flex-wrap gap-4 uppercase    px-1 items-center">
         {proj.stack.map((skill) => {
@@ -95,8 +170,9 @@ function ProjectCard({ proj }: { proj: Project }) {
         })}
       </div>
 
-      <div className=" border-y border-black py-6">
+      <div className=" border-y border-black py-6 w-full">
         <p className="text-justify pb-4 ">{proj.description}</p>
+
         <span className="flex gap-5 items-center text-xs ">
           <Link href={proj.gitHub} target="_blank" className="   ">
             <Image
