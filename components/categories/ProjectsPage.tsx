@@ -122,6 +122,7 @@ function ProjectCard({ proj }: { proj: Project }) {
               fill={true}
               alt={activePhoto.alt}
               className="object-cover"
+              placeholder="blur"
             />
             <h3>{activePhoto.title}</h3>
           </motion.div>
@@ -156,6 +157,7 @@ function ProjectCard({ proj }: { proj: Project }) {
                     fill={true}
                     alt={photo.alt}
                     className="object-cover"
+                    placeholder="blur"
                   />
                 </div>
               </motion.div>
