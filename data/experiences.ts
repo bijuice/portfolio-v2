@@ -1,9 +1,9 @@
-import { Experience } from "@/types/Experience";
+import { Experience } from "@/types/Experience"
 
 const experiences: Experience[] = [
   {
     startYear: 2022,
-    duration: 16,
+    duration: 20,
     title: "Pesapal",
     role: "Developer",
     resps: [
@@ -160,6 +160,6 @@ const experiences: Experience[] = [
     skills: ["Entrepreneurship", "Leadership"],
     description: `<p>As the founder of iPhones Kenya I was responsible for the sourcing and importation of mobile devices from the U.S, Hong Kong, and China. I repaired and refurbished broken phones. I also handled the social media presence of the business. I created marketing campaigns on Facebook, Instagram, and OLX to promote the business. The responsibility of in-person sales and delivery was also handled by me.</p>`,
   },
-];
+]
 
-export default experiences;
+export default experiences
