@@ -126,7 +126,6 @@ function ProjectCard({ proj }: { proj: Project }) {
               alt={activePhoto.alt}
               className="object-cover"
             />
-            <h3>{activePhoto.title}</h3>
             <ImagePlaceHolder />
           </div>
           <div className="w-1/6 flex flex-col gap-3">
