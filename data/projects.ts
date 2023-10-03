@@ -1,6 +1,6 @@
-import { Project } from "@/types/Project"
+import { Project } from "@/types/Project";
 
-const projects: Project[] = [
+export const personalProjects: Project[] = [
   {
     name: "Portfolio v2",
     gitHub: "https://github.com/bijuice/portfolio-v2",
@@ -91,6 +91,31 @@ It also visualizes the html output.`,
     stack: ["JavaScript", "OpenAI", "OctoKit"],
     photos: [],
   },
-]
+];
 
-export default projects
+export const professionalProjects: Project[] = [
+  {
+    name: "Payment Pages",
+    gitHub: "",
+    link: "store.pesapal.com",
+    description: "The site you are looking at right now.",
+    stack: ["TypeScript", "Next.js", "Tailwind", ".NET Core", "C#"],
+    photos: [
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696323858/Screenshot_2023-10-03_115500_aoz6wb.png",
+        alt: "Payment Pages Home Page ",
+        title: "Home Page",
+      },
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696323858/Screenshot_2023-10-03_115659_zeieko.png",
+        alt: "Create or Edit A Payment Page View",
+        title: "Create or Edit A Payment Page ",
+      },
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696323858/Screenshot_2023-10-03_120322_fuscfm.png",
+        alt: "Customer payment form",
+        title: "Customer Payment Form",
+      },
+    ],
+  },
+];
