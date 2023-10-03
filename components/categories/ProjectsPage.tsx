@@ -117,7 +117,7 @@ function ProjectCard({ proj }: { proj: Project }) {
       {photos.length > 0 && (
         <div className="py-4 flex relative gap-2 overflow-hidden">
           <div
-            className="relative  w-5/6 aspect-video cursor-pointer border-2 border-black"
+            className="relative  w-5/6 aspect-video cursor-pointer border border-black"
             key={activePhoto.src}
           >
             <Image
@@ -131,7 +131,7 @@ function ProjectCard({ proj }: { proj: Project }) {
           <div className="w-1/6 flex flex-col gap-3">
             {photos.map((photo, index) => (
               <motion.div
-                className={`  cursor-pointer border-black border-2`}
+                className={`  cursor-pointer border-black border`}
                 layout
                 key={photo.src}
                 layoutId={photo.src}
