@@ -98,7 +98,8 @@ export const professionalProjects: Project[] = [
     name: "Payment Pages",
     gitHub: "",
     link: "store.pesapal.com",
-    description: "The site you are looking at right now.",
+    description:
+      "Accept payments online with Payment Pages. Enables SMEs to create custom pages with their own branding and accept payments from their customers in minutes. Intergrates with the Pesapal API to process payments.",
     stack: ["TypeScript", "Next.js", "Tailwind", ".NET Core", "C#"],
     photos: [
       {
@@ -115,6 +116,56 @@ export const professionalProjects: Project[] = [
         src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696323858/Screenshot_2023-10-03_120322_fuscfm.png",
         alt: "Customer payment form",
         title: "Customer Payment Form",
+      },
+    ],
+  },
+  {
+    name: "Africa Law Partners",
+    gitHub: "",
+    link: "store.pesapal.com",
+    description:
+      "Statically generated website built for Africa Law Partners. Built from scratch using an Next.js. Contentful used as a Headless CMS. Pages are built statically by Netlify using a Contentful Webhook. ",
+    stack: ["JavaScript", "Next.js", "Tailwind", "Contentful", "Netlify"],
+    photos: [
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696332734/Screenshot_2023-10-03_142905_bpskv7.png",
+        alt: "Africa Law Partners landing page ",
+        title: "Landing Page",
+      },
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696332737/Screenshot_2023-10-03_142945_swtgwy.png",
+        alt: "Africa Law Partners People Section ",
+        title: "People Section",
+      },
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696332735/Screenshot_2023-10-03_143010_zoarqj.png",
+        alt: "ASK Tuition Insights page ",
+        title: "Insights Page",
+      },
+    ],
+  },
+  {
+    name: "ASK Tuitions",
+    gitHub: "",
+    link: "store.pesapal.com",
+    description:
+      "Statically generated website built for ASK Tuitions. Made using an Astro theme to generate static pages with Contentful as a Headless CMS. Pages are built statically by Netlify using a Contentful Webhook. Dark mode supported.",
+    stack: ["TypeScript", "Astro", "Tailwind", "Contentful", "Netlify"],
+    photos: [
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696331654/Screenshot_2023-10-03_140619_at6ri1.png",
+        alt: "ASK Tuition landing page ",
+        title: "Landing Page",
+      },
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696331656/Screenshot_2023-10-03_140653_tu7irx.png",
+        alt: "ASK Tuition about page ",
+        title: "About Page",
+      },
+      {
+        src: "https://res.cloudinary.com/drtxwwv6c/image/upload/v1696332482/Screenshot_2023-10-03_142732_fbxo2k.png",
+        alt: "ASK Tuition Resources page ",
+        title: "Resources Page",
       },
     ],
   },
