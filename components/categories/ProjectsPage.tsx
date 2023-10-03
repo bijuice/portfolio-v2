@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import getRelativeCoordinates from "@/utilities/getRelativeCoordinates";
 import { ChevronLeft, ChevronRight } from "../Icons/Chevrons";
 import ImagePlaceHolder from "../ImagePlaceholder";
+import { FilterButton } from "../Buttons";
 
 function ShadowHeading({
   coords,
@@ -71,11 +72,17 @@ export default function ProjectsPage() {
             Made from organic, gluten free Stack Overflow code snippets.
           </h3>
 
-          <div className="pt-10 flex justify-center  gap-6">
-            <FilterButton onClick={() => setProjectType("PROFESSIONAL")}>
+          <div className="pt-10 flex justify-center  ">
+            <FilterButton
+              onClick={() => setProjectType("PROFESSIONAL")}
+              active={projectType == "PROFESSIONAL"}
+            >
               PROFESSIONAL
             </FilterButton>
-            <FilterButton onClick={() => setProjectType("PERSONAL")}>
+            <FilterButton
+              onClick={() => setProjectType("PERSONAL")}
+              active={projectType == "PERSONAL"}
+            >
               PERSONAL
             </FilterButton>
           </div>
@@ -88,20 +95,6 @@ export default function ProjectsPage() {
         </div>
       </section>{" "}
     </div>
-  );
-}
-
-function FilterButton({
-  children,
-  onClick,
-}: {
-  children: string;
-  onClick: () => void;
-}) {
-  return (
-    <button className="uppercase avant-garde text-lg" onClick={onClick}>
-      {children}
-    </button>
   );
 }
 

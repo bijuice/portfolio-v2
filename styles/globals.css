@@ -304,3 +304,26 @@ a {
 .mobile-menu.active {
   transform: translateY(0);
 }
+
+.filter-button {
+  background: linear-gradient(to right, white, white 50%, black 50%, black);
+  background-size: 200.3% 100%;
+
+  transition: background-position 0.6s;
+}
+
+.filter-button.active {
+  background-position: -100% 0;
+}
+
+.filter-button > span {
+  background: linear-gradient(to right, black, black 50%, white 50%, white);
+  background-size: 200.3% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s;
+}
+
+.filter-button.active > span {
+  background-position: -100% 0;
+}
