@@ -106,7 +106,7 @@ export function FilterButton({
 }) {
   return (
     <button
-      className={`filter-button uppercase avant-garde text-2xl px-3 py-1 ${
+      className={`filter-button uppercase avant-garde text-lg sm:text-2xl px-3 py-1 ${
         active && "active"
       }`}
       onClick={onClick}
