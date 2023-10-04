@@ -61,22 +61,10 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
           <WhiteSection>
             <div className="flex flex-col h-full">
               <ImageContainer
-                src="url('/images/cc.png')"
-                link="https://super-biscuit-1456ce.netlify.app/"
-                title="Bijuiceflix"
-                description="React + Typescript + TailwindCSS + Firebase"
-              />
-              <ImageContainer
                 src="url('/images/alp.png')"
                 link="https://africalawpartners.com/"
                 title="ALP Website"
                 description="NextJS + TailwindCSS + Contentful"
-              />
-              <ImageContainer
-                src="url('/images/code.png')"
-                link="https://github.com/bijuice/pull-request-documenter"
-                title="Pull Request Documenter"
-                description="OpenAI API + JavaScript + Octokit"
               />
             </div>
           </WhiteSection>
@@ -84,24 +72,12 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
 
         <SectionContainer>
           <WhiteSection>
-            <div className="grid h-full  lg:grid-cols-2">
-              <ImageContainer
-                src="url('/images/committee-meetup.jpg')"
-                link="https://www.kamilimu.org/team"
-                title="KamiLimu Committee Hangout"
-              />
-              <ImageContainer
-                src="url('/images/cohort6-graduation.jpg')"
-                link="https://www.kamilimu.org/cohort-6"
-                title="KamiLimu Cohort 6 Graduation"
-                styles="row-span-2"
-              />
-              <ImageContainer
-                src="url('/images/cohort7-innovation.jpg')"
-                link="https://www.kamilimu.org/cohort-7"
-                title="KamiLimu Cohort 7 Innovation Semifinals"
-              />
-            </div>
+            <ImageContainer
+              src="url('/images/cohort6-graduation.jpg')"
+              link="https://www.kamilimu.org/cohort-6"
+              title="KamiLimu Cohort 6 Graduation"
+              styles="h-full"
+            />
           </WhiteSection>
           <BlackSection direction="right">
             <SectionHeading styles=" from-green-300 via-blue-500 to-purple-600">
@@ -123,14 +99,6 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
                 src="url('/images/boy-tie.jpg')"
                 title="Boy"
                 description="Coworker/Friend"
-              />
-              <ImageContainer
-                src="url('/images/me-cats.jpg')"
-                title="Lucy & Boy"
-              />
-              <ImageContainer
-                src="url('/images/bebbins.jpg')"
-                title="Bebbins & Chims"
               />
             </div>
           </WhiteSection>

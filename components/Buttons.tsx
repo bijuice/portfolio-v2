@@ -1,20 +1,20 @@
-import { ChevronLeft, ChevronRight } from "./Icons/Chevrons"
-import Close from "./Icons/Close"
-import { motion } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "./Icons/Chevrons";
+import Close from "./Icons/Close";
+import { motion } from "framer-motion";
 
 type ButtonProps = {
-  color?: string
-  onClick(): void
-  children?: React.ReactNode
-}
+  color?: string;
+  onClick(): void;
+  children?: React.ReactNode;
+};
 
 export function CloseButton({ onClick, color }: ButtonProps) {
   return (
     <motion.button
       className="absolute top-4 right-2 p-5 rounded-md "
       onClick={(e) => {
-        e.stopPropagation()
-        onClick()
+        e.stopPropagation();
+        onClick();
       }}
       whileHover={{
         rotate: -180,
@@ -26,12 +26,12 @@ export function CloseButton({ onClick, color }: ButtonProps) {
     >
       <Close size={30} color={color} />
     </motion.button>
-  )
+  );
 }
 
 type NavButtonProps = {
-  position: "left" | "right"
-} & ButtonProps
+  position: "left" | "right";
+} & ButtonProps;
 
 const chevronVariants = (position: "left" | "right") => {
   return {
@@ -48,8 +48,8 @@ const chevronVariants = (position: "left" | "right") => {
     click: {
       scale: 1.5,
     },
-  }
-}
+  };
+};
 
 export function NavigationButton({
   onClick,
@@ -73,7 +73,7 @@ export function NavigationButton({
         )}
       </motion.div>
     </motion.button>
-  )
+  );
 }
 
 export function CategoryButton({
@@ -81,9 +81,9 @@ export function CategoryButton({
   onClick,
   styles,
 }: {
-  children: React.ReactNode
-  onClick: () => void
-  styles: string
+  children: React.ReactNode;
+  onClick: () => void;
+  styles: string;
 }) {
   return (
     <button
@@ -92,5 +92,26 @@ export function CategoryButton({
     >
       <span className=" px-32 py-2">{children}</span>
     </button>
-  )
+  );
+}
+
+export function FilterButton({
+  children,
+  onClick,
+  active,
+}: {
+  children: string;
+  onClick: () => void;
+  active: boolean;
+}) {
+  return (
+    <button
+      className={`filter-button uppercase avant-garde text-lg sm:text-2xl px-3 py-1 ${
+        active && "active"
+      }`}
+      onClick={onClick}
+    >
+      <span>{children}</span>
+    </button>
+  );
 }
