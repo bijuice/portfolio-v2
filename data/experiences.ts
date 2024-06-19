@@ -3,7 +3,8 @@ import { Experience } from "@/types/Experience"
 const experiences: Experience[] = [
   {
     startYear: 2022,
-    duration: 20,
+    endYear: 2024,
+    duration: 29,
     title: "Pesapal",
     role: "Developer",
     resps: [
@@ -48,7 +49,7 @@ const experiences: Experience[] = [
   },
   {
     startYear: 2021,
-    duration: 26,
+    duration: 36,
     title: "KamiLimu",
     role: "Committee Member",
     resps: [

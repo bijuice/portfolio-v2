@@ -1,9 +1,14 @@
-import blogPosts from "@/data/blogPosts"
+import { poems, articles } from "@/data/blogPosts"
 import { useState } from "react"
 import { SimplePageHeading } from "../Typography"
+import { FilterButton } from "../Buttons"
 
 export default function BlogPage() {
   const [content, setContent] = useState("")
+
+  const [projectType, setProjectType] = useState<"POETRY" | "ARTICLES">(
+    "POETRY"
+  )
 
   return (
     <div className="category-view   max-h-screen w-screen overflow-x-hidden overflow-y-auto ">
@@ -12,13 +17,48 @@ export default function BlogPage() {
           <SimplePageHeading>Blog</SimplePageHeading>
         </div>
 
+        <div className="pt-10 flex justify-center  ">
+          <FilterButton
+            onClick={() => setProjectType("POETRY")}
+            active={projectType == "POETRY"}
+          >
+            POETRY
+          </FilterButton>
+          <FilterButton
+            onClick={() => setProjectType("ARTICLES")}
+            active={projectType == "ARTICLES"}
+          >
+            ARTICLES
+          </FilterButton>
+        </div>
+
         <div className="flex flex-col gap-24 py-20">
-          {blogPosts.map((post) => (
-            <Post key={post.title} post={post} />
-          ))}
+          {projectType == "ARTICLES" ? (
+            <Articles posts={articles} />
+          ) : (
+            <Poems posts={poems} />
+          )}
         </div>
       </section>{" "}
       <p>{content}</p>
+    </div>
+  )
+}
+
+function Poems({ posts }: { posts: BlogPost[] }) {
+  return (
+    <div className="flex flex-col gap-24 py-20">
+      {posts.map((post) => (
+        <Post key={post.title} post={post} />
+      ))}
+    </div>
+  )
+}
+
+function Articles({ posts }: { posts: BlogPost[] }) {
+  return (
+    <div className="flex flex-col gap-24 py-20">
+      <p>No articles yet...</p>
     </div>
   )
 }

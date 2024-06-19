@@ -1,4 +1,12 @@
-const blogPosts: BlogPost[] = [
+const articles: BlogPost[] = [
+  {
+    title: "Frontend Best Practices",
+    content: ``,
+    type: "Article",
+  },
+]
+
+const poems: BlogPost[] = [
   {
     title: "Fateful Time",
     content: `<p>
@@ -92,6 +100,6 @@ const blogPosts: BlogPost[] = [
 </p>`,
     type: "Poem",
   },
-];
+]
 
-export default blogPosts;
+export { poems, articles }
