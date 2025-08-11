@@ -1,44 +1,37 @@
-import Link from "next/link";
-import { ChevronBottom } from "../Icons/Chevrons";
+import Link from "next/link"
+import { ChevronBottom } from "../Icons/Chevrons"
 import {
   PageHeading,
   PageSubHeading,
   SectionHeading,
   TextEmphasis,
-} from "../Typography";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import SectionContainer from "../containers/SectionContainer";
-import DiscoverMore from "../navigation/DiscoverMore";
-import Category from "@/types/Category";
-import categories from "@/data/categories";
-import { CategoryButton } from "../Buttons";
+} from "../Typography"
+import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import SectionContainer from "../containers/SectionContainer"
+import DiscoverMore from "../navigation/DiscoverMore"
+import Category from "@/types/Category"
+import categories from "@/data/categories"
+import { CategoryButton } from "../Buttons"
 
-const reviews = [
-  {
-    name: "Marvin Ouma",
-    position: "Coworker/Friend - Pesapal",
-    text: "A talented developer and a great friend.",
-    stars: 5,
-  },
+const numbersToWords: any = {
+  1: "ONE",
+  2: "TWO",
+  3: "THREE",
+  4: "FOUR",
+  5: "FIVE",
+  6: "SIX",
+  7: "SEVEN",
+}
 
-  {
-    name: "Marvin Mboya",
-    position: "Coworker/Friend - Pesapal",
-    text: "How did you build that experience timeline?",
-    stars: 4,
-  },
-  {
-    name: "Amisi Kiare",
-    position: "Team Lead - Pesapal",
-    text: "A 7X developer.",
-    stars: 4,
-  },
-];
-
-type AboutPageProps = { setCategory: (category: Category) => void };
+type AboutPageProps = { setCategory: (category: Category) => void }
 
 export default function AboutPage({ setCategory }: AboutPageProps) {
+  const today = new Date()
+  const currentYear = today.getFullYear()
+
+  const yearsOfWorkingExperience = numbersToWords[currentYear - 2021]
+  const yearsOfMentorshipExperience = numbersToWords[currentYear - 2021]
   return (
     <div className="category-view   max-h-screen w-screen overflow-x-hidden overflow-y-auto">
       <section className="flex flex-col items-center  gap-5  h-screen relative  text-black">
@@ -54,8 +47,8 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
         <SectionContainer id="web-artisan">
           <BlackSection direction="left">
             <SectionHeading styles=" from-pink-500 via-red-500 to-yellow-500">
-              <TextEmphasis>TWO</TextEmphasis> years of web{" "}
-              <TextEmphasis>ARTISTRY</TextEmphasis>
+              <TextEmphasis>{yearsOfWorkingExperience}</TextEmphasis> years of
+              web <TextEmphasis>ARTISTRY</TextEmphasis>
             </SectionHeading>
           </BlackSection>
           <WhiteSection>
@@ -81,7 +74,8 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
           </WhiteSection>
           <BlackSection direction="right">
             <SectionHeading styles=" from-green-300 via-blue-500 to-purple-600">
-              <TextEmphasis>TWO</TextEmphasis> years of changing
+              <TextEmphasis>{yearsOfMentorshipExperience}</TextEmphasis> years
+              of changing
               <TextEmphasis> LIVES</TextEmphasis>
             </SectionHeading>
           </BlackSection>
@@ -160,7 +154,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               <CategoryButton
                 styles=" "
                 onClick={() => {
-                  setCategory(categories[1]);
+                  setCategory(categories[1])
                 }}
               >
                 experience
@@ -169,7 +163,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               <CategoryButton
                 styles=""
                 onClick={() => {
-                  setCategory(categories[2]);
+                  setCategory(categories[2])
                 }}
               >
                 projects
@@ -177,7 +171,7 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
               <CategoryButton
                 styles=""
                 onClick={() => {
-                  setCategory(categories[3]);
+                  setCategory(categories[3])
                 }}
               >
                 blog
@@ -187,68 +181,15 @@ export default function AboutPage({ setCategory }: AboutPageProps) {
         </SectionContainer>
       </motion.div>
     </div>
-  );
-}
-
-function ReviewSection() {
-  const [currentReview, setCurrentReview] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentReview((prev) => {
-        if (prev === reviews.length - 1) {
-          return 0;
-        } else {
-          return prev + 1;
-        }
-      });
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  function renderStars() {
-    let stars = [];
-
-    for (let i = 0; i < reviews[currentReview].stars; i++) {
-      stars.push(<span className="text-2xl">★</span>);
-    }
-
-    return stars;
-  }
-
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      transition={{
-        delay: 3.2,
-        duration: 0.6,
-      }}
-      className=" absolute bottom-24 overflow-hidden max-w-[600px] px-3 flex flex-col gap-1 text-center text-lg"
-    >
-      <div className="flex gap- justify-center">{renderStars()}</div>
-      <p>
-        {'"'}
-        {reviews[currentReview].text}
-        {'"'}
-      </p>
-      <p className="text-gray-500 text-sm">{reviews[currentReview].name}</p>
-      <p className="text-gray-400 text-sm">{reviews[currentReview].position}</p>
-    </motion.div>
-  );
+  )
 }
 
 function BlackSection({
   children,
   direction,
 }: {
-  children: React.ReactNode;
-  direction: "left" | "right";
+  children: React.ReactNode
+  direction: "left" | "right"
 }) {
   return (
     <div
@@ -256,11 +197,11 @@ function BlackSection({
     >
       {children}
     </div>
-  );
+  )
 }
 
 function WhiteSection({ children }: { children: React.ReactNode }) {
-  return <div className=" lg:w-1/2 bg-white text-black ">{children}</div>;
+  return <div className=" lg:w-1/2 bg-white text-black ">{children}</div>
 }
 
 function ImageContainer({
@@ -270,11 +211,11 @@ function ImageContainer({
   description,
   styles,
 }: {
-  src: string;
-  link?: string;
-  title: string;
-  description?: string;
-  styles?: string;
+  src: string
+  link?: string
+  title: string
+  description?: string
+  styles?: string
 }) {
   return (
     <div
@@ -299,5 +240,5 @@ function ImageContainer({
         </motion.div>
       </Link>
     </div>
-  );
+  )
 }
